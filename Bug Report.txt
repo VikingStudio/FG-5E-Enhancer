@@ -1,0 +1,26 @@
+Bug Report
+
+Is your FG software up to date?
+
+Do you have the latest version of both extensions installed?
+(You can see the most up to date version numbers in the first post on page 1, the version numbers are printed in FG on start in the chat.)
+
+How much memory is Fantasy Grounds using while the error occurs? (You can check this in the Task Manager if you're using Windows)
+
+Please post the console error printout here:
+(This is the error log window text. It can be opened by typing '/console' in the FG text window if it didn't open by itself. Also if there are no output errors, state that here.)
+
+If you create a new (clean) campaign, does the error still occur, with ONLY the 5E Combat Enhancer and Token Helper extensions enabled?
+
+Can you recreate the error consistently?
+
+What are the precise steps to recreating the error?
+
+Does this always happen?
+
+Does this only happen when using a specific module, map, NPC, PC, weapon, etc.?
+(The more in depth information on which these are the better.)
+
+Do you have a screenshot you could share?
+
+Any further information that could help to replicate and trace the error? 
