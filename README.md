@@ -7,11 +7,6 @@ A community extension I'm writing to improve D&D 5E combat in Fantasy Grounds Un
 ## Design Goal
 A minimalist streamlined version of the original Combat Enhancer, written for Fantasy Grounds Unity.
 
-## Roadmap
-- Horizontal Health Bars, with toggle setting in menu 
-- Highlight of selected token for GM, underlay, with opacity settings in menu 
-- Drag and drop conditions on targets in CT or tokens on map, if already on target then remove, otherwise add
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -64,3 +59,10 @@ This project is licensed under private License - see the [LICENSE.md](LICENSE.md
 
 * SmiteWorks rulesystem and API code.
 
+## Roadmap
+- Horizontal Health Bars, with toggle setting in menu 
+- Highlight of selected token for GM, underlay, with opacity settings in menu 
+- Drag and drop conditions on targets in CT or tokens on map, if already on target then remove, otherwise add
+- Automatic range finding on attack
+
+## Features
