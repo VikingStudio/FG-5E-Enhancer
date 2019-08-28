@@ -1,8 +1,16 @@
 # FG-Combat-Enhancer-5E
 
-# Project Title
+A community extension I'm writing to improve D&D 5E combat in Fantasy Grounds Unity.
 
-One Paragraph of project description goes here
+**This document is not finalized, it is in draft form.**
+
+## Design Goal
+A minimalist streamlined version of the original Combat Enhancer, written for Fantasy Grounds Unity.
+
+## Roadmap
+- Horizontal Health Bars, with toggle setting in menu 
+- Highlight of selected token for GM, underlay, with opacity settings in menu 
+- Drag and drop conditions on targets in CT or tokens on map, if already on target then remove, otherwise add
 
 ## Getting Started
 
@@ -10,59 +18,29 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+You need to have a copy of Fantasy Grounds installed on your computer. 
+https://www.fantasygrounds.com/home/home.php
 
-```
-Give examples
-```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+    
+Open the folder "- INSTALL VERSIONS (extension file and needed graphics folder)"
+      
+Extension file: "Combat-Enhancer-5E v?_?_?.ext"
 
-Say what the step will be
+Includes: 
+    This is the actual extension, it includes the compressed codebase and a number of graphics.
 
-```
-Give the example
-```
+Where to place:
+    Copy this file to your extension folder (example: Fantasy Grounds\Data\extensions\ [place file here] ).
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [LUA](https://www.lua.org/) - Lua is a powerful, efficient, lightweight, embeddable scripting language. It supports procedural programming, object-oriented programming, functional programming, data-driven programming, and data description. 
+* [XML](https://www.w3.org/TR/REC-xml/) - Extensible Markup Language (XML) 1.0 (Fifth Edition)
+* [FG API](https://www.fantasygrounds.com/refdoc/) - Fantasy Grounds API as created by SmiteWorks.
 
 ## Contributing
 
@@ -74,7 +52,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Styrmir Thorarinsson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -84,7 +62,5 @@ This project is licensed under private License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* SmiteWorks rulesystem and API code.
 
