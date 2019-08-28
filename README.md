@@ -52,7 +52,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Styrmir Thorarinsson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Styrmir Thorarinsson** - *Initial work* - [Styrmir Thorarinsson](https://github.com/StyrmirThorarins)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
