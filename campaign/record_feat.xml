@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- Please see the COPYRIGHT.txt file included with this distribution for attribution and copyright information. -->
+
+<root>
+	<windowclass name="reference_feat">
+		<frame>recordsheet</frame>
+		<placement>
+			<size width="350" height="350" />
+		</placement>
+		<sizelimits>
+			<minimum width="300" height="300" />
+			<dynamic />
+		</sizelimits>
+		<minimize>minimized_reference</minimize>
+		<tooltip field="name" />
+		<nodelete />
+		<playercontrol />
+		<sharable />
+		<script name="ContentPost" file="scripts/content_share.lua" /> 
+		<script>
+			function onLockChanged()
+				if header.subwindow then
+					header.subwindow.update();
+				end
+				
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				text.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<sub_record_header name="header">
+				<class>ref_feat_header</class>
+			</sub_record_header>
+
+			<frame_record_content />
+			
+			<ft_record name="text">
+				<anchored to="contentframe" position="over" />
+				<footer>footer_wide</footer>
+			</ft_record>
+			<scrollbar>
+				<anchored to="text" />
+				<target>text</target>
+			</scrollbar>
+			
+			<resize_recordsheet />
+			<close_recordsheet />
+		</sheetdata>
+	</windowclass>
+	<windowclass name="ref_feat_header">
+		<margins control="0,0,0,2" />
+		<script name="ContentPost" file="scripts/content_share.lua" /> 
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				name.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<link_record_header>
+				<class>reference_feat</class>
+			</link_record_header>			
+			<anchor_record_header_right />
+			<icon_record_locked />
+			<button_record_locked />
+
+			<string_record_name name="name">
+				<empty textres="library_recordtype_empty_feat" />
+			</string_record_name>
+			<label_reftype name="reftype">
+				<static textres="ref_type_feat" />
+			</label_reftype>	
+		</sheetdata>
+	</windowclass>
+</root>

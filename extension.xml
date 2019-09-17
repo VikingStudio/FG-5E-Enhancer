@@ -4,139 +4,77 @@
 
 	<properties>
 		<name>Combat Enhancer 5E</name>
-		<version>1.0.0</version>
+		<version>0.1.0</version>
 		
 		<author>Styrmir T.</author>
 		<description>Combat Enhancer 5E</description>
 		
 		<ruleset>
 			<name>5E</name>
-			<!-- 
-			<maxrelease>8</maxrelease>
-			<minrelease>7</minrelease>
-			-->
-		</ruleset>
-
-		<!--
-		<dependency>
-			<name>Core RPG - Token Helper</name>			
-			<minversion>1.1.4</minversion>
-			<maxversion>2.9.9</maxversion>			
-		</dependency>
-		-->			
-		
+		</ruleset>			
 	</properties>    	
 
-	<base>									
-		<!-- Custom .lua code files for 5e Combat Enhancer -->
-		<script name="CombatEnhancer" file="scripts/combat_enhancer.lua" />        <!-- Custom modifications and additions to the base extension -->		
-		<script name="ActionAttack" file="scripts/manager_action_attack.lua" />			  <!-- Imported from 5e Ruleset, modified to handle range modifiers for ranged attacks -->		
-		<script name="ActionsManager" file="scripts/manager_actions.lua" />				<!-- Imported from CoreRPG, modified to handle range modifiers for ranged attacks -->										
-    
-		
-		<!-- Menu items for 5e Combat Enhancer -->
-		<string name="option_header_5ecombatenhancer">5e Combat Enhancer</string>
-		<string name="option_gm_underlay">Token underlay opacity (GM only)</string>
-		<string name="option_render_blood_splatter_on_death">Render blood splatter on death</string>
-		<string name="option_draw_skull_on_death">Draw skull on death</string>
-		<string name="option_draw_blood_on_token">Draw blood on token</string>			
-		<string name="option_fade_ct_npc_on_death">Change NPC background on death in CT</string>		
-		<string name="option_fade_npc_effect_icons_on_death">Change NPC token effect icons on death</string>		
-		<string name="option_bring_full_screen_interface_to_front">Chat and modifiers on top (full screen)</string>
-		<string name="option_blood_splatter_scaling">Blood splatter scaling</string>
-		<string name="option_token_effect_size">Token effect icon size</string>
-		<string name="option_token_effects_max_number">Token max effects icon number</string>
-		<string name="option_height_font_size">Height font size</string>
-		<string name="option_automatic_ranged_modifiers">Automatic ranged modifiers</string>
-		<string name="option_skip_non_initiatived_actor">Skip CT actors that haven't rolled intitiative</string>
-		<string name="option_flanking_rules">Use flanking rules (for medium sizes and smaller only)</string>
-		<string name="option_horizontal_health_bars">Horizontal health bars (re-add tokens or reload)</string>
-		<string name="option_ranged_melee_modifier">Ranged in melee modifier (for medium sizes and smaller only)</string>
+	<base>		
+		<!-- Presented in alphabetic order of the .lua file in the /scripts folder -->		
 
-		<!-- Radial menu -->
-		<icon name="spellshare" file="graphics/radial/icon_broadcast.png" />
-		<string name="spellshare">Post spell text into chat</string>
+		<!-- automatic_range_modifier -->
+		<script name="RangedAttack" file="scripts/automatic_range_modifier/ranged_attack_modifier.lua" />	<!-- Handles ranged attack modifiers -->						
+		<script name="TokenHelper" file="scripts/automatic_range_modifier/token_helper.lua" />	<!-- Helper functions for map tokens, needed for ranged_attack_modifier.lua -->						
+		<script name="ActionAttack" file="scripts/automatic_range_modifier/manager_action_attack.lua" />   <!-- Imported from 5e Ruleset, modified to hook into scripts handling range modifiers for ranged attacks -->				
 
-		<!-- Status icons -->
-		<icon name="ec_icon" file="icon.png" />		
-		<script name="VersionCheck" file="scripts/manager_versionchk.lua" />
-        <script name="TokenManager2" file="scripts/manager_token2.lua" />
-        <script name="CombatManager2" file="scripts/manager_combat2.lua" />
-		<script name="DataCommon" file="scripts/data_common.lua" />
-        <script name="ActionSave" file="scripts/manager_action_save.lua" />
-        <script name="MiniEffect" file="scripts/manager_minieffect.lua" />
-		<script name="EffectManager" file="scripts/manager_effect.lua" />
-		<script name="EffectManager5E" file="scripts/manager_effect_5E.lua" />
+		<!-- content_share.lua: 
+			Content Share into chat, character abilities, spells etc. 
+			allows you and your players to right click on spells, character feats, features and traits and post the descriptive text 
+			directly to the chat text.
+		-->		
+		<string name="textshare">Post Text in Chat</string>			
+		<includefile source="graphics/graphics_radial.xml" />	
+		<icon name="textshare" file="graphics/radial/icon_broadcast.png" />	
 
+		<script name="ContentPost" file="scripts/content_share.lua" /> 		
+
+		<includefile source="campaign/record_note.xml" />		<!-- note: <windowclass name="note"> -->
+		<includefile source="campaign/record_ability.xml" />    <!-- pc feat/feature/trait: <windowclass name="ref_ability">  -->
+		<includefile source="campaign/record_power.xml" />	  	<!-- spells: <windowclass name="power"> -->		
+		<includefile source="campaign/record_feat.xml" />	    <!-- Feat from list: <windowclass name="reference_feat"> -->		
+
+		<!-- health_bar.lua: Horizontal Health Bar and larger health dot -->		
+		<script name="HealthBar" file="scripts/health_graphics.lua" />   
 		<includefile source="graphics/graphics_icons.xml" />
-		<includefile source="graphics/graphics_radial.xml" />
-		<!-- <includefile source="utility/template_utility_override.xml" /> -->
-		<includefile source="utility/utility_effects_override.xml" />
+
+		<!--helper_functions.lua: Generic helper functions for the extension -->		
+		<script name="Helper" file="scripts/helper_functions.lua" />   
+
+		<!--no_token_rotate.lua: Stops token rotating on mouse button scroll during token hover, if enabled in menu option -->		
+		<script name="NoTokenRotate" file="scripts/no_token_rotate.lua" />   
+
+		<!-- menu_item_register: Menu items for Combat Enhancer 5E -->
+		<string name="option_automatic_ranged_modifiers">Automatic ranged modifiers</string>	
+		<string name="option_header_combatenhancer5e">Combat Enhancer 5E</string>		
+		<string name="option_horizontal_health_bars">Horizontal health bars</string>			
+		<string name="option_stop_token_rotate">Stop token rotation</string>	
+		<string name="option_height_font_size">Token height font size</string>		
+		<string name="option_gm_underlay">Token underlay opacity (GM only)</string>													
+
+		<script name="MenuItemRegister" file="scripts/menu_item_register.lua" />        <!-- Adds menu items for the extension -->		
+
+		<!-- token_effects_text.lua: Effects manager for tokens -->
+		<script name="EffectsManager" file="scripts/token_effects_text.lua" />   		
+
+		<!-- token_height_manager.lua: Height manager for tokens -->
+		<script name="HeightManager" file="scripts/token_height_manager.lua" />   		
+
+		<!-- token_remover.lua: Mouse and button click to remove tokens from map, or map and CT. -->
+		<script name="TokenRemover" file="scripts/token_remover.lua" />   
+
+		<!-- token_underlay.lua: Token underlay mannager -->		
+		<script name="UnderlayManager" file="scripts/token_underlay.lua" />   
 
 
-		<!-- Combat tracker icons changes -->
-		<includefile source="graphics/graphics_buttons.xml" />
-
-
-		<!-- Combat snapping -->
-		<string name="option_val_foe">Foe</string>
-		<script name="CombatSnap" file="scripts/snap_token.lua" />
-		<script name="TokenManager" file="scripts/manager_token.lua" />
-		<includefile source="graphics/graphics_frames.xml" />
-		<includefile source="ct/ct_client.xml" />
-		<includefile source="ct/ct_host.xml" />
-		<includefile source="ct/template_ct.xml" />
-
-
-		<!-- <script name="ImageRange" file="campaign/scripts/image.lua" /> --> <!-- create reference so possible to call for actor to target range update -->
-		<!-- Layers -->				
-		<template name="image_record_step">
-			<imagecontrol name="image">
-				<indicators availability="image_sent" locked="image_locked" loading="image_loading" zoom="image_zoom" shortcuts="image_shortcuts" />
-				<default snap="on" drawingsize="200,200" />
-				<script file="campaign/scripts/image.lua" />				
-			</imagecontrol>						
-		</template>
-				
-		<includefile source="graphics/graphics_layers.xml" />		
-		<includefile source="common/template_toolbar.xml" /> 
-		<includefile source="campaign/record_image.xml" /> 
-		<!-- <includefile source="campaign/record_image_resize.xml" /> -->
-		<includefile source="campaign/record_encounter.xml" />		
-
-		<script name="CombatManager" file="scripts/manager_combat.lua" />
-		<script name="TargetingManager" file="scripts/manager_targeting.lua" />
-		<script name="LayerTokenManager" file="scripts/manager_layer_tokens.lua" />
-		<script name="PingManager" file="scripts/manager_ping.lua" /> 
-		<script name="MapTokenManager" file="scripts/manager_maptoken.lua" />		
-
-
-		<!-- Height -->
-        <script name="HeightManager" file="scripts/manager_height.lua" />
-		<includefile source="graphics/graphics_fonts.xml" />
-
-		<script name="NPCManager" file="scripts/manager_npc.lua" />
-
-		<!-- Images -->
-		<!-- 
-			Change appearance of image frames/panels.
-			Black background for images / battlemaps mask (fog of war) 
-		-->
-		<framedef name="imagebox">
-			<bitmap file="graphics/frames/imagebox v1.png" />
-			<offset>150,135,150,150</offset>
-			<insideoffset>0,0,18,22</insideoffset>
-		</framedef>		
-		<framedef name="imagepanel">
-			<bitmap file="graphics/frames/imagepanel v2.png" />
-			<offset>16,16,16,16</offset>
-		</framedef>	
-
-
-		
-
+		<!-- Combat Enhancer Icon -->
+		<icon name="ce_icon" file="graphics/icons/combat_enhancer_icon.png" />				        
 		
 	</base>			
 
-	<announcement text="Combat Enhancer 5E v1.0.0" font="emotefont" icon="ec_icon" />			
+	<announcement text="Combat Enhancer 5E v0.1.0" font="emotefont" icon="ce_icon" />			
 </root>

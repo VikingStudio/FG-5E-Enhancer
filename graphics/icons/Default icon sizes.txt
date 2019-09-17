@@ -1,0 +1,2 @@
+Character sheet and other 64x64, 40x40, 35x35, 25x25
+Chat output 30x30

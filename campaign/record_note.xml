@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- Please see the COPYRIGHT.txt file included with this distribution for attribution and copyright information. -->
+
+<root>
+	<windowclass name="note">
+		<frame>storybox</frame>
+		<placement>
+			<size width="350" height="350" />
+		</placement>
+		<sizelimits>
+			<minimum width="350" height="350" />
+			<dynamic />
+		</sizelimits>
+		<minimize>minimized_note</minimize>
+		<playercontrol />
+		<nodelete />
+		<sharable />
+		<tooltip field="name" />	
+		<script name="ContentPost" file="scripts/content_share.lua" /> 		
+		<script>			
+			function onLockChanged()
+				Debug.chat('lock changed');
+
+				if header.subwindow then
+					header.subwindow.update();
+				end
+				
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				text.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<sub_note_header name="header">
+				<class>note_header</class>
+			</sub_note_header>
+
+			<frame_note_content name="contentframe" />
+
+			<simpleft name="text">
+				<anchored to="contentframe" position="over" />
+				<empty textres="ft_empty" hidereadonly="true" />
+			</simpleft>
+			<scrollbar>
+				<anchored to="text" />
+				<target>text</target>
+			</scrollbar>
+
+			<resize_storybox />
+			<close_storybox />
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="note_header">
+		<margins control="0,0,0,7" />
+		<script file="campaign/scripts/note_header.lua" />
+		<sheetdata>
+			<link_record_header>
+				<class>note</class>
+			</link_record_header>
+
+			<anchor_record_header_right name="rightanchor" />
+			<icon_record_locked />
+			<button_record_locked />
+
+			<stringfield name="name">
+				<anchored to="rightanchor" height="24">
+					<top offset="-4" />
+					<left parent="" offset="45" />
+					<right anchor="left" relation="relative" offset="-5" />
+				</anchored>
+				<font>reference-h</font>
+				<empty textres="library_recordtype_empty_note" />
+				<nodrag />
+			</stringfield>
+
+			<label name="owner_label">
+				<anchored position="insidetopleft" offset="10,32" />
+				<static textres="note_label_owner" />
+			</label>
+			<stringcontrol name="owner">
+				<anchored to="owner_label" position="righthigh" offset="5,0" height="20" />
+				<font>reference-r</font>
+				<readonly />
+			</stringcontrol>
+			<buttonc_checkbox name="ispublic">
+				<bounds>-25,32,20,20</bounds>
+				<script>
+					function onValueChanged()
+						window.onPublicChanged();
+					end
+				</script>
+			</buttonc_checkbox>
+			<label name="ispublic_label">
+				<anchored to="ispublic" position="lefthigh" offset="5,0" height="20" />
+				<static textres="note_label_public" />
+			</label>
+			<genericcontrol name="separator">
+				<bounds>5,52,-5,3</bounds>
+				<frame name="separatorline" />
+				<disabled />
+			</genericcontrol>
+		</sheetdata>
+	</windowclass>
+</root>
