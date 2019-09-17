@@ -79,21 +79,21 @@ Secondary
 
 ## Things to patch
 - Horizontal health bar:
-    does not appear on token drop, only after taking damage
-    does not appear correctly if set to on hover, resizing and positioning is not working
-    does not appear correctly during token resize, resizing and positioning is not working (same as above)
+-- does not appear on token drop, only after taking damage
+-- does not appear correctly if set to on hover, resizing and positioning is not working
+-- does not appear correctly during token resize, resizing and positioning is not working (same as above)
 - Have a look into range finding math, see if depends on the grid placements of tokens or if calculates with created virtual box aroundt token as per 5E rules.    
 
 ## Releases
 v0.1.0 (17th, September, 2019)  
 Alpha version of Combat Enhancer 5E (Unity). Not for general use, a number of features added and working fully or partially. A number of features still at alpha development phase.
-    - Content to text area share added with right-mouse click.
-    - Deletion of tokens with mouse click on map.
-    - Partial working horizontal health bars.
-    - Partial working larger health dots.
-    - Working automatic 2D range finding from ranged weapon or spell attacks. Adds disadvantage if attacks outside short range and not sharpshooter feat.
-    - Number of new graphics added.
-    - A lot of code refactoring and project organizing.
-        Breaking up of code into different .lua files where each handles very specific functionality.
-        Seperating and decoupling of code from SmiteWorks code base (5E ruleset and CoreRPG ruleset) whenever possible, for easier maintenance and clearer code, and future update proofing against ruleset updates.
-        General code cleanup.
+- Content to text area share added with right-mouse click.
+- Deletion of tokens with mouse click on map.
+- Partial working horizontal health bars.
+- Partial working larger health dots.
+- Working automatic 2D range finding from ranged weapon or spell attacks. Adds disadvantage if attacks outside short range and not sharpshooter feat.
+- Number of new graphics added.
+- A lot of code refactoring and project organizing.
+-- Breaking up of code into different .lua files where each handles very specific functionality.
+-- Seperating and decoupling of code from SmiteWorks code base (5E ruleset and CoreRPG ruleset) whenever possible, for easier maintenance and clearer code, and future update proofing against ruleset updates.
+-- General code cleanup.
