@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # UNDER DEVELOPMENT ALPHA STATE
-=======
-# Under Development, Alpha Stage
->>>>>>> d216ea3c5bcf3b3b0df63c027f31a5e1da44aa27
 
 # FG-Combat-Enhancer-5E
 
