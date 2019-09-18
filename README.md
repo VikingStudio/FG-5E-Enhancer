@@ -1,6 +1,6 @@
 # UNDER DEVELOPMENT ALPHA STATE
 
-# FG-Combat-Enhancer-5E
+# FG Combat Enhancer 5E (Unity)
 
 A community extension I'm writing to improve D&D 5E combat in Fantasy Grounds Unity.
 
