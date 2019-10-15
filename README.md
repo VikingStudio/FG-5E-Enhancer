@@ -60,6 +60,9 @@ This project is licensed under private License - see the [LICENSE.md](LICENSE.md
 - Token height font size: Size of height widget text on top of tokens.
 - Token underlay opacity (GM only): Select the opacity of the graphical highlight underneath tokens when hovering over items in the combat tracker.
 
+## Menu Options 'Window Resizer 5E'
+- New menu options in your settings, under 'Window Resizer 5E', that enable you to change your default window sizes for a lot of different types.
+
 ## Features, Combat
 - Delete tokens from map and CT with single mouse click. 
     Alt + left mouse-click on token on map, deletes the token from the map.
