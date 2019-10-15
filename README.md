@@ -2,7 +2,7 @@
 
 # FG-5E-Enhancer
 
-A community extension I'm writing to improve D&D 5E combat in Fantasy Grounds Unity.
+A community extension I'm writing to improve D&D 5E in Fantasy Grounds Unity.
 
 ## Design Goal
 
@@ -18,7 +18,7 @@ https://www.fantasygrounds.com/home/home.php
     
 Open the folder "- Extension Files"
       
-Extension file: "Combat-Enhancer-5E v?_?_?.ext"
+Extension file: "5E-Enhancer v?_?_?.ext"
 
 Includes: 
     This is the actual extension, it includes the compressed codebase and a number of graphics.
@@ -43,7 +43,7 @@ I use [SemVer](http://semver.org/) for versioning, with version number MAJOR.MIN
 
 ## License
 
-This project is licensed under private License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under private License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgments
 
@@ -60,8 +60,7 @@ This project is licensed under private License - see the [LICENSE.md](LICENSE.md
 - Token height font size: Size of height widget text on top of tokens.
 - Token underlay opacity (GM only): Select the opacity of the graphical highlight underneath tokens when hovering over items in the combat tracker.
 
-## Features
-- Content Share, allows you and your players to right click on spells, character feats, features and traits and post the descriptive text directly to the chat text by selecting the new 'Post Text in Chat' menu option at the bottom.
+## Features, Combat
 - Delete tokens from map and CT with single mouse click. 
     Alt + left mouse-click on token on map, deletes the token from the map.
     Alt + Ctrl + left mouse-click on token on map, deletes the token from the map and from the CT.
@@ -70,6 +69,14 @@ This project is licensed under private License - see the [LICENSE.md](LICENSE.md
 - Automatic range finding from ranged attack. Toggable in menu. Disadvantage for medium to max range added automatically, sharpshooter feat negates this. Message output to chat.
 - 'Reach underlay' and 'Faction/space underlay' made as toggle switches in the menu items. Re-add tokens to update.
 - Active actor on CT token underlay made as toggle switches in the menu items. Clears all other underlays than the current actor.
+
+## Features, Interface
+- Content Share, allows you and your players to right click on spells, character feats, features and traits and post the descriptive text directly to the chat text by selecting the new 'Post Text in Chat' menu option at the bottom.
+- New menu options in your settings, under 'Window Resizer 5E'.
+    Set as default window sizes on activation. But you can enable larger windows for any or all windows from the window menu.
+    Resizes windows on the fly to whatever setting you choose.
+    You can return to the default window sizes at any time.
+    If a window has been resized manually and is therefore in the 'windowstate.xml' file of your campaign, that takes precedence over the extension. This enables you to manually configure any windows you'd like.
 
 
 ## Roadmap
