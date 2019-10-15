@@ -2,7 +2,7 @@
 
 # FG-5E-Enhancer
 
-A community extension I'm writing to improve D&D 5E combat in Fantasy Grounds Unity.
+A community extension I'm writing to improve a number of D&D 5E features in Fantasy Grounds Unity.
 
 ## Design Goal
 
@@ -18,7 +18,7 @@ https://www.fantasygrounds.com/home/home.php
     
 Open the folder "- Extension Files"
       
-Extension file: "Combat-Enhancer-5E v?_?_?.ext"
+Extension file: "5E-Enhancer v?_?_?.ext"
 
 Includes: 
     This is the actual extension, it includes the compressed codebase and a number of graphics.
@@ -69,7 +69,6 @@ This project is licensed under private License - see the [LICENSE.md](LICENSE.md
 - Larger health dot graphics for tokens. Toggable in menu. Add token from CT for new health dot.
 - Automatic range finding from ranged attack. Toggable in menu. Disadvantage for medium to max range added automatically, sharpshooter feat negates this. Message output to chat.
 - 'Reach underlay' and 'Faction/space underlay' made as toggle switches in the menu items. Re-add tokens to update.
-- Active actor on CT token underlay made as toggle switches in the menu items. Clears all other underlays than the current actor.
 
 
 ## Roadmap
@@ -103,8 +102,4 @@ v0.2.0
 - 'Reach underlay' and 'Faction/space underlay' made as toggle switches in the menu items. (scripts/manager_token.lua: updateSizeHelper)
 - Rewriting of horizontal health bars code, seamlessly integrated to run from manager_token.lua with minimal extra code in that ruleset file. Horizontal health bars now work flawlessly. (scripts/health_graphics.lua: drawHorizontalHealthBar, updateHealthBarScale | scripts/manager_token.lua: updateHealthHelper)
 - Added menu option to toggle for default or larger health dots.
-- Added larger health dots. (scripts/health_graphics.lua: drawLargerHealthDot | scripts/manager_token.lua: updateHealthHelper)
-
-v0.3.1
-- Fixed horizontal health bar scaling on token resize. (scripts/manager_token.lua: onScaleChanged)
-- Added menu option to display and underlay under tokens on the map that are active in the combat tracker. Clears all other underlays than the current actor. (scrips/token_highlighter.lua | manager_token.lua: updateActiveHelper)
+- Added larger health dots. (Scripts/health_graphics.lua: drawLargerHealthDot | scripts/manager_token.lua: updateHealthHelper)

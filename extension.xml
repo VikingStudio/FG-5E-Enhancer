@@ -3,11 +3,11 @@
 <root version="3.0" release="1">
 
 	<properties>
-		<name>Combat Enhancer 5E</name>
+		<name>5E Enhancer</name>
 		<version>0.1.0</version>
 		
 		<author>Styrmir T.</author>
-		<description>Combat Enhancer 5E</description>
+		<description>5E Enhancer</description>
 		
 		<ruleset>
 			<name>5E</name>
@@ -32,37 +32,54 @@
 		<icon name="textshare" file="graphics/radial/icon_broadcast.png" />	
 
 		<script name="ContentPost" file="scripts/content_share.lua" /> 		
-
+		
 		<includefile source="campaign/record_note.xml" />		<!-- note: <windowclass name="note"> -->
 		<includefile source="campaign/record_ability.xml" />    <!-- pc feat/feature/trait: <windowclass name="ref_ability">  -->
 		<includefile source="campaign/record_power.xml" />	  	<!-- spells: <windowclass name="power"> -->		
 		<includefile source="campaign/record_feat.xml" />	    <!-- Feat from list: <windowclass name="reference_feat"> -->		
 
+		<!-- effects_handler.lua: Remove effect if already on CT entry, label version of effects -->		
+		<script name="EffectsHandler" file="scripts/effects_handler.lua" />   
+
 		<!-- health_bar.lua: Horizontal Health Bar and larger health dot -->		
-		<script name="HealthBar" file="scripts/health_graphics.lua" />   
+		<script name="HealthGraphicUpdater" file="scripts/health_graphics.lua" />   
 		<includefile source="graphics/graphics_icons.xml" />
 
-		<!--helper_functions.lua: Generic helper functions for the extension -->		
+		<!-- helper_functions.lua: Generic helper functions for the extension -->		
 		<script name="Helper" file="scripts/helper_functions.lua" />   
 
-		<!--no_token_rotate.lua: Stops token rotating on mouse button scroll during token hover, if enabled in menu option -->		
+		<!-- manager_token.lua: token manger copied from CoreRPG ruleset -->		
+		<script name="TokenManager" file="scripts/manager_token.lua" />   		
+
+		<!-- no_token_rotate.lua: Stops token rotating on mouse button scroll during token hover, if enabled in menu option -->		
 		<script name="NoTokenRotate" file="scripts/no_token_rotate.lua" />   
 
 		<!-- menu_item_register: Menu items for Combat Enhancer 5E -->
 		<string name="option_automatic_ranged_modifiers">Automatic ranged modifiers</string>	
-		<string name="option_header_combatenhancer5e">Combat Enhancer 5E</string>		
+		<string name="option_header_5eenhancer">5E Enhancer</string>		
 		<string name="option_horizontal_health_bars">Horizontal health bars</string>			
+		<string name="option_larger_health_dots">Larger health dots</string>			
+		<string name="option_show_ct_active_actor_underlay">Show CT active actor underlay (DM only)</string>	
+		<string name="option_show_reach_underlay">Show reach underlay</string>		
+		<string name="option_show_faction_underlay">Show faction/space underlay</string>				
 		<string name="option_stop_token_rotate">Stop token rotation</string>	
 		<string name="option_height_font_size">Token height font size</string>		
-		<string name="option_gm_underlay">Token underlay opacity (GM only)</string>													
+		<string name="option_gm_underlay">Token underlay opacity (DM only)</string>		
 
-		<script name="MenuItemRegister" file="scripts/menu_item_register.lua" />        <!-- Adds menu items for the extension -->		
+		<!-- Adds menu items for the extension -->											
+		<script name="MenuItemRegister" file="scripts/menu_item_register.lua" />        		
+
+		<!-- minmize_window_on_dblclick.lua: Minimize windows by double clicking the mouse on top of the window -->		
+		<script name="MinimizeWindowOnDblClick" file="scripts/minimize_window_on_dblclick.lua" />        
 
 		<!-- token_effects_text.lua: Effects manager for tokens -->
 		<script name="EffectsManager" file="scripts/token_effects_text.lua" />   		
 
 		<!-- token_height_manager.lua: Height manager for tokens -->
-		<script name="HeightManager" file="scripts/token_height_manager.lua" />   		
+		<script name="HeightManager" file="scripts/token_height_manager.lua" />   	
+
+		<!-- token_hightlighter.lua: Adds a underlay to token for the active CT actor. Different color depending on faction.  -->
+		<script name="TokenHighlighter" file="scripts/token_highlighter.lua" />   				
 
 		<!-- token_remover.lua: Mouse and button click to remove tokens from map, or map and CT. -->
 		<script name="TokenRemover" file="scripts/token_remover.lua" />   
@@ -76,5 +93,5 @@
 		
 	</base>			
 
-	<announcement text="Combat Enhancer 5E v0.1.0" font="emotefont" icon="ce_icon" />			
+	<announcement text="5E Enhancer v0.1.0" font="emotefont" icon="ce_icon" />			
 </root>
