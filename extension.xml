@@ -3,8 +3,8 @@
 <root version="3.0" release="1">
 
 	<properties>
-		<name>5E Enhancer v0.3.1</name>
-		<version>0.3.1</version>
+		<name>5E Enhancer v0.3.2</name>
+		<version>0.3.2</version>
 		
 		<author>Styrmir T.</author>
 		<description>5E Enhancer</description>
@@ -55,8 +55,8 @@
 		<script name="NoTokenRotate" file="scripts/no_token_rotate.lua" />   
 
 		<!-- menu_item_register: Menu items for Combat Enhancer 5E -->
-		<string name="option_automatic_ranged_modifiers">Automatic ranged modifiers</string>	
-		<string name="option_header_5eenhancer">5E Enhancer</string>		
+		<string name="option_header_5eenhancer">5E Enhancer, Battle Map Settings</string>
+		<string name="option_automatic_ranged_modifiers">Automatic ranged modifiers</string>					
 		<string name="option_horizontal_health_bars">Horizontal health bars</string>			
 		<string name="option_larger_health_dots">Larger health dots</string>			
 		<string name="option_show_ct_active_actor_underlay">Show CT active actor underlay (DM only)</string>	
@@ -87,11 +87,29 @@
 		<!-- token_underlay.lua: Token underlay mannager -->		
 		<script name="UnderlayManager" file="scripts/token_underlay.lua" />   
 
+		<!-- window-resize.lua: Resizing windows on the fly according to menu settings. -->
+		<script name="WindowResize" file="scripts/window_resize.lua" />
+
+		<!-- menu_item_register: Menu items for Interface Modifier 5E -->
+		<string name="option_header_5eenhancher_window_resizing">5E Enhancer, Window Resizing</string>			
+		<string name="option_backgrounds">Backgrounds</string>		
+		<string name="option_classes">Classes</string>	
+		<string name="option_npc_powers">CT NPC powers</string>	
+		<string name="option_feats">Feats</string>	
+		<string name="option_items">Items</string>	
+		<string name="option_notes">Notes</string>	
+		<string name="option_npc">NPC</string>	
+		<string name="option_races">Races</string>	
+		<string name="option_pc_ability">PC abilities</string>			
+		<string name="option_skills">Skills</string>	
+		<string name="option_story">Story</string>	
+		<string name="option_spells">Spells</string>	
+		<string name="option_quests">Quests</string>					        
+		
 
 		<!-- Combat Enhancer Icon -->
-		<icon name="ce_icon" file="graphics/icons/combat_enhancer_icon.png" />				        
-		
+		<icon name="ce_icon" file="graphics/icons/combat_enhancer_icon.png" />				
 	</base>			
 
-	<announcement text="5E Enhancer v0.3.1" font="emotefont" icon="ce_icon" />			
+	<announcement text="5E Enhancer v0.3.2" font="emotefont" icon="ce_icon" />			
 </root>

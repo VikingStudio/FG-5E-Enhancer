@@ -60,7 +60,7 @@ This project is licensed under private License - see the [LICENSE.md](LICENSE.md
 - Token height font size: Size of height widget text on top of tokens.
 - Token underlay opacity (GM only): Select the opacity of the graphical highlight underneath tokens when hovering over items in the combat tracker.
 
-## Menu Options 'Window Resizer 5E'
+## Menu Options '5E Enhancer, Window Resizing'
 - New menu options in your settings, under 'Window Resizer 5E', that enable you to change your default window sizes for a lot of different types.
 
 ## Features, Combat
@@ -95,7 +95,7 @@ Secondary
 - Horizontal health bar, resizing and positioning is not working on token resize
 
 ## Releases
-v0.1.0 (17th, September, 2019)  
+v0.1.0 (September, 17th, 2019)  
 Alpha version of 5E Enhancer. Not for general use, a number of features added and working fully or partially. A number of features still at alpha development phase.
 - Content to text area share added with right-mouse click.
 - Deletion of tokens with mouse click on map.
@@ -108,13 +108,18 @@ Alpha version of 5E Enhancer. Not for general use, a number of features added an
 -- Seperating and decoupling of code from SmiteWorks code base (5E ruleset and CoreRPG ruleset) whenever possible, for easier maintenance and clearer code, and future update proofing against ruleset updates.
 -- General code cleanup.
 
-v0.2.0
+v0.2.0 (October 15th, 2019) 
 - Added 'manager_token.lua' from CoreRPG ruleset.
 - 'Reach underlay' and 'Faction/space underlay' made as toggle switches in the menu items. (scripts/manager_token.lua: updateSizeHelper)
 - Rewriting of horizontal health bars code, seamlessly integrated to run from manager_token.lua with minimal extra code in that ruleset file. Horizontal health bars now work flawlessly. (scripts/health_graphics.lua: drawHorizontalHealthBar, updateHealthBarScale | scripts/manager_token.lua: updateHealthHelper)
 - Added menu option to toggle for default or larger health dots.
 - Added larger health dots. (scripts/health_graphics.lua: drawLargerHealthDot | scripts/manager_token.lua: updateHealthHelper)
 
-v0.3.1
+v0.3.1 (October 15th, 2019) 
 - Fixed horizontal health bar scaling on token resize. (scripts/manager_token.lua: onScaleChanged)
 - Added menu option to display and underlay under tokens on the map that are active in the combat tracker. Clears all other underlays than the current actor. (scrips/token_highlighter.lua | manager_token.lua: updateActiveHelper)
+
+v0.3.2 (October 24th, 2019)
+- Added code for window resizing. (scripts/window_resize.lua)
+- Added menu items for window resizing. (5E Enhancer, Window Resizing)
+- Changed menu name for battle map menu options for the extension, from '5E Enhancer' to '5E Enhancer, Battle Map Settings'.
