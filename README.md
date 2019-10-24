@@ -6,7 +6,7 @@ A community extension I'm writing to improve D&D 5E in Fantasy Grounds Unity.
 
 ## Design Goal
 
-A minimalist streamlined version of the original Combat Enhancer Classic including numerous broader ranged improvements for playing 5E, written for Fantasy Grounds Unity.
+A rewritten minimalist streamlined version of the original 5E Combat Enhancer Classic including a number of broader ranged improvements for playing 5E, written for Fantasy Grounds Unity.
 
 ### Prerequisites
 
