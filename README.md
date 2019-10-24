@@ -49,7 +49,7 @@ This project is licensed under private License - see the [LICENSE.md](LICENSE.md
 
 * SmiteWorks rulesystem and API code.
 
-## Menu Options '5E Enhancer'
+# Menu Options '5E Enhancer, Battle Map Settings'
 - Automatic range modifiers: Enable range messages and automatic disadvantage on long ranges.
 - Horizontal health bars: Enable horizontal health bars over tokens.
 - Larger health dots: Enable larger health dots for tokens.
@@ -57,11 +57,10 @@ This project is licensed under private License - see the [LICENSE.md](LICENSE.md
 - Show faction/space underlay: Shows or hides the underlay added for tokens faction (friend/foe/neutral). Re-add tokens to update.
 - Show reach underlay: Shows or hides the reach underlay added on hover for tokens. Re-add tokens to update.
 - Stop token rotation: Stops token rotation as much as possible when mouse wheel is scrolled over token. Tries to reset it as turning straight up on mouse scroll.
-- Token height font size: Size of height widget text on top of tokens.
 - Token underlay opacity (GM only): Select the opacity of the graphical highlight underneath tokens when hovering over items in the combat tracker.
 
-## Menu Options '5E Enhancer, Window Resizing'
-- New menu options in your settings, under 'Window Resizer 5E', that enable you to change your default window sizes for a lot of different types.
+# Menu Options '5E Enhancer, Window Resizing'
+- New menu options that enable you to change your default window sizes for a lot of different types.
 
 ## Features, Combat
 - Delete tokens from map and CT with single mouse click. 
