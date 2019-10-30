@@ -12,14 +12,14 @@ function drawHorizontalHealthBar(tokenCT, widgetHealthBar, bVisible)
 	if widgetHealthBar then
 		widgetHealthBar.destroy();
 	end
-	
+
 	widgetHealthBar = tokenCT.addBitmapWidget("healthbar_horizontal");
 	widgetHealthBar.sendToBack();
 	widgetHealthBar.setName("healthbar");			
 	widgetHealthBar.setColor(sColor);
-	widgetHealthBar.setTooltipText(sStatus);
+	widgetHealthBar.setTooltipText(sStatus);		
 	widgetHealthBar.setVisible(bVisible);
-	updateHealthBarScale(tokenCT, nPercentWounded);	
+	updateHealthBarScale(tokenCT, nPercentWounded);		
 end
 	
 -- Manager.onScaleChanged
@@ -27,11 +27,9 @@ end
 -- Scaling of horizontal health bar
 function updateHealthBarScale(tokenCT, nPercentWounded)
 	local widgetHealthBar = tokenCT.findWidget("healthbar");
-	if widgetHealthBar then
-
-		local w, h = tokenCT.getSize();				
-
-		widgetHealthBar.setSize(w, h);
+	if widgetHealthBar then			
+		
+		local w, h = tokenCT.getSize();
 		local barw, barh = widgetHealthBar.getSize();
 		
 		token_health_minbar = 0;
@@ -41,11 +39,11 @@ function updateHealthBarScale(tokenCT, nPercentWounded)
 			barw = (math.max(1.0 - nPercentWounded, 0) * (math.min(w, barw) - token_health_minbar)) + token_health_minbar;
 		else
 			barw = token_health_minbar;
-		end				
-			
-		-- making health bars wider and taller, appearing on top, resize and place ratio wise due to different mat grids and resolution sizes	
-		widgetHealthBar.setSize(barw - math.floor(barw / 90), math.floor(barh / 10), "left");
-		widgetHealthBar.setPosition("left", (barw / 2), - math.floor(h / 1.7) ); 						
+		end								
+
+		-- making health bars wider and taller, appearing on top, resize and place ratio wise due to different map grids and resolution sizes	
+		widgetHealthBar.setSize(math.floor(barw * 2.25), math.floor(barh / 5), "left");
+		widgetHealthBar.setPosition("left", math.floor(w * 1.1), - math.floor(h * 1.275) ); 				
 	end
 end
 
@@ -69,7 +67,7 @@ function drawLargerHealthDot(tokenCT, widgetHealthDot, bVisible)
 	widgetHealthDot.isVisible(bVisible);
 
 	local w, h = tokenCT.getSize();									
-	widgetHealthDot.setSize( math.floor(w / 5), math.floor(h / 5) );				
+	widgetHealthDot.setSize( math.floor(w / 2.5), math.floor(h / 2.5) );				
 	widgetHealthDot.setPosition("bottomright", - math.floor(w / 10), - math.floor(h / 10) ); 				
 end
 

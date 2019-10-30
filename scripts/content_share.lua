@@ -23,7 +23,7 @@ end
  
 
 function menuAction(selection, subselection, subsubselection)
-    Debug.chat('menu selection', selection, 'class', getClass())
+    --Debug.chat('menu selection', selection, 'class', getClass())
     if selection == 5 then    
         local sMessage = createOutput();
         postChatMessage(sMessage);
@@ -31,7 +31,7 @@ function menuAction(selection, subselection, subsubselection)
 end
 
 function createOutput()       
-    Debug.chat('ouputContent: class', getClass(), 'node', getDatabaseNode());
+    --Debug.chat('ouputContent: class', getClass(), 'node', getDatabaseNode());
     local class = getClass();
     local node = getDatabaseNode();
     local sMessage;

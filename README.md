@@ -10,14 +10,14 @@ A rewritten minimalist streamlined version of the original 5E Combat Enhancer Cl
 
 ### Prerequisites
 
-You need to have a copy of Fantasy Grounds installed on your computer. 
+You need to have a copy of Fantasy Grounds Unity installed on your computer. 
 https://www.fantasygrounds.com/home/home.php
 
 
 ### Installing
     
 1) Open the folder "- Extension Files"
-Download the extension file: "5E-Enhancer v?_?_?.ext"
+Download the latest version of the extension file: "5E-Enhancer v?_?_?.ext"
 
 Contains:
 This is the actual extension, it includes the compressed codebase and a number of graphics.
@@ -92,6 +92,8 @@ Secondary
 
 ## Things to patch
 - Horizontal health bar, resizing and positioning is not working on token resize
+- Create new larger graphics large health dot and health bar. Are a bit blurred in FGU.
+- Health color is not delivering to horizontal health bar or larger health dots.
 
 ## Releases
 v0.1.0 (September, 17th, 2019)  
@@ -122,3 +124,13 @@ v0.3.2 (October 24th, 2019)
 - Added code for window resizing. (scripts/window_resize.lua)
 - Added menu items for window resizing. (5E Enhancer, Window Resizing)
 - Changed menu name for battle map menu options for the extension, from '5E Enhancer' to '5E Enhancer, Battle Map Settings'.
+
+=====================================
+FGU Beta release (October 28th, 2019)
+=====================================
+
+v0.3.3 (October 30th, 2019)
+- Bug: Missing element error message in Unity console. Fixed. Removed reference to missing element, "graphics/graphics_radial.xml" in extension.xml.
+- Removed debug messages to chat for "Post Text in Chat". (scripts/content_share.lua)
+- Larger health dot resized and repositioned. (scripts/health_graphics.lua: drawLargerHealthDot)
+- Horizontal health bar resized and repositioned. (scripts/health_graphics.lua: updateHealthBarScale)

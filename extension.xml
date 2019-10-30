@@ -3,8 +3,8 @@
 <root version="3.0" release="1">
 
 	<properties>
-		<name>5E Enhancer v0.3.2</name>
-		<version>0.3.2</version>
+		<name>5E Enhancer v0.3.3</name>
+		<version>0.3.3</version>
 		
 		<author>Styrmir T.</author>
 		<description>5E Enhancer</description>
@@ -27,8 +27,7 @@
 			allows you and your players to right click on spells, character feats, features and traits and post the descriptive text 
 			directly to the chat text.
 		-->		
-		<string name="textshare">Post Text in Chat</string>			
-		<includefile source="graphics/graphics_radial.xml" />	
+		<string name="textshare">Post Text in Chat</string>					
 		<icon name="textshare" file="graphics/radial/icon_broadcast.png" />	
 
 		<script name="ContentPost" file="scripts/content_share.lua" /> 		
@@ -111,5 +110,5 @@
 		<icon name="ce_icon" file="graphics/icons/combat_enhancer_icon.png" />				
 	</base>			
 
-	<announcement text="5E Enhancer v0.3.2" font="emotefont" icon="ce_icon" />			
+	<announcement text="5E Enhancer v0.3.3" font="emotefont" icon="ce_icon" />			
 </root>
