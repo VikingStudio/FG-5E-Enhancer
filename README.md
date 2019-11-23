@@ -135,7 +135,7 @@ v0.3.3 (October 30th, 2019)
 - Larger health dot resized and repositioned. (scripts/health_graphics.lua: drawLargerHealthDot)
 - Horizontal health bar resized and repositioned. (scripts/health_graphics.lua: updateHealthBarScale)
 
-v0.4.0 (October 23rd, 2019)
+v0.4.0 (November 23rd, 2019)
 - Added more menu option alternatives for 'Horizontal health bars'. 5 options available: Off | Left aligned, default height | Left aligned, taller | Centered, default height | Centered, taller.(scripts/health_graphics.lua: updateHealthBarScale)
 - Rewriting of horizontal health bar scaling code. (scripts/health_graphics.lua: updateHealthBarScale)
 - Added more menu option alternatives for 'Large health dots, settings'. 3 options available: FGU Default size | Larger | Largest. (scripts/health_graphics.lua: drawLargerHealthDot)
