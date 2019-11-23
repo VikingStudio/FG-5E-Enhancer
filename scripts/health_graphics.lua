@@ -42,8 +42,31 @@ function updateHealthBarScale(tokenCT, nPercentWounded)
 		end								
 
 		-- making health bars wider and taller, appearing on top, resize and place ratio wise due to different map grids and resolution sizes	
-		widgetHealthBar.setSize(math.floor(barw * 2.25), math.floor(barh / 5), "left");
-		widgetHealthBar.setPosition("left", math.floor(w * 1.1), - math.floor(h * 1.275) ); 				
+
+		-- Horizontal health bar, (left, default)
+		if OptionsManager.getOption('CE_HHB') == "option_v1" then			
+			-- widgetHealthBar.setSize(barw - math.floor(barw * 0.01), math.floor(barh * 0.1), "left");
+			widgetHealthBar.setSize(barw, math.floor(barh * 0.1), "left");
+			widgetHealthBar.setPosition("left", (barw * 0.5), - math.floor(h * 0.59) ); 	
+		end
+
+		-- Horizontal health bar, (left, taller)
+		if OptionsManager.getOption('CE_HHB') == "option_v2" then										
+			widgetHealthBar.setSize(barw, math.floor(barh * 0.2), "left");								
+			widgetHealthBar.setPosition("left", (barw * 0.5), - math.floor(h * 0.55) ); 						
+		end
+
+		-- Horizontal health bar, (centered, default)
+		if OptionsManager.getOption('CE_HHB') == "option_v3" then
+			widgetHealthBar.setSize(barw, math.floor(barh * 0.1), "left");
+			widgetHealthBar.setPosition("center top", 0, - math.floor(h * 0.1) ); 
+		end
+
+		-- Horizontal health bar, (centered, taller)
+		if OptionsManager.getOption('CE_HHB') == "option_v4" then
+			widgetHealthBar.setSize(barw, math.floor(barh * 0.2), "left");
+			widgetHealthBar.setPosition("center top", 0, - math.floor(h * 0.07) ); 
+		end		
 	end
 end
 
@@ -66,9 +89,26 @@ function drawLargerHealthDot(tokenCT, widgetHealthDot, bVisible)
 	widgetHealthDot.setTooltipText(sStatus);
 	widgetHealthDot.isVisible(bVisible);
 
-	local w, h = tokenCT.getSize();									
-	widgetHealthDot.setSize( math.floor(w / 2.5), math.floor(h / 2.5) );				
-	widgetHealthDot.setPosition("bottomright", - math.floor(w / 10), - math.floor(h / 10) ); 				
+	local w, h = tokenCT.getSize();			
+	local MAXDIMENSION = 40;						
+
+	-- Larger
+	if OptionsManager.getOption('CE_LHD') == "option_larger" then
+		local dimension = math.floor( w * 0.2 );
+		if (dimension > MAXDIMENSION) then dimension = MAXDIMENSION; end
+
+		widgetHealthDot.setSize( dimension, dimension );				
+		widgetHealthDot.setPosition("bottomright", - math.floor(w * 0.1), - math.floor(h * 0.1) ); 			
+	end
+
+	-- Largest
+	if OptionsManager.getOption('CE_LHD') == "option_largest" then
+		local dimension = math.floor( w * 0.4 );
+		if (dimension > MAXDIMENSION) then dimension = MAXDIMENSION; end
+
+		widgetHealthDot.setSize( dimension, dimension );				
+		widgetHealthDot.setPosition("bottomright", - math.floor(w * 0.1), - math.floor(h * 0.1) ); 						
+	end
 end
 
 -- END larger healthdot section

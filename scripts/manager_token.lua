@@ -150,7 +150,7 @@ function onScaleChanged(tokenCT)
 		if bDisplayDefaultHealth then 
 			local nPercentWounded = fGetHealthInfo(nodeCT);
 			
-			if OptionsManager.getOption('CE_HHB') == "on" then 
+			if OptionsManager.getOption('CE_HHB') ~= "option_off" then 
 				HealthGraphicUpdater.updateHealthBarScale(tokenCT, nPercentWounded); 
 			else
 				updateHealthBarScale(tokenCT, nPercentWounded); 
@@ -813,7 +813,7 @@ function updateHealthHelper(tokenCT, nodeCT)
 				local widgetHealthBar = aWidgets["healthbar"];
 
 				-- START Draw horizontal health bar if menu option set
-				if OptionsManager.getOption('CE_HHB') == "on" then
+				if OptionsManager.getOption('CE_HHB') ~= "option_off" then
 					if not widgetHealthBar then	
 						HealthGraphicUpdater.drawHorizontalHealthBar(tokenCT, nil, sOptTH == "bar")
 					end
@@ -845,7 +845,7 @@ function updateHealthHelper(tokenCT, nodeCT)
 			local widgetHealthDot = aWidgets["healthdot"];
 
 			-- START Draw larger health dot if menu option set
-			if OptionsManager.getOption('CE_LHD') == "on" then
+			if OptionsManager.getOption('CE_LHD') ~= "option_off" then
 				if not widgetHealthDot then	
 					HealthGraphicUpdater.drawLargerHealthDot(tokenCT, nil, sOptTH == "dothover")
 				end

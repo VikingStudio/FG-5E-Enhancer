@@ -3,8 +3,8 @@
 <root version="3.0" release="1">
 
 	<properties>
-		<name>5E Enhancer v0.3.3</name>
-		<version>0.3.3</version>
+		<name>5E Enhancer v0.4.0</name>
+		<version>0.4.0</version>
 		
 		<author>Styrmir T.</author>
 		<description>5E Enhancer</description>
@@ -53,11 +53,11 @@
 		<!-- no_token_rotate.lua: Stops token rotating on mouse button scroll during token hover, if enabled in menu option -->		
 		<script name="NoTokenRotate" file="scripts/no_token_rotate.lua" />   
 
-		<!-- menu_item_register: Menu items for Combat Enhancer 5E -->
+		<!-- menu_item_register: Menu items 5E Enhancer -->
 		<string name="option_header_5eenhancer">5E Enhancer, Battle Map Settings</string>
 		<string name="option_automatic_ranged_modifiers">Automatic ranged modifiers</string>					
-		<string name="option_horizontal_health_bars">Horizontal health bars</string>			
-		<string name="option_larger_health_dots">Larger health dots</string>			
+		<string name="option_horizontal_health_bars">Horizontal health bars</string>					
+		<string name="option_larger_health_dots">Larger health dots</string>		
 		<string name="option_show_ct_active_actor_underlay">Show CT active actor underlay (DM only)</string>	
 		<string name="option_show_reach_underlay">Show reach underlay</string>		
 		<string name="option_show_faction_underlay">Show faction/space underlay</string>				
@@ -71,8 +71,8 @@
 		<!-- minmize_window_on_dblclick.lua: Minimize windows by double clicking the mouse on top of the window -->		
 		<script name="MinimizeWindowOnDblClick" file="scripts/minimize_window_on_dblclick.lua" />        
 
-		<!-- token_effects_text.lua: Effects manager for tokens -->
-		<script name="EffectsManager" file="scripts/token_effects_text.lua" />   		
+		<!-- token_effects_handler.lua: Effects manager for tokens -->
+		<!-- <script name="EffectsManager" file="scripts/token_effects_handler.lua" />-->
 
 		<!-- token_height_manager.lua: Height manager for tokens -->
 		<script name="HeightManager" file="scripts/token_height_manager.lua" />   	
@@ -110,5 +110,5 @@
 		<icon name="ce_icon" file="graphics/icons/combat_enhancer_icon.png" />				
 	</base>			
 
-	<announcement text="5E Enhancer v0.3.3" font="emotefont" icon="ce_icon" />			
+	<announcement text="5E Enhancer v0.4.0" font="emotefont" icon="ce_icon" />			
 </root>

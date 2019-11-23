@@ -51,8 +51,8 @@ This project is licensed under private License - see the [LICENSE.md](LICENSE.md
 
 # Menu Options '5E Enhancer, Battle Map Settings'
 - Automatic range modifiers: Enable range messages and automatic disadvantage on long ranges.
-- Horizontal health bars: Enable horizontal health bars over tokens.
-- Larger health dots: Enable larger health dots for tokens.
+- Horizontal health bars: Enable horizontal health bars over tokens. 5 options available: Off | Left aligned, default height | Left aligned, taller | Centered, default height | Centered, taller.
+- Larger health dots: Enable larger health dots for tokens. 3 options available: FGU Default size | Larger | Largest.
 - Show CT active actor underlay (DM only): Toggle to add underlay under CT active actor.
 - Show faction/space underlay: Shows or hides the underlay added for tokens faction (friend/foe/neutral). Re-add tokens to update.
 - Show reach underlay: Shows or hides the reach underlay added on hover for tokens. Re-add tokens to update.
@@ -134,3 +134,12 @@ v0.3.3 (October 30th, 2019)
 - Removed debug messages to chat for "Post Text in Chat". (scripts/content_share.lua)
 - Larger health dot resized and repositioned. (scripts/health_graphics.lua: drawLargerHealthDot)
 - Horizontal health bar resized and repositioned. (scripts/health_graphics.lua: updateHealthBarScale)
+
+v0.4.0 (October 23rd, 2019)
+- Added more menu option alternatives for 'Horizontal health bars'. 5 options available: Off | Left aligned, default height | Left aligned, taller | Centered, default height | Centered, taller.(scripts/health_graphics.lua: updateHealthBarScale)
+- Rewriting of horizontal health bar scaling code. (scripts/health_graphics.lua: updateHealthBarScale)
+- Added more menu option alternatives for 'Large health dots, settings'. 3 options available: FGU Default size | Larger | Largest. (scripts/health_graphics.lua: drawLargerHealthDot)
+- Rewriting of larger health dot scaling code. (scripts/health_graphics.lua: drawLargerHealthDot)
+- Maximum health dot size defined. (scripts/health_graphics.lua: drawLargerHealthDot)
+- Removed all references for ruleset icons, only extension ones left. (graphics/graphics_icons.xml)
+- Fixed missing folder from save graphics reference path. (graphics/graphics_icons.xml)

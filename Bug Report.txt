@@ -1,5 +1,7 @@
 Bug Report
 
+Are you using Fantasy Grounds Unity? (I only support FGU with this extension. If you're using FG classic I'll refer you to finalized version of my 5E Combat Enhancer instead: https://www.fantasygrounds.com/forums/showthread.php?47146-5e-Combat-Enhancer-(built-on-retired-GPL-Advanced-Kombat-extension)
+
 Is your FG software up to date?
 
 Do you have the latest version of both extensions installed?

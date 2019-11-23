@@ -42,6 +42,19 @@
 
 
 
+    --[[
+        PSEUDOCODE / STEPS
+
+        on item drop on token
+        get content
+        if effect, get text content and put in string
+        get CT entry for token
+        get list of effects in array
+        iterate through array, comparing text string of effect, to dropped text string of effect
+        if equal text string found in array, then remove it from the CT entry of effect for NPC/PC entry
+        exit loop
+    ]]--
+
 function onInit()		
     -- Debug.chat('effects_handler')
     -- ManagerEffect.addEffect = addEffect2;	
