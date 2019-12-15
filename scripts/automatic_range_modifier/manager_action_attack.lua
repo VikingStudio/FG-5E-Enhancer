@@ -235,8 +235,7 @@ function modAttack(rSource, rTarget, rRoll)
 --[[
 	START
 	THIS IS THE ADDED SECTION FOR ESTIMATING A RANGED ATTACK MODIFIER
-]]--
-
+]]--		
 		-- ranged attack modifiers (medium / out of range)	
 		bDis = false;
 

@@ -2,10 +2,6 @@
 	This script handles ranged attack modifiers in D&D 5e.
 ]]--
 
-function onInit()	
-end
-
-
 -- use: takes an actor and target, finding the ranges between the two, and if rAction is ranged weapon 
 -- then returns disadvantage if between medium and max range or within meele range of conscious opponent, considers feats. Also return descriptive string.
 -- use local bRanged, bInRange, bDis, sMessage = getRangeModifier5e(rActor, rTarget, sAttackType, sWeaponName); where sAttackType = 'R' for ranged weapon, 'M' for melee weapon
@@ -26,7 +22,8 @@ function getRangeModifier5e(rActor, rTarget, sAttackType, sWeaponName)
 		bRanged = true;
 		bRanged, medRange, maxRange = getWeaponRanges5e(rActor, sAttackType, sWeaponName);	
 
-		local attackRange = getRangeBetweenTokens5e(rActor, rTarget, 5, 0);		
+		--local attackRange = getRangeBetweenTokens5e(rActor, rTarget, 5, 0);		
+		local attackRange = RangeFinder.getRange(rActor, rTarget);
 
 		-- check ranges and set return modifiers and variables accordingly
 		-- compare ranges to global attackRange value	
@@ -80,7 +77,7 @@ function getRangeModifier5e(rActor, rTarget, sAttackType, sWeaponName)
 
 		-- within medium range
 		if (attackRange <= medRange) and (attackRange > 5) then
-			sMessage = 'Ranged attack below medium range. ' .. sWeaponName .. ' ' .. sRangeString .. ' from ' .. attackRange .. ' feet.';			
+			sMessage = 'Ranged attack within medium range. With ' .. sWeaponName .. ' ' .. sRangeString .. ' from ' .. attackRange .. ' feet.';			
 		end
 
 		--	outside melee range with ranged weapon, below medium range	
@@ -95,12 +92,12 @@ function getRangeModifier5e(rActor, rTarget, sAttackType, sWeaponName)
 		
 			-- Feat: Sharpshooter exception
 			if bSharpShooter then				
-				sMessage = 'Ranged attack between medium and maximum range by Sharpshooter. ' .. sWeaponName .. ' ' .. sRangeString .. ', from ' .. attackRange .. ' feet.';
+				sMessage = 'Ranged attack between medium and maximum range by Sharpshooter. With ' .. sWeaponName .. ' ' .. sRangeString .. ' from ' .. attackRange .. ' feet.';
 				
 				Debug.console('Ranged attack, by Sharpshooter (feat).')
 			else
 				bDis = true;
-				sMessage = 'Ranged attack between medium and maximum range. Disadvantage added. ' .. sWeaponName .. ' ' .. sRangeString .. ' from ' .. attackRange .. ' feet.';			
+				sMessage = 'Ranged attack between medium and maximum range. With ' .. sWeaponName .. ' ' .. sRangeString .. ' from ' .. attackRange .. ' feet. Disadvantage added.';			
 			end					
 			
 			Debug.console('ranged attack between medium and max range');			

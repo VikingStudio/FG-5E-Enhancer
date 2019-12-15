@@ -56,14 +56,54 @@
     ]]--
 
 function onInit()		
-    -- Debug.chat('effects_handler')
-    -- ManagerEffect.addEffect = addEffect2;	
+    addEffectOriginal = EffectManager.addEffect;
+    EffectManager.addEffect = addEffectDuplicateCheck;	
 end
 
-function addEffect2(sUser, sIdentity, nodeCT, rNewEffect, bShowMsg)
-    Debug.chat("addeffect2")
-    ManagerEffect.addEffect(sUser, sIdentity, nodeCT, rNewEffect, bShowMsg)
+function addEffectDuplicateCheck(sUser, sIdentity, nodeCT, rNewEffect, bShowMsg)
+    local effectsConcatTable = EffectManager.getEffectsString(nodeCT, true);
+
+    local sNewEffectName = getTrimmedEffectName(rNewEffect.sName);    
+    local effectsTable = Helper.split3(effectsConcatTable,'|');
+
+    -- look for duplicate effect on actor
+    for index, value in ipairs(effectsTable) do    
+        local sValueName = getTrimmedEffectName(value);
+        Debug.chat('compare', sValueName, string.len( sValueName ), sNewEffectName, string.len( sNewEffectName ));
+
+        if ( sValueName == sNewEffectName ) then
+            Debug.chat('match found')
+            removeEffect(nodeCT, sValueName);
+            return;
+        end
+    end
+
+    -- if no duplicate found while running hte loop above, add new effect
+    addEffectOriginal(sUser, sIdentity, nodeCT, rNewEffect, bShowMsg);
 end
+
+-- gets name of effect and trims off whitespaces at the start and end of string
+function getTrimmedEffectName (str)
+    str = Helper.getEffectName(str);
+    str = Helper.removeOuterWhiteSpaces(str);
+
+    return str;
+end
+
+function removeEffect(nodeCTEntry, sEffPatternToRemove)    
+	if not sEffPatternToRemove then
+		return;
+	end
+    for _,nodeEffect in pairs(DB.getChildren(nodeCTEntry, "effects")) do
+        
+        -- Debug.chat('db search', sEffPatternToRemove, nodeEffect, DB.getValue(nodeEffect, "label", ""), DB.getValue(nodeEffect, "label", ""):match(sEffPatternToRemove));
+		if DB.getValue(nodeEffect, "label", ""):match(sEffPatternToRemove) then
+			nodeEffect.delete();
+			return;
+		end
+	end
+end
+
 
 function tokenHover(target, state)
     --Token.onHover(target,state);

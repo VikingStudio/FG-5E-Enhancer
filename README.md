@@ -86,6 +86,7 @@ Primary
 - Highlight of selected token for GM, underlay, with opacity settings in menu.
 - Drag and drop conditions on targets in CT or tokens on map, if already on target then remove, otherwise add.
 - Effects as tooltip option on hover over token option.
+- On token click, highlight same actor in CT.
 Secondary
 - Altitude for tokens.
 - Save success or fail graphics on target on combat map. Button to clear.
@@ -143,3 +144,10 @@ v0.4.0 (November 23rd, 2019)
 - Maximum health dot size defined. (scripts/health_graphics.lua: drawLargerHealthDot)
 - Removed all references for ruleset icons, only extension ones left. (graphics/graphics_icons.xml)
 - Fixed missing folder from save graphics reference path. (graphics/graphics_icons.xml)
+
+v0.5.0 (December 15th, 2019)
+- Rewrote range finding code. It will now be the same as the range on the target arrow, as long as both tokens are inside a grid box. (scripts/automatic_range_modifier/range_finder.lua: getRange | scripts/ranged_attack_modifier.lua: getRangeModifier5e)
+- Some changes to output text for ranged attacks. (scripts/ranged_attack_modifier.lua: getRangeModifier5e)
+- Added highlighting of selected token in CT and added frame graphics to accomplish this. (ct_actor_higlighter.lua)
+- Token health widget scaling for different grid and actor sizes fixed. Uses CT actor size descriptor text (tiny/small/medium/large/huge/gargantuan) to determine horizontal health bar width. (scripts/health_graphics.lua)
+- When an effect is dropped on a target in the CT or on a CT linked token on the map. If that target already has that effect, then it is removed from the target instead. (scripts/token_effects_handler.lua)

@@ -3,8 +3,8 @@
 <root version="3.0" release="1">
 
 	<properties>
-		<name>5E Enhancer v0.4.0</name>
-		<version>0.4.0</version>
+		<name>5E Enhancer v0.5.0</name>
+		<version>0.5.0</version>
 		
 		<author>Styrmir T.</author>
 		<description>5E Enhancer</description>
@@ -18,8 +18,9 @@
 		<!-- Presented in alphabetic order of the .lua file in the /scripts folder -->		
 
 		<!-- automatic_range_modifier -->
-		<script name="RangedAttack" file="scripts/automatic_range_modifier/ranged_attack_modifier.lua" />	<!-- Handles ranged attack modifiers -->						
-		<script name="TokenHelper" file="scripts/automatic_range_modifier/token_helper.lua" />	<!-- Helper functions for map tokens, needed for ranged_attack_modifier.lua -->						
+		<script name="RangedAttack" file="scripts/automatic_range_modifier/ranged_attacks.lua" />	<!-- Handles ranged attack modifiers -->						
+		<script name="RangeFinder" file="scripts/automatic_range_modifier/range_finder.lua" />	<!-- Returns the distance between two tokens -->						
+		<script name="TokenHelper" file="scripts/automatic_range_modifier/token_helper.lua" />	<!-- Helper functions for map tokens, needed for ranged_attacks.lua -->						
 		<script name="ActionAttack" file="scripts/automatic_range_modifier/manager_action_attack.lua" />   <!-- Imported from 5e Ruleset, modified to hook into scripts handling range modifiers for ranged attacks -->				
 
 		<!-- content_share.lua: 
@@ -36,9 +37,9 @@
 		<includefile source="campaign/record_ability.xml" />    <!-- pc feat/feature/trait: <windowclass name="ref_ability">  -->
 		<includefile source="campaign/record_power.xml" />	  	<!-- spells: <windowclass name="power"> -->		
 		<includefile source="campaign/record_feat.xml" />	    <!-- Feat from list: <windowclass name="reference_feat"> -->		
-
-		<!-- effects_handler.lua: Remove effect if already on CT entry, label version of effects -->		
-		<script name="EffectsHandler" file="scripts/effects_handler.lua" />   
+		
+		<!-- ct_actor_highlighter.lua: When token clicked on map, actor owner of that token on the CT is highlighted -->		
+		<script name="CTActorHighlighter" file="scripts/ct_actor_highlighter.lua" />   
 
 		<!-- health_bar.lua: Horizontal Health Bar and larger health dot -->		
 		<script name="HealthGraphicUpdater" file="scripts/health_graphics.lua" />   
@@ -55,15 +56,16 @@
 
 		<!-- menu_item_register: Menu items 5E Enhancer -->
 		<string name="option_header_5eenhancer">5E Enhancer, Battle Map Settings</string>
-		<string name="option_automatic_ranged_modifiers">Automatic ranged modifiers</string>					
-		<string name="option_horizontal_health_bars">Horizontal health bars</string>					
+		<string name="option_automatic_ranged_modifiers">Automatic ranged modifiers</string>		
+		<string name="option_height_font_size">Height font size</string>			
+		<string name="option_horizontal_health_bars">Horizontal health bars</string>							
 		<string name="option_larger_health_dots">Larger health dots</string>		
 		<string name="option_show_ct_active_actor_underlay">Show CT active actor underlay (DM only)</string>	
 		<string name="option_show_reach_underlay">Show reach underlay</string>		
 		<string name="option_show_faction_underlay">Show faction/space underlay</string>				
 		<string name="option_stop_token_rotate">Stop token rotation</string>	
 		<string name="option_height_font_size">Token height font size</string>		
-		<string name="option_gm_underlay">Token underlay opacity (DM only)</string>		
+		<string name="option_gm_underlay">Token underlay opacity (DM only)</string>				
 
 		<!-- Adds menu items for the extension -->											
 		<script name="MenuItemRegister" file="scripts/menu_item_register.lua" />        		
@@ -71,8 +73,8 @@
 		<!-- minmize_window_on_dblclick.lua: Minimize windows by double clicking the mouse on top of the window -->		
 		<script name="MinimizeWindowOnDblClick" file="scripts/minimize_window_on_dblclick.lua" />        
 
-		<!-- token_effects_handler.lua: Effects manager for tokens -->
-		<!-- <script name="EffectsManager" file="scripts/token_effects_handler.lua" />-->
+		<!-- token_effects_handler.lua: Remove effect if already on CT entry, label version of effects -->			
+		<script name="EffectsManager" file="scripts/token_effects_handler.lua" />
 
 		<!-- token_height_manager.lua: Height manager for tokens -->
 		<script name="HeightManager" file="scripts/token_height_manager.lua" />   	
@@ -110,5 +112,5 @@
 		<icon name="ce_icon" file="graphics/icons/combat_enhancer_icon.png" />				
 	</base>			
 
-	<announcement text="5E Enhancer v0.4.0" font="emotefont" icon="ce_icon" />			
+	<announcement text="5E Enhancer v0.5.0" font="emotefont" icon="ce_icon" />			
 </root>

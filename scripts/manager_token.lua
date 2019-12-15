@@ -150,6 +150,7 @@ function onScaleChanged(tokenCT)
 		if bDisplayDefaultHealth then 
 			local nPercentWounded = fGetHealthInfo(nodeCT);
 			
+			-- Horizontal health bar or regular health bar update
 			if OptionsManager.getOption('CE_HHB') ~= "option_off" then 
 				HealthGraphicUpdater.updateHealthBarScale(tokenCT, nPercentWounded); 
 			else

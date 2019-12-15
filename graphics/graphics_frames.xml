@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<root>
+
+	<!-- Combat tracker -->
+
+	<framedef name="ctentrybox_active">
+		<bitmap file="graphics/frames/ctentrybox_active.png" />
+		<offset>37,16,14,17</offset>
+	</framedef>
+
+	<framedef name="ctentrybox_friend_active">
+		<bitmap file="graphics/frames/ctentrybox_friend_active.png" />
+		<offset>37,16,14,17</offset>
+	</framedef>
+
+	<framedef name="ctentrybox_neutral_active">
+		<bitmap file="graphics/frames/ctentrybox_neutral_active.png" />
+		<offset>37,16,14,17</offset>
+	</framedef>
+
+	<framedef name="ctentrybox_foe_active">
+		<bitmap file="graphics/frames/ctentrybox_foe_active.png" />
+		<offset>37,16,14,17</offset>
+	</framedef>
+
+</root>
