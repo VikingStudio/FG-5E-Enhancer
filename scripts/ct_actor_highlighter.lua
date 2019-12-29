@@ -8,10 +8,10 @@ end
 
 function ctHighLightActor(target, button, image)         
     local targetNode = ActorManager.getActorFromToken(target);
-    Debug.chat('targetNode', targetNode);
+    -- Debug.chat('targetNode', targetNode);
 
     local ctEntry = targetNode.sCreatureNode;
-    Debug.chat('ctEntry', ctEntry);
+    -- Debug.chat('ctEntry', ctEntry);
     -- ctEntry.setFrame("ctentrybox_active");
 
     -- from 5e ruleset ct_entry.lua

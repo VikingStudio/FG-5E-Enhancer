@@ -7,17 +7,17 @@ function onInit()
 end
 
 function tokenHeightChange(target, notches)
-    Debug.chat('tokenWheel', notches)
+    -- Debug.chat('tokenWheel', notches)
 
     if Input.isShiftPressed() then        
         local nHeight = 0;
         local heightWidget = target.findWidget("tokenheight");
-        Debug.chat('heightWidget', heightWidget);
+        -- Debug.chat('heightWidget', heightWidget);
         -- add up update widget
         if (heightWidget == nil) then
             if notches == '1' then nHeight = 5; end
             if notches == '-1' then nHeight = -5; end
-            Debug.chat('nHeight 1', nHeight);
+            -- Debug.chat('nHeight 1', nHeight);
 
             heightWidget = target.addTextWidget();
             heightWidget = updateHeightWidget(heightWidget, nHeight);
@@ -25,9 +25,9 @@ function tokenHeightChange(target, notches)
             -- regex pattern: ^\S\d*   (returns - modifier and numbers at start of string, ex.: '-120 ft.' or '-120 ft', returns '-120')
             local sPattern = '^\S\d*';
             local sHeight = heightWidget.getText();
-            Debug.chat('sHeight 2', sHeight);
+            -- Debug.chat('sHeight 2', sHeight);
             nHeight = tonumber(string.find(sHeight, sPattern));
-            Debug.chat('nHeight 2', nHeight);
+            -- Debug.chat('nHeight 2', nHeight);
 
             if notches == '1' then nHeight = nHeight + 5; end
             if notches == '-1' then nHeight = nHeight - 5; end         
@@ -35,14 +35,14 @@ function tokenHeightChange(target, notches)
             heightWidget = updateHeightWidget(heightWidget, nHeight);
         end
 
-        Debug.chat('Height:', nHeight);
+        -- Debug.chat('Height:', nHeight);
     end    
 
 end
 
 
 function updateHeightWidget(widget, nHeight)     
-    Debug.chat('widget update', widget, nHeight);
+    -- Debug.chat('widget update', widget, nHeight);
 
     widget.setName("tokenheight"); 
     widget.setPosition("right", 0, 0); 
@@ -70,5 +70,5 @@ function updateHeightWidget(widget, nHeight)
         widget.isVisible(true);
     end        
 
-    Debug.chat('widget text', widget.getText() );
+    -- Debug.chat('widget text', widget.getText() );
 end
