@@ -158,4 +158,4 @@ v0.5.0 (December 29th, 2019)
 - Token health widget scaling for different grid and actor sizes fixed. Uses CT actor size descriptor text (tiny/small/medium/large/huge/gargantuan) to determine horizontal health bar width. (scripts/health_graphics.lua)
 
 v0.6.0 (January, 4th, 2020)
-- When an effect is dropped on a target in the CT or on a CT linked token on the map. If that target already has that effect, then it is removed from the target instead. (scripts/token_effects_handler.lua)
+- When an effect is dropped on a target in the CT or on a CT linked token on the map. If that target already has that effect, then it is removed from the target instead. (scripts/token_effects_handler.lua, scripts/helper_functions.lua)
