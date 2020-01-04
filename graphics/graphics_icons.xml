@@ -26,6 +26,27 @@
 	<icon name="ranged_attack_2" file="graphics/icons/ranged_attack_2.png" />
 	<icon name="ranged_attack_3" file="graphics/icons/ranged_attack_3.png" />
 	
+	<!-- Tokens - Actor Standing -->	
+	<icon name="health_moderate" file="graphics/token/health/health_moderate.png" />
+	<icon name="health_heavy" file="graphics/token/health/health_heavy.png" />
+	<icon name="health_critical" file="graphics/token/health/health_critical.png" />
+
+	<icon name="health_dying" file="graphics/token/health/health_dying.png" />
+	<icon name="health_dying_stable" file="graphics/token/health/health_dying_stable.png" />
+	<icon name="health_dead" file="graphics/token/health/health_dead.png" />
+	<icon name="health_dead_cross" file="graphics/token/health/health_dead_cross.png" />
+
+	<!-- Tokens - Blood Pool -->	
+	<icon name="blood_pool_1" file="graphics/token/blood_pool_pool/blood_pool_1.png" />
+	<icon name="blood_pool_2" file="graphics/token/blood_pool_pool/blood_pool_2.png" />
+	<icon name="blood_pool_3" file="graphics/token/blood_pool_pool/blood_pool_3.png" />
+	<icon name="blood_pool_4" file="graphics/token/blood_pool_pool/blood_pool_4.png" />
+	<icon name="blood_pool_5" file="graphics/token/blood_pool_pool/blood_pool_5.png" />
+	<icon name="blood_pool_6" file="graphics/token/blood_pool_pool/blood_pool_6.png" />
+	<icon name="blood_pool_7" file="graphics/token/blood_pool_pool/blood_pool_7.png" />
+	<icon name="blood_pool_8" file="graphics/token/blood_pool_pool/blood_pool_8.png" />
+	<icon name="blood_pool_9" file="graphics/token/blood_pool_pool/blood_pool_9.png" />
+	<icon name="blood_pool_10" file="graphics/token/blood_pool_pool/blood_pool_10.png" />
 
 	<!-- Extension additions END -->
 </root>

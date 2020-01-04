@@ -136,12 +136,48 @@ end
 
 -- remove whitespace at start and end of string
 function removeOuterWhiteSpaces (str)
-	str = str:match("^%s*(.+)%s*$");
+	-- str = str:match("^%s*(.+)%s*$");
+	str = str:match( "^%s*(.-)%s*$" );
+
+	--[[
+	str = " \t \r \n String with spaces  \t  \r  \n  "
+	print( string.format( "Leading whitespace removed: %s", str:match( "^%s*(.+)" ) ) )
+	print( string.format( "Trailing whitespace removed: %s", str:match( "(.-)%s*$" ) ) )
+	print( string.format( "Leading and trailing whitespace removed: %s", str:match( "^%s*(.-)%s*$" ) ) )
+	]]--
+
 	return str;
 end
 
--- returns effect name from effect string, returns any character up to the first instance of ';' in the string
+
+
+-- returns effect name from effect string
 function getEffectName (str)
-	str = str:match("[^;]*");
+	local ruleset = getRuleset();
+	--Debug.chat('ruleset', ruleset);
+
+	-- if DnD 5E
+	if (ruleset == "CoreRPG") then
+		str = str:match("[^;]*");
+	end
+
+	-- if DnD 5E
+	if (ruleset == "5E") then
+		str = str:match("[^;]*");
+	end
+
+	-- if SWADE
+	if (ruleset == "SavageWorlds") then
+		str = str:match("[^[]*");
+	end
+
 	return str;
+end
+
+-- returns the ruleset name
+-- ex.: CoreRPG, 5E, SavageWorlds
+function getRuleset ()
+	local ruleset = User.getRulesetName();
+	
+	return ruleset;
 end

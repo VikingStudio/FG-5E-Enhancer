@@ -69,10 +69,8 @@ function addEffectDuplicateCheck(sUser, sIdentity, nodeCT, rNewEffect, bShowMsg)
     -- look for duplicate effect on actor
     for index, value in ipairs(effectsTable) do    
         local sValueName = getTrimmedEffectName(value);
-        Debug.chat('compare', sValueName, string.len( sValueName ), sNewEffectName, string.len( sNewEffectName ));
 
-        if ( sValueName == sNewEffectName ) then
-            Debug.chat('match found')
+        if ( sValueName == sNewEffectName ) then            
             removeEffect(nodeCT, sValueName);
             return;
         end
@@ -94,9 +92,7 @@ function removeEffect(nodeCTEntry, sEffPatternToRemove)
 	if not sEffPatternToRemove then
 		return;
 	end
-    for _,nodeEffect in pairs(DB.getChildren(nodeCTEntry, "effects")) do
-        
-        -- Debug.chat('db search', sEffPatternToRemove, nodeEffect, DB.getValue(nodeEffect, "label", ""), DB.getValue(nodeEffect, "label", ""):match(sEffPatternToRemove));
+    for _,nodeEffect in pairs(DB.getChildren(nodeCTEntry, "effects")) do                  
 		if DB.getValue(nodeEffect, "label", ""):match(sEffPatternToRemove) then
 			nodeEffect.delete();
 			return;
@@ -125,7 +121,7 @@ function tokenHover(target, state)
         textWidget.destroy()
     end
 
-    Debug.chat("ctEntry", ctEntry, "ctActorEntry", ctActorEntry, "sEffects", sEffects)
+    -- Debug.chat("ctEntry", ctEntry, "ctActorEntry", ctActorEntry, "sEffects", sEffects)
 end
 
 function setEffects()

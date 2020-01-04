@@ -83,8 +83,6 @@ This project is licensed under private License - see the [LICENSE.md](LICENSE.md
 
 ## Roadmap
 Primary
-- Highlight of selected token for GM, underlay, with opacity settings in menu.
-- Drag and drop conditions on targets in CT or tokens on map, if already on target then remove, otherwise add.
 - Effects as tooltip option on hover over token option.
 - On token click, highlight same actor in CT.
 Secondary
@@ -92,13 +90,18 @@ Secondary
 - Save success or fail graphics on target on combat map. Button to clear.
 
 ## In the Works
+- Blood on token when take damage, controlled by menu item.
+    Blood condition widget to the middle of actor token. 
+- Blood splatter on death, controlled by menu item.
+    Change blood condition widget token to skull icon or red x cross.
+    Add size and orientation randomized blood as token underneath actor token.
+- Remove all blood tokens with button press. 
+    If token placed underneath original token, then should be removed with remove all tokens menu.
+- Highlight of selected token for GM, underlay, with opacity settings in menu.
 - Added highlighting of selected token in CT and added frame graphics to accomplish this. (ct_actor_higlighter.lua)
-- When an effect is dropped on a target in the CT or on a CT linked token on the map. If that target already has that effect, then it is removed from the target instead. (scripts/token_effects_handler.lua)
 
 ## Things to patch
-- Horizontal health bar, resizing and positioning is not working on token resize
 - Create new larger graphics large health dot and health bar. Are a bit blurred in FGU.
-- Health color is not delivering to horizontal health bar or larger health dots.
 
 ## Releases
 v0.1.0 (September, 17th, 2019)  
@@ -153,3 +156,6 @@ v0.5.0 (December 29th, 2019)
 - Rewrote range finding code. It will now be the same as the range on the target arrow, as long as both tokens are inside a grid box. (scripts/automatic_range_modifier/range_finder.lua: getRange | scripts/ranged_attack_modifier.lua: getRangeModifier5e)
 - Some changes to output text for ranged attacks. (scripts/ranged_attack_modifier.lua: getRangeModifier5e)
 - Token health widget scaling for different grid and actor sizes fixed. Uses CT actor size descriptor text (tiny/small/medium/large/huge/gargantuan) to determine horizontal health bar width. (scripts/health_graphics.lua)
+
+v0.6.0 (January, 4th, 2020)
+- When an effect is dropped on a target in the CT or on a CT linked token on the map. If that target already has that effect, then it is removed from the target instead. (scripts/token_effects_handler.lua)
