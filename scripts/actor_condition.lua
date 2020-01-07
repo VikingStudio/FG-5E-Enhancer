@@ -4,8 +4,10 @@
 
 function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
     local aWidgets = TokenManager.getWidgetList(tokenCT, "");
-    Debug.chat('actor condition', aWidgets, tokenCT, nPercentWounded, sStatus)
+    --Debug.chat('actor condition', aWidgets, tokenCT, nPercentWounded, sStatus)
+
     local widgetActorCondition = aWidgets["actor_condition"];
+    --Debug.chat('widgetActorCondition before destroy', widgetActorCondition);
 
 	if widgetActorCondition then
 		widgetActorCondition.destroy();
@@ -23,21 +25,31 @@ function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
     <icon name="health_dead_cross" 
     ]]--
     if (sStatus == 'Moderate') then
-        widgetActorCondition = tokenCT.addBitmapWidget("health_moderate");
+        if ( OptionsManager.getOption('CE_BOT') == "option_val_on" ) then
+            widgetActorCondition = tokenCT.addBitmapWidget("health_moderate");
+        end
     elseif (sStatus == 'Heavy') then
-        widgetActorCondition = tokenCT.addBitmapWidget("health_heavy");
+        if ( OptionsManager.getOption('CE_BOT') == "option_val_on" ) then
+            widgetActorCondition = tokenCT.addBitmapWidget("health_heavy");
+        end
     elseif (sStatus == 'Critical') then
-        widgetActorCondition = tokenCT.addBitmapWidget("health_critical");
+        if ( OptionsManager.getOption('CE_BOT') == "option_val_on" ) then
+            widgetActorCondition = tokenCT.addBitmapWidget("health_critical");
+        end
     elseif (sStatus == 'Dying') then
         -- widgetActorCondition = tokenCT.addBitmapWidget("dying");
-         -- skull or cross on actor death
-        if OptionsManager.getOption('CE_SC') == "option_skull" then
+
+         -- add skull or cross on actor death if enabled
+        if ( OptionsManager.getOption('CE_SC') == "option_skull" ) then
             widgetActorCondition = tokenCT.addBitmapWidget("health_dead");
-        else
+        elseif ( OptionsManager.getOption('CE_SC') == "option_cross" ) then
             widgetActorCondition = tokenCT.addBitmapWidget("health_dead_cross");
         end
 
-        BloodPool.addBloodPool(tokenCT);
+        -- draw blood pool if active
+        if ( OptionsManager.getOption('CE_BP') == "option_val_on" ) then
+            BloodPool.addBloodPool(tokenCT);
+        end
     else
         if widgetActorCondition then
             widgetActorCondition.destroy();
@@ -55,6 +67,6 @@ function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
         widgetActorCondition.setPosition("center", 0, 0);	
         
         aWidgets = TokenManager.getWidgetList(tokenCT, "");
-        Debug.chat('actor_condition widget added', aWidgets)
+        -- Debug.chat('actor_condition widget added', aWidgets)
     end
 end

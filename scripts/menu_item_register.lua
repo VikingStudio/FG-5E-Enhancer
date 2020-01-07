@@ -11,7 +11,9 @@ function registerMenuItems()
 	OptionsManager.registerOption2("CE_HCW", false, "option_header_5eenhancer", "option_actor_health_widget_conditions", "option_entry_cycler",
 		{ labels = "option_val_on", values = "on", baselabel = "option_val_off", baseval = "off", default = "on" })			
 	OptionsManager.registerOption2("CE_ARM", false, "option_header_5eenhancer", "option_automatic_ranged_modifiers", "option_entry_cycler",
-		{ labels = "option_val_on", values = "on", baselabel = "option_val_off", baseval = "off", default = "on" })		
+		{ labels = "option_val_on", values = "on", baselabel = "option_val_off", baseval = "off", default = "on" })				
+	OptionsManager.registerOption2("CE_BOT", false, "option_header_5eenhancer", "option_blood_on_tokens", "option_entry_cycler",
+		{ labels = "option_val_on", values = "on", baselabel = "option_val_off", baseval = "off", default = "on" })				
 	OptionsManager.registerOption2("CE_BP", false, "option_header_5eenhancer", "option_blood_pool", "option_entry_cycler",
 		{ labels = "option_val_on", values = "on", baselabel = "option_val_off", baseval = "off", default = "on" })				
 	OptionsManager.registerOption2("CE_HHB", false, "option_header_5eenhancer", "option_horizontal_health_bars", "option_entry_cycler",

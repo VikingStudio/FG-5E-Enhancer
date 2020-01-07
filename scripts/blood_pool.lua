@@ -14,12 +14,12 @@ function addBloodPool(tokenCT)
 
     -- get image window container and add token underneath actor token
     ctrlImage, windowInstance, bWindowOpened = ImageManager.getImageControl(tokenCT, false);
-    Debug.chat('window container', ctrlImage, windowInstance, bWindowOpened)
+    -- Debug.chat('window container', ctrlImage, windowInstance, bWindowOpened)
 
     local tokenContainer = tokenCT.getContainerNode();
     local tokenX, tokenY = tokenCT.getPosition();
     -- local imageControl = tokenContainer;
-    local bloodToken = ctrlImage.addToken(bloodPoolName, tokenX + 200, tokenY + 200);
+    local bloodToken = windowInstance.addToken(bloodPoolName, tokenX + 200, tokenY + 200);
 
     -- randomize token size
     local sizeMultiplier = math.random() * 2 + 0.1;  -- math.random() returns number between 0 and 1

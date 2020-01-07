@@ -95,9 +95,9 @@ Secondary
 - Blood splatter on death, controlled by menu item.
     Change blood condition widget token to skull icon or red x cross.
     Add size and orientation randomized blood as token underneath actor token.
+    Set x or skull to the size of the token. Currently defaults to medium sized tokens only.
 - Remove all blood tokens with button press. 
     If token placed underneath original token, then should be removed with remove all tokens menu.
-- Highlight of selected token for GM, underlay, with opacity settings in menu.
 - Added highlighting of selected token in CT and added frame graphics to accomplish this. (ct_actor_higlighter.lua)
 
 ## Things to patch
