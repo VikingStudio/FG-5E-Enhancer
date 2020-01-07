@@ -117,7 +117,7 @@ function getLeftPositioning(tokenCT, nPercentWounded)
 		nPositioning = math.floor( nPositioning * 3.8 );
 	end
 
-	Debug.chat('positioning', nPositioning, nPercentWounded, math.floor( nPositioning + (nPositioning * nPercentWounded / 2 ) ), nPositioning * nPercentWounded / 2 );
+	-- Debug.chat('positioning', nPositioning, nPercentWounded, math.floor( nPositioning + (nPositioning * nPercentWounded / 2 ) ), nPositioning * nPercentWounded / 2 );
 	nPositioning = math.floor( nPositioning - (nPositioning * nPercentWounded / 2 ) );
 	
 	return nPositioning;

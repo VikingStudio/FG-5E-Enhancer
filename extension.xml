@@ -3,8 +3,8 @@
 <root version="3.0" release="1">
 
 	<properties>
-		<name>5E Enhancer v0.6.0</name>
-		<version>0.6.0</version>
+		<name>5E Enhancer v0.7.0</name>
+		<version>0.7.0</version>
 		
 		<author>Styrmir T.</author>
 		<description>5E Enhancer</description>
@@ -22,6 +22,12 @@
 		<script name="RangeFinder" file="scripts/automatic_range_modifier/range_finder.lua" />	<!-- Returns the distance between two tokens -->						
 		<script name="TokenHelper" file="scripts/automatic_range_modifier/token_helper.lua" />	<!-- Helper functions for map tokens, needed for ranged_attacks.lua -->						
 		<script name="ActionAttack" file="scripts/automatic_range_modifier/manager_action_attack.lua" />   <!-- Imported from 5e Ruleset, modified to hook into scripts handling range modifiers for ranged attacks -->				
+
+		<!-- actor_condition.lua: widgets to appear on top of tokens to reflect their condition -->
+		<script name="ActorCondition" file="scripts/actor_condition.lua" />	<!-- Handles detecting and adding conditions as widgets to tokens -->						
+
+		<!-- blood_pool.lua: on actor death, controls blood splatter placed under the token as another token -->
+		<script name="BloodPool" file="scripts/blood_pool.lua" />	<!-- Handles adding blood pools/splatter under tokens on actor death -->						
 
 		<!-- content_share.lua: 
 			Content Share into chat, character abilities, spells etc. 
@@ -56,16 +62,21 @@
 
 		<!-- menu_item_register: Menu items 5E Enhancer -->
 		<string name="option_header_5eenhancer">5E Enhancer, Battle Map Settings</string>
+		<string name="option_actor_health_widget_conditions">Actor health widget conditions</string>	
 		<string name="option_automatic_ranged_modifiers">Automatic ranged modifiers</string>		
+		<string name="option_blood_pool">Blood pools on death</string>		
 		<string name="option_height_font_size">Height font size</string>			
 		<string name="option_horizontal_health_bars">Horizontal health bars</string>							
 		<string name="option_larger_health_dots">Larger health dots</string>		
-		<string name="option_show_ct_active_actor_underlay">Show CT active actor underlay (DM only)</string>	
 		<string name="option_show_reach_underlay">Show reach underlay</string>		
-		<string name="option_show_faction_underlay">Show faction/space underlay</string>				
+		<string name="option_show_faction_underlay">Show faction/space underlay</string>	
+		<string name="option_skull_or_cross">Skull or cross on actor death</string>				
 		<string name="option_stop_token_rotate">Stop token rotation</string>	
 		<string name="option_height_font_size">Token height font size</string>		
-		<string name="option_gm_underlay">Token underlay opacity (DM only)</string>				
+		<string name="option_gm_underlay_show_ct_active_actor_underlay">Token underlay for CT active actor (DM only)</string>	
+		<string name="option_gm_underlay_opacity">Token underlay opacity (DM only)</string>				
+		<string name="option_gm_underlay_size">Token underlay size (DM only)</string>	
+
 
 		<!-- Adds menu items for the extension -->											
 		<script name="MenuItemRegister" file="scripts/menu_item_register.lua" />        		
@@ -84,9 +95,6 @@
 
 		<!-- token_remover.lua: Mouse and button click to remove tokens from map, or map and CT. -->
 		<script name="TokenRemover" file="scripts/token_remover.lua" />   
-
-		<!-- token_underlay.lua: Token underlay mannager -->		
-		<script name="UnderlayManager" file="scripts/token_underlay.lua" />   
 
 		<!-- window-resize.lua: Resizing windows on the fly according to menu settings. -->
 		<script name="WindowResize" file="scripts/window_resize.lua" />
@@ -112,5 +120,5 @@
 		<icon name="ce_icon" file="graphics/icons/combat_enhancer_icon.png" />				
 	</base>			
 
-	<announcement text="5E Enhancer v0.6.0" font="emotefont" icon="ce_icon" />			
+	<announcement text="5E Enhancer v0.7.0" font="emotefont" icon="ce_icon" />			
 </root>

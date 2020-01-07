@@ -159,3 +159,7 @@ v0.5.0 (December 29th, 2019)
 
 v0.6.0 (January, 4th, 2020)
 - When an effect is dropped on a target in the CT or on a CT linked token on the map. If that target already has that effect, then it is removed from the target instead. (scripts/token_effects_handler.lua, scripts/helper_functions.lua)
+
+v0.7.0 ( - , - , 2020)
+- Changeable opacity underlay for active actor added with menu setting. DM only.
+- Size of active actor underlay either full or half reach. Menu option. DM only.

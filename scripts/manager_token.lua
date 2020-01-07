@@ -796,9 +796,16 @@ function updateHealthHelper(tokenCT, nodeCT)
 		end
 	else
 		local nPercentWounded,sStatus,sColor = fGetHealthInfo(nodeCT);
+
+		-- START Manage actor token condition widget if enabled
+		if OptionsManager.getOption('CE_HCW') ~= "option_off" then
+			ActorCondition.updateHealthCondition(tokenCT, nPercentWounded, sStatus);
+		end
+		-- END Manage actor token condition widget if enabled
+
 		if sOptTH == "bar" or sOptTH == "barhover" then
 			local w, h = tokenCT.getSize();
-		
+
 			local bAddBar = false;
 			if Interface.getVersion() >= 4 then
 				if h > 0 then

@@ -37,16 +37,16 @@
 	<icon name="health_dead_cross" file="graphics/token/health/health_dead_cross.png" />
 
 	<!-- Tokens - Blood Pool -->	
-	<icon name="blood_pool_1" file="graphics/token/blood_pool_pool/blood_pool_1.png" />
-	<icon name="blood_pool_2" file="graphics/token/blood_pool_pool/blood_pool_2.png" />
-	<icon name="blood_pool_3" file="graphics/token/blood_pool_pool/blood_pool_3.png" />
-	<icon name="blood_pool_4" file="graphics/token/blood_pool_pool/blood_pool_4.png" />
-	<icon name="blood_pool_5" file="graphics/token/blood_pool_pool/blood_pool_5.png" />
-	<icon name="blood_pool_6" file="graphics/token/blood_pool_pool/blood_pool_6.png" />
-	<icon name="blood_pool_7" file="graphics/token/blood_pool_pool/blood_pool_7.png" />
-	<icon name="blood_pool_8" file="graphics/token/blood_pool_pool/blood_pool_8.png" />
-	<icon name="blood_pool_9" file="graphics/token/blood_pool_pool/blood_pool_9.png" />
-	<icon name="blood_pool_10" file="graphics/token/blood_pool_pool/blood_pool_10.png" />
+	<icon name="blood_pool_1" file="graphics/token/blood_pool/blood_pool_1.png" />
+	<icon name="blood_pool_2" file="graphics/token/blood_pool/blood_pool_2.png" />
+	<icon name="blood_pool_3" file="graphics/token/blood_pool/blood_pool_3.png" />
+	<icon name="blood_pool_4" file="graphics/token/blood_pool/blood_pool_4.png" />
+	<icon name="blood_pool_5" file="graphics/token/blood_pool/blood_pool_5.png" />
+	<icon name="blood_pool_6" file="graphics/token/blood_pool/blood_pool_6.png" />
+	<icon name="blood_pool_7" file="graphics/token/blood_pool/blood_pool_7.png" />
+	<icon name="blood_pool_8" file="graphics/token/blood_pool/blood_pool_8.png" />
+	<icon name="blood_pool_9" file="graphics/token/blood_pool/blood_pool_9.png" />
+	<icon name="blood_pool_10" file="graphics/token/blood_pool/blood_pool_10.png" />
 
 	<!-- Extension additions END -->
 </root>

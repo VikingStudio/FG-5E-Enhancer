@@ -3,7 +3,7 @@
 ]]--
 
 function onInit()		    
-    Token.onClickDown = ctHighLightActor;
+    -- Token.onClickDown = ctHighLightActor;
 end
 
 function ctHighLightActor(target, button, image)         
