@@ -45,7 +45,7 @@ function addBloodPool(tokenCT)
     bloodPool.setName("blood_pool");	
     bloodPool.setPosition("center");
     bloodPool.sendToBack();
-    local randomScaling = math.random() * 2 + 1;  -- math.random() returns number between 0 and 1
+    local randomScaling = math.random() + 1;  -- math.random() returns number between 0 and 1
     Helper.resizeForTokenSize(tokenCT, bloodPool, randomScaling);
     local rotation = math.random(360); -- math.random(360) returns a number between 1 and 360   
     --image.rotate(rotation);
