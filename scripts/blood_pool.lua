@@ -26,20 +26,21 @@ function addBloodPool(tokenCT)
     end
 
     local bloodToken = ctrlImage.addToken(bloodPoolName, tokenX + 200, tokenY + 200);
-    Debug.chat('bloodToken', bloodToken, bloodPoolName, ctrlImage)
+    Debug.chat('bloodToken', bloodToken, bloodPoolName, ctrlImage, tokenX, tokenY)
 
-    -- randomize token size
-    local sizeMultiplier = math.random() * 2 + 0.1;  -- math.random() returns number between 0 and 1
-    local baseTokenSize = tokenWidth * tokenImageScale;
-    -- bloodToken.setSize(baseTokenSize * sizeMultiplier, baseTokenSize * sizeMultiplier);
+    if bloodToken then
+        -- randomize token size
+        local sizeMultiplier = math.random() * 2 + 0.1;  -- math.random() returns number between 0 and 1
+        local baseTokenSize = tokenWidth * tokenImageScale;
+        -- bloodToken.setSize(baseTokenSize * sizeMultiplier, baseTokenSize * sizeMultiplier);
 
-    local size = resizeForOriginalTokenSize(tokenCT);
-    bloodToken.setSize(tokenWidth * tokenImageScale, tokenHeight * tokenImageScale);
+        local size = resizeForOriginalTokenSize(tokenCT);
+        bloodToken.setSize(tokenWidth * tokenImageScale, tokenHeight * tokenImageScale);
 
-    -- randomize token orientation
-    local rotation = math.random(360); -- math.random(360) returns a number between 1 and 360    
-    bloodToken.setOrientation(rotation);
-    
+        -- randomize token orientation
+        local rotation = math.random(360); -- math.random(360) returns a number between 1 and 360    
+        bloodToken.setOrientation(rotation);
+    end
 
     -- as widget
     --[[

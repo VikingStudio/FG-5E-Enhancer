@@ -80,6 +80,7 @@ end
 -- returns a % scaled version width of the horizontal health bar, considering remaining health
 function getHealthBarWidthScale(tokenCT, nPercentWounded)	
 	local sSize = Helper.getActorSize(tokenCT);
+	if (nPercentWounded > 1) then nPercentWounded = 1; end  -- set to 1 if above 100% wounds, so health bar doesn't overrun into the negative
 	local nScaledWidth = 100 - (nPercentWounded * 100);  -- scale is in % of token width
 	
 	if (sSize == 'Large') then 

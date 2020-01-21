@@ -101,7 +101,6 @@ Secondary
 
 ## Things to patch
 - Create new larger graphics large health dot and health bar. Are a bit blurred in FGU.
-- Horizontal health bar will grow in a negative direction as a grey bar. Minimize horizontal health bar at 0% health, not below.
 
 ## Releases
 v0.1.0 (September, 17th, 2019)  
@@ -165,3 +164,5 @@ v0.7.0 ( - , - , 2020)
 - Size of active actor underlay either full or half reach. Menu option. DM only.
 - Blood splatters on token when taking damage. Enabled by menu item. 
 - Add X or skull or no graphics widget on token death. Controllable by menu item.
+- Minimized horizontal health bar to 0% health, would go into the negative direction as a grey bar.
+- Fixed a number of bugs that popp up during use.
