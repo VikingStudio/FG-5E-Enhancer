@@ -162,5 +162,5 @@ v0.6.0 (January, 4th, 2020)
 v0.7.0 ( - , - , 2020)
 - Changeable opacity underlay for active actor added with menu setting. DM only.
 - Size of active actor underlay either full or half reach. Menu option. DM only.
-- Blood on token when take damage, controlled by menu item. Blood condition widget to the middle of actor token. 
-- Add X or skull graphics widget on token death.
+- Blood splatters on token when taking damage. Enabled by menu item. 
+- Add X or skull or no graphics widget on token death. Controllable by menu item.
