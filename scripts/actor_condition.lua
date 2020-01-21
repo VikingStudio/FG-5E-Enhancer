@@ -3,10 +3,6 @@
 ]]--
 
 function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
-    -- Debug.chat('actor condition', aWidgets, tokenCT, nPercentWounded, sStatus)
-   --  Debug.chat('menu options, blood on token ', OptionsManager.getOption('CE_BOT'), ' bood pool on death ', OptionsManager.getOption('CE_BP') )
-    
-    
     --[[
 	<icon name="health_moderate" file="graphics/token/health/health_moderate.png" />
 	<icon name="health_heavy" file="graphics/token/health/health_heavy.png" />
@@ -18,13 +14,11 @@ function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
     <icon name="health_dead_cross" 
     ]]--
 
-    Debug.chat('status', sStatus)
     -- remove old widget graphics if any before drawing new one, also clears 
     local aWidgets = TokenManager.getWidgetList(tokenCT, "");
     -- local widgetActorCondition = aWidgets["actor_condition"];
     local widgetActorCondition = tokenCT.findWidget("actor_condition");
     
-    Debug.chat('before destroy', aWidgets, widgetActorCondition);
     if widgetActorCondition then
         widgetActorCondition.destroy();
     end
@@ -59,7 +53,6 @@ function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
         widgetActorCondition = nil
     end
 
-    Debug.chat('cond before add', widgetActorCondition)
     if (widgetActorCondition ~= nil) then
         widgetActorCondition.setName("actor_condition");	
         resizeForTokenSize(tokenCT, widgetActorCondition);
@@ -67,11 +60,6 @@ function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
         widgetActorCondition.bringToFront();
         widgetActorCondition.setVisible(true);
     end
-    Debug.chat('cond after add', widgetActorCondition, aWidgets)
-
-    aWidgets = TokenManager.getWidgetList(tokenCT, "");
-    widgetActorCondition = aWidgets["actor_condition"];
-    Debug.chat('w', aWidgets, widgetActorCondition)
 end
 
 -- resizes condition art to span token size

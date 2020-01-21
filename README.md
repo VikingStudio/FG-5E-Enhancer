@@ -71,6 +71,11 @@ This project is licensed under private License - see the [LICENSE.md](LICENSE.md
 - Automatic range finding from ranged attack. Toggable in menu. Disadvantage for medium to max range added automatically, sharpshooter feat negates this. Message output to chat.
 - 'Reach underlay' and 'Faction/space underlay' made as toggle switches in the menu items. Re-add tokens to update.
 - Active actor on CT token underlay made as toggle switches in the menu items. Clears all other underlays than the current actor.
+- When an effect is dropped on a target in the CT or on a CT linked token on the map. If that target already has that effect, then it is removed from the target instead.    
+- Changeable opacity underlay for active actor added with menu setting. DM only.
+- Size of active actor underlay either full or half reach. Menu option. DM only.
+- Blood splatters on token when taking damage. Enabled by menu item. 
+- Add X or skull or no graphics onto token on death. Controllable by menu item.
 
 ## Features, Interface
 - Content Share, allows you and your players to right click on spells, character feats, features and traits and post the descriptive text directly to the chat text by selecting the new 'Post Text in Chat' menu option at the bottom.
@@ -90,10 +95,6 @@ Secondary
 - Save success or fail graphics on target on combat map. Button to clear.
 
 ## In the Works
-- Blood splatter on death, controlled by menu item.
-    Change blood condition widget token to skull icon or red x cross.
-    Add size and orientation randomized blood as token underneath actor token.
-    Set x or skull to the size of the token. Currently defaults to medium sized tokens only.
 - Remove all blood tokens with button press. 
     If token placed underneath original token, then should be removed with remove all tokens menu.
 - Added highlighting of selected token in CT and added frame graphics to accomplish this. (ct_actor_higlighter.lua)
