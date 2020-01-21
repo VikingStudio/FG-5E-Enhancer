@@ -90,8 +90,6 @@ Secondary
 - Save success or fail graphics on target on combat map. Button to clear.
 
 ## In the Works
-- Blood on token when take damage, controlled by menu item.
-    Blood condition widget to the middle of actor token. 
 - Blood splatter on death, controlled by menu item.
     Change blood condition widget token to skull icon or red x cross.
     Add size and orientation randomized blood as token underneath actor token.
@@ -102,6 +100,7 @@ Secondary
 
 ## Things to patch
 - Create new larger graphics large health dot and health bar. Are a bit blurred in FGU.
+- Horizontal health bar will grow in a negative direction as a grey bar. Minimize horizontal health bar at 0% health, not below.
 
 ## Releases
 v0.1.0 (September, 17th, 2019)  
@@ -163,3 +162,5 @@ v0.6.0 (January, 4th, 2020)
 v0.7.0 ( - , - , 2020)
 - Changeable opacity underlay for active actor added with menu setting. DM only.
 - Size of active actor underlay either full or half reach. Menu option. DM only.
+- Blood on token when take damage, controlled by menu item. Blood condition widget to the middle of actor token. 
+- Add X or skull graphics widget on token death.

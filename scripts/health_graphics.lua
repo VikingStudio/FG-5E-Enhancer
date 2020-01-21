@@ -79,7 +79,7 @@ end
 
 -- returns a % scaled version width of the horizontal health bar, considering remaining health
 function getHealthBarWidthScale(tokenCT, nPercentWounded)	
-	local sSize = getActorSize(tokenCT);
+	local sSize = Helper.getActorSize(tokenCT);
 	local nScaledWidth = 100 - (nPercentWounded * 100);  -- scale is in % of token width
 	
 	if (sSize == 'Large') then 
@@ -95,7 +95,7 @@ end
 
 -- returns a % scaled version of a left positioned horizontal health bar, for Token (GM) -> Auto-scale to grid = 80% of grid
 function getLeftPositioning(tokenCT, nPercentWounded)	
-	local sSize = getActorSize(tokenCT);
+	local sSize = Helper.getActorSize(tokenCT);
 	local nPositioning = 0;
 
 
@@ -122,18 +122,6 @@ function getLeftPositioning(tokenCT, nPercentWounded)
 	
 	return nPositioning;
 end
-
--- returns the text describing the size of the token, possible sizes: Tiny, Small, Medium, Large, Huge, Gargantuan
-function getActorSize(tokenCT)
-	local ctEntry = CombatManager.getCTFromToken(tokenCT);	
-	local actor = ActorManager.getActorFromCT(ctEntry);	
-
-	local dbPath = DB.getPath(actor.sCreatureNode, 'size');
-	local sSize = DB.getText(dbPath);
-
-	return sSize;
-end
-
 -- END Horizontal Health Bar Section
 
 

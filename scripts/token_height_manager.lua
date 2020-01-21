@@ -3,11 +3,11 @@
 ]]--
 
 function onInit()    
-    Token.onWheel = tokenHeightChange;
+    -- Token.onWheel = tokenHeightChange;
 end
 
 function tokenHeightChange(token, notches)
-    textWidgetTest(token);
+    -- textWidgetTest(token);
 
     Debug.chat('tokenWheel', notches)
 
@@ -17,8 +17,8 @@ function tokenHeightChange(token, notches)
         Debug.chat('heightWidget', heightWidget);
         -- add up update widget
         if (heightWidget == nil) then
-            if notches == 1 then nHeight = 5; end
-            if notches == -1 then nHeight = -5; end
+            if notches >= 1 then nHeight = 5 * notches; end
+            if notches <= -1 then nHeight = -5 * notches; end
             Debug.chat('nHeight 1', nHeight);
 
             heightWidget = token.addTextWidget( getFontName(), '5 ft.' );
@@ -33,8 +33,8 @@ function tokenHeightChange(token, notches)
             nHeight = tonumber(sHeight);
             Debug.chat('nHeight 2', sHeight, nHeight);
 
-            if notches == 1 then nHeight = nHeight + 5; end
-            if notches == -1 then nHeight = nHeight - 5; end         
+            if notches >= 1 then nHeight = nHeight + (5 * notches); end
+            if notches <= -1 then nHeight = nHeight - (5 * notches); end     
 
             heightWidget = updateHeightWidget(heightWidget, nHeight);
         end
@@ -66,29 +66,30 @@ function updateHeightWidget(widget, nHeight)
     widget.setName("tokenheight"); 
     widget.setFrame('tempmodmini', 10, 10, 10, 4);
     widget.setPosition("bottom right", 0, 0);     
-    widget.setColor('00000000');
+    widget.setColor('#000000');
     widget.setText(nHeight .. ' ft.');
 
     -- visibility    
     if nHeight == 0 then
-        widget.isVisible(false);
+        widget.setVisible(false);
         widget.destroy();
     else
         widget.bringToFront();       
-        widget.isVisible(true);
+        widget.setVisible(true);
     end        
 
     Debug.chat('widget text', widget );
 end
 
 function textWidgetTest(token)
-    wdg = token.addTextWidget("height_medium", 'test text widget'); 
-    wdg.setVisible();
+    wdg = token.addTextWidget("height_large", 'HEIGHT'); 
+    wdg.setVisible(true);
     wdg.setName("test_widget"); 
     wdg.setPosition("right",0,0); 
-    wdg.setFrame('tempmodmini',10,10,10,4); 
-    wdg.setColor('00000000');
+    wdg.setFrame('tempmodmini',10,10,10,4);
+    wdg.setColor('#FFA242');
+    wdg.setMaxWidth(200);
     wdg.bringToFront(); 
 
-    Debug.chat('Test widget created')
+    Debug.chat('Test widget created', wdg)
 end

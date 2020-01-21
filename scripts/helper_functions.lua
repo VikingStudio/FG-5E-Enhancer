@@ -181,3 +181,16 @@ function getRuleset ()
 	
 	return ruleset;
 end
+
+-- returns the text describing the size of the token, possible sizes: Tiny, Small, Medium, Large, Huge, Gargantuan
+function getActorSize(tokenCT)
+	local ctEntry = CombatManager.getCTFromToken(tokenCT);	
+	local actor = ActorManager.getActorFromCT(ctEntry);	
+
+	Debug.chat('getActorSize', tokenCT, ctEntry, actor)
+
+	local dbPath = DB.getPath(actor.sCreatureNode, 'size');
+	local sSize = DB.getText(dbPath);
+
+	return sSize;
+end

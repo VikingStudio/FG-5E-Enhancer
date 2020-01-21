@@ -3,15 +3,8 @@
 ]]--
 
 function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
-    local aWidgets = TokenManager.getWidgetList(tokenCT, "");
-    --Debug.chat('actor condition', aWidgets, tokenCT, nPercentWounded, sStatus)
-
-    local widgetActorCondition = aWidgets["actor_condition"];
-    --Debug.chat('widgetActorCondition before destroy', widgetActorCondition);
-
-	if widgetActorCondition then
-		widgetActorCondition.destroy();
-    end
+    -- Debug.chat('actor condition', aWidgets, tokenCT, nPercentWounded, sStatus)
+   --  Debug.chat('menu options, blood on token ', OptionsManager.getOption('CE_BOT'), ' bood pool on death ', OptionsManager.getOption('CE_BP') )
     
     
     --[[
@@ -24,16 +17,28 @@ function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
 	<icon name="health_dead" file="graphics/token/health/health_dead.png" />
     <icon name="health_dead_cross" 
     ]]--
+
+    Debug.chat('status', sStatus)
+    -- remove old widget graphics if any before drawing new one, also clears 
+    local aWidgets = TokenManager.getWidgetList(tokenCT, "");
+    -- local widgetActorCondition = aWidgets["actor_condition"];
+    local widgetActorCondition = tokenCT.findWidget("actor_condition");
+    
+    Debug.chat('before destroy', aWidgets, widgetActorCondition);
+    if widgetActorCondition then
+        widgetActorCondition.destroy();
+    end
+
     if (sStatus == 'Moderate') then
-        if ( OptionsManager.getOption('CE_BOT') == "option_val_on" ) then
+        if ( OptionsManager.getOption('CE_BOT') == "on" ) then
             widgetActorCondition = tokenCT.addBitmapWidget("health_moderate");
         end
     elseif (sStatus == 'Heavy') then
-        if ( OptionsManager.getOption('CE_BOT') == "option_val_on" ) then
+        if ( OptionsManager.getOption('CE_BOT') == "on" ) then
             widgetActorCondition = tokenCT.addBitmapWidget("health_heavy");
         end
     elseif (sStatus == 'Critical') then
-        if ( OptionsManager.getOption('CE_BOT') == "option_val_on" ) then
+        if ( OptionsManager.getOption('CE_BOT') == "on" ) then
             widgetActorCondition = tokenCT.addBitmapWidget("health_critical");
         end
     elseif (sStatus == 'Dying') then
@@ -47,26 +52,42 @@ function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
         end
 
         -- draw blood pool if active
-        if ( OptionsManager.getOption('CE_BP') == "option_val_on" ) then
+        if ( OptionsManager.getOption('CE_BP') == "on" ) then
             BloodPool.addBloodPool(tokenCT);
         end
     else
-        if widgetActorCondition then
-            widgetActorCondition.destroy();
-        end
+        widgetActorCondition = nil
     end
 
-    if widgetActorCondition then
-        widgetActorCondition.bringToFront();
+    Debug.chat('cond before add', widgetActorCondition)
+    if (widgetActorCondition ~= nil) then
         widgetActorCondition.setName("actor_condition");	
-        --widgetActorCondition.setColor(sColor);
-        --widgetActorCondition.setTooltipText(sStatus);		
-        widgetActorCondition.setVisible(true);
-
-        widgetActorCondition.setSize(80, 80);
+        resizeForTokenSize(tokenCT, widgetActorCondition);
         widgetActorCondition.setPosition("center", 0, 0);	
-        
-        aWidgets = TokenManager.getWidgetList(tokenCT, "");
-        -- Debug.chat('actor_condition widget added', aWidgets)
+        widgetActorCondition.bringToFront();
+        widgetActorCondition.setVisible(true);
+    end
+    Debug.chat('cond after add', widgetActorCondition, aWidgets)
+
+    aWidgets = TokenManager.getWidgetList(tokenCT, "");
+    widgetActorCondition = aWidgets["actor_condition"];
+    Debug.chat('w', aWidgets, widgetActorCondition)
+end
+
+-- resizes condition art to span token size
+function resizeForTokenSize(tokenCT, widget)
+    local baseSize = 80;
+    local sSize = Helper.getActorSize(tokenCT);
+
+    
+    -- shift location based on size of actor
+    if (sSize == 'Large') then 
+        widget.setSize(baseSize * 2, baseSize * 2);
+    elseif (sSize == 'Huge') then 
+        widget.setSize(baseSize * 3, baseSize * 3);
+    elseif (sSize == 'Gargantuan') then 
+        widget.setSize(baseSize* 4, baseSize * 4);
+    else
+        widget.setSize(baseSize, baseSize);
     end
 end

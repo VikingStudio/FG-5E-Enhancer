@@ -3,6 +3,8 @@
 ]]--
 
 function addBloodPool(tokenCT)
+    Debug.chat('blood pool called', tokenCT)
+
     local randomImage = math.random(10); -- return 1-10    
     local bloodPoolName = 'blood_pool_' .. randomImage;
 
@@ -19,12 +21,19 @@ function addBloodPool(tokenCT)
     local tokenContainer = tokenCT.getContainerNode();
     local tokenX, tokenY = tokenCT.getPosition();
     -- local imageControl = tokenContainer;
-    local bloodToken = windowInstance.addToken(bloodPoolName, tokenX + 200, tokenY + 200);
+    if (ctrlImage == nil) then
+        return;
+    end
+
+    local bloodToken = ctrlImage.addToken(bloodPoolName, tokenX + 200, tokenY + 200);
+    Debug.chat('bloodToken', bloodToken, bloodPoolName)
 
     -- randomize token size
     local sizeMultiplier = math.random() * 2 + 0.1;  -- math.random() returns number between 0 and 1
     local baseTokenSize = tokenWidth * tokenImageScale;
     -- bloodToken.setSize(baseTokenSize * sizeMultiplier, baseTokenSize * sizeMultiplier);
+
+    local size = resizeForOriginalTokenSize(tokenCT);
     bloodToken.setSize(tokenWidth * tokenImageScale, tokenHeight * tokenImageScale);
 
     -- randomize token orientation
@@ -41,4 +50,22 @@ function addBloodPool(tokenCT)
     bloodPool.setPosition("center", 0, 0);
     bloodPool.setSize(baseTokenSize * sizeMultiplier, baseTokenSize * sizeMultiplier);
     ]]--    
+end
+
+-- resizes condition art to span token size
+function resizeForOriginalTokenSize(tokenCT)
+    local baseSize = 80;
+    local sSize = Helper.getActorSize(tokenCT);
+
+    
+    -- shift location based on size of actor
+    if (sSize == 'Large') then 
+        return baseSize * 2;
+    elseif (sSize == 'Huge') then 
+        return baseSize * 3;
+    elseif (sSize == 'Gargantuan') then 
+        return baseSize * 4;
+    else
+        return baseSize;
+    end
 end
