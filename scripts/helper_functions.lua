@@ -192,3 +192,25 @@ function getActorSize(tokenCT)
 
 	return sSize;
 end
+
+
+-- resizes condition art to span token size
+-- scaling is an optional parameter, if nil set to 1
+function resizeForTokenSize(tokenCT, widget, scaling)
+	if (scaling == nil) then scaling = 1; end
+    local baseSize = 80;
+    local sSize = getActorSize(tokenCT);
+    
+	-- change size depending on token size description
+	if (sSize == 'Tiny') or (sSize == 'Small') then
+		widget.setSize(baseSize * 0.5 * scaling, baseSize * 0.5 * scaling);
+    elseif (sSize == 'Large') then 
+        widget.setSize(baseSize * 2 * scaling, baseSize * 2 * scaling);
+    elseif (sSize == 'Huge') then 
+        widget.setSize(baseSize * 3 * scaling, baseSize * 3 * scaling);
+    elseif (sSize == 'Gargantuan') then 
+        widget.setSize(baseSize * 4 * scaling, baseSize * 4 * scaling);
+    else
+        widget.setSize(baseSize * scaling, baseSize * scaling);
+    end
+end

@@ -15,13 +15,19 @@ function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
     ]]--
 
     -- remove old widget graphics if any before drawing new one, also clears 
-    local aWidgets = TokenManager.getWidgetList(tokenCT, "");
+    --local aWidgets = TokenManager.getWidgetList(tokenCT, "");
     -- local widgetActorCondition = aWidgets["actor_condition"];
+
+    -- remove/clear current condition or blood pool widgets if any
     local widgetActorCondition = tokenCT.findWidget("actor_condition");
-    
     if widgetActorCondition then
         widgetActorCondition.destroy();
     end
+    local widgetBloodPool = tokenCT.findWidget("blood_pool");
+    if widgetBloodPool then
+        widgetBloodPool.destroy();
+    end
+    
 
     if (sStatus == 'Moderate') then
         if ( OptionsManager.getOption('CE_BOT') == "on" ) then
@@ -55,27 +61,25 @@ function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
 
     if (widgetActorCondition ~= nil) then
         widgetActorCondition.setName("actor_condition");	
-        resizeForTokenSize(tokenCT, widgetActorCondition);
+        Helper.resizeForTokenSize(tokenCT, widgetActorCondition);
         widgetActorCondition.setPosition("center", 0, 0);	
         widgetActorCondition.bringToFront();
         widgetActorCondition.setVisible(true);
     end
+
+    -- testTokenAdd(tokenCT);
 end
 
--- resizes condition art to span token size
-function resizeForTokenSize(tokenCT, widget)
-    local baseSize = 80;
-    local sSize = Helper.getActorSize(tokenCT);
 
-    
-    -- shift location based on size of actor
-    if (sSize == 'Large') then 
-        widget.setSize(baseSize * 2, baseSize * 2);
-    elseif (sSize == 'Huge') then 
-        widget.setSize(baseSize * 3, baseSize * 3);
-    elseif (sSize == 'Gargantuan') then 
-        widget.setSize(baseSize* 4, baseSize * 4);
-    else
-        widget.setSize(baseSize, baseSize);
-    end
+function testTokenAdd(tokenCT)
+    -- Debug.chat('test start')
+    ctrlImage, windowInstance, bWindowOpened = ImageManager.getImageControl(tokenCT, false);
+    -- Debug.chat('contols', ctrlImage, windowInstance, bWindowOpened)
+    -- Debug.chat('all tokens before', ctrlImage.getTokens());
+
+    local bloodToken = ctrlImage.addToken("blood_pool_1", 100, 100);
+    -- Debug.chat('bloodToken', bloodToken)
+    bloodToken.setSize(100, 100);
+    -- Debug.chat('all tokens after', ctrlImage.getTokens());
+    -- Debug.chat('test end')
 end

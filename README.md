@@ -72,8 +72,8 @@ This project is licensed under private License - see the [LICENSE.md](LICENSE.md
 - 'Reach underlay' and 'Faction/space underlay' made as toggle switches in the menu items. Re-add tokens to update.
 - Active actor on CT token underlay made as toggle switches in the menu items. Clears all other underlays than the current actor.
 - When an effect is dropped on a target in the CT or on a CT linked token on the map. If that target already has that effect, then it is removed from the target instead.    
-- Changeable opacity underlay for active actor added with menu setting. DM only.
-- Size of active actor underlay either full or half reach. Menu option. DM only.
+- Changeable opacity underlay for active actor added with menu setting.
+- Size of active actor underlay either full or half reach. Menu option.
 - Blood splatters on token when taking damage. Enabled by menu item. 
 - Add X or skull or no graphics onto token on death. Controllable by menu item.
 
@@ -160,8 +160,8 @@ v0.6.0 (January, 4th, 2020)
 - When an effect is dropped on a target in the CT or on a CT linked token on the map. If that target already has that effect, then it is removed from the target instead. (scripts/token_effects_handler.lua, scripts/helper_functions.lua)
 
 v0.7.0 ( - , - , 2020)
-- Changeable opacity underlay for active actor added with menu setting. DM only.
-- Size of active actor underlay either full or half reach. Menu option. DM only.
+- Changeable opacity underlay for active actor added with menu setting.
+- Size of active actor underlay either full or half reach. Menu option.
 - Blood splatters on token when taking damage. Enabled by menu item. 
 - Add X or skull or no graphics widget on token death. Controllable by menu item.
 - Minimized horizontal health bar to 0% health, would go into the negative direction as a grey bar.

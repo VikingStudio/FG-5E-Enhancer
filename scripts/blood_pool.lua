@@ -3,12 +3,10 @@
 ]]--
 
 function addBloodPool(tokenCT)
-    Debug.chat('blood pool called', tokenCT)
+    -- Debug.chat('blood pool called', tokenCT)
 
     local randomImage = math.random(10); -- return 1-10    
     local bloodPoolName = 'blood_pool_' .. randomImage;
-
-
 
     -- as token
     local tokenWidth, tokenHeight = tokenCT.getImageSize();
@@ -16,7 +14,7 @@ function addBloodPool(tokenCT)
 
     -- get image window container and add token underneath actor token
     ctrlImage, windowInstance, bWindowOpened = ImageManager.getImageControl(tokenCT, false);
-    Debug.chat('window container', ctrlImage, windowInstance, bWindowOpened)
+    -- Debug.chat('window container', ctrlImage, windowInstance, bWindowOpened)
 
     local tokenContainer = tokenCT.getContainerNode();
     local tokenX, tokenY = tokenCT.getPosition();
@@ -26,7 +24,7 @@ function addBloodPool(tokenCT)
     end
 
     local bloodToken = ctrlImage.addToken(bloodPoolName, tokenX + 200, tokenY + 200);
-    Debug.chat('bloodToken', bloodToken, bloodPoolName, ctrlImage, tokenX, tokenY)
+    -- Debug.chat('bloodToken', bloodToken, bloodPoolName, ctrlImage, tokenX, tokenY)
 
     if bloodToken then
         -- randomize token size
@@ -43,30 +41,13 @@ function addBloodPool(tokenCT)
     end
 
     -- as widget
-    --[[
     local bloodPool = tokenCT.addBitmapWidget(bloodPoolName);
-    bloodPool.sendToBack();
     bloodPool.setName("blood_pool");	
+    bloodPool.setPosition("center");
+    bloodPool.sendToBack();
+    local randomScaling = math.random() * 2 + 1;  -- math.random() returns number between 0 and 1
+    Helper.resizeForTokenSize(tokenCT, bloodPool, randomScaling);
+    local rotation = math.random(360); -- math.random(360) returns a number between 1 and 360   
+    --image.rotate(rotation);
     bloodPool.setVisible(true);
-    bloodPool.setPosition("center", 0, 0);
-    bloodPool.setSize(baseTokenSize * sizeMultiplier, baseTokenSize * sizeMultiplier);
-    ]]--    
-end
-
--- resizes condition art to span token size
-function resizeForOriginalTokenSize(tokenCT)
-    local baseSize = 80;
-    local sSize = Helper.getActorSize(tokenCT);
-
-    
-    -- shift location based on size of actor
-    if (sSize == 'Large') then 
-        return baseSize * 2;
-    elseif (sSize == 'Huge') then 
-        return baseSize * 3;
-    elseif (sSize == 'Gargantuan') then 
-        return baseSize * 4;
-    else
-        return baseSize;
-    end
 end
