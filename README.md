@@ -168,3 +168,6 @@ v0.7.0 (January , 23rd, 2020)
 - Changeable opacity underlay for active actor. Controllable by menu option.
 - Size of active actor underlay either full or half reach. Controllable by menu option.
 - Fixed a number of bugs that popped up during use of previous version.
+
+v0.7.1 (February, 22nd, 2020)
+- Fixed bug for when spell entries were added under actions (rather than spell section) for NPCs' in the DB. This would cause the automatic range finding logic not to work.

@@ -3,8 +3,8 @@
 <root version="3.0" release="1">
 
 	<properties>
-		<name>5E Enhancer v0.7.0</name>
-		<version>0.7.0</version>
+		<name>5E Enhancer v0.7.1</name>
+		<version>0.7.1</version>
 		
 		<author>Styrmir T.</author>
 		<description>5E Enhancer</description>
@@ -122,5 +122,5 @@
 		<icon name="ce_icon" file="graphics/icons/combat_enhancer_icon.png" />				
 	</base>			
 
-	<announcement text="5E Enhancer v0.7.0" font="emotefont" icon="ce_icon" />			
+	<announcement text="5E Enhancer v0.7.1" font="emotefont" icon="ce_icon" />			
 </root>

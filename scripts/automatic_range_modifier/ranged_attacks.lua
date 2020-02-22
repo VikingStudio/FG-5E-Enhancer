@@ -386,33 +386,49 @@ function getWeaponRanges5e(rActor, sRanged, sWeaponName)
 				local nodeChild = nodeParent .. '.' .. k;				
 				local nodeName = DB.getText(nodeChild .. '.name');
 			
+				-- There are 2 standard entry types for weapons and one for spells under actions
+				-- each is dealt with separately below
 				if ( nodeName:lower() == sWeaponName:lower() ) then					
-					local description = DB.getText(nodeChild .. '.desc');
-										
+					local description = DB.getText(nodeChild .. '.desc');										
+					local rangeText = '';
+
+					-- Weapon version 1		
 					-- search for 'range * ft', return range as substring, split substring in two (medium/max range)					
 					-- string input ex. 'Thrown (range 30/120)''  and 'range 30/120 ft.''	
-					local rangeText = '';
-					rangeText = string.match(description, "range%s%d*/%d*");
-					
+					rangeText = string.match(description, "range%s%d*/%d*");		
 					if rangeText ~= nil then						
 						-- find '/' index
 						-- medRange = start of numbers to before index
 						-- maxRange = after index to end
 						local index = string.find(rangeText, '/');								
 						medRange = string.sub(rangeText, 7, index - 1);
-						maxRange = string.sub(rangeText, index + 1, string.len(rangeText));								
-					else
-						-- this exception is needed as some modules have a slightly different range entries
-						-- string input ex. 'Thrown (range 30 ft./120)''  and 'range 30 ft./120 ft.''	
-						rangeText = string.match(description, "range%s%d*%sft./%d*");
+						maxRange = string.sub(rangeText, index + 1, string.len(rangeText));			
+					end
+
+					-- Weapon version 2
+					-- this exception is needed as some modules have a slightly different range entries
+					-- string input ex. 'Thrown (range 30 ft./120)''  and 'range 30 ft./120 ft.''	
+					rangeText = string.match(description, "range%s%d*%sft./%d*");
+					if rangeText ~= nil then						
 						local index = string.find(rangeText, '/');								
 						medRange = string.sub(rangeText, 7, index - 4);
-						maxRange = string.sub(rangeText, index + 1, string.len(rangeText));		
+						maxRange = string.sub(rangeText, index + 1, string.len(rangeText));	
+					end
+						
+					-- Spell action version 1
+					-- this exception is needed as some modules have a slightly different range entries
+					-- where spell entries on NPCs are put under actions, and only one range is available
+					-- string input ex. 'Ranged Spell Attack: +5 to hit, range 150 ft., one target. Hit: 10 (3d6) fire damage. ...'		
+					rangeText = string.match(description, "range%s%d*");
+					if rangeText ~= nil then					
+						medRange = string.sub(rangeText, 7, string.len(rangeText));
+						maxRange = medRange;	
+						Debug.chat('spell version 1', rangeText, medRange, maxRange);
 					end	
 				end								
 			end			
 
-			-- look through spells for match
+			-- look through spells for match in the NPC spell section of the DB
 			nodeParent = rActor.sCreatureNode .. '.spells';
 			local spellNodes = DB.getChildren(nodeParent);
 			
