@@ -468,13 +468,16 @@ function getWeaponRanges5e(rActor, sRanged, sWeaponName)
 					
 					-- search for 'range * ft', return range as substring, split substring in two (medium/max range)
 					-- string input ex. 'Thrown (range 30/120)''  and 'range 30/120 ft.''				
-					local rangeText = string.match(description, "range%s%d*/%d*");				
-					-- find '/' index
-					-- medRange = start of numbers to before index
-					-- maxRange = after index to end
-					local index = string.find(rangeText, '/');								
-					medRange = string.sub( rangeText, 7, index - 1);
-					maxRange = string.sub(rangeText, index + 1, string.len(rangeText));					
+					local rangeText = string.match(description, "range%s%d*/%d*");		
+					
+					if rangeText ~= nil then
+						-- find '/' index
+						-- medRange = start of numbers to before index
+						-- maxRange = after index to end
+						local index = string.find(rangeText, '/');								
+						medRange = string.sub( rangeText, 7, index - 1);
+						maxRange = string.sub(rangeText, index + 1, string.len(rangeText));		
+					end			
 				end
 			end	
 			

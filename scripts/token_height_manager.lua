@@ -17,8 +17,7 @@ function tokenHeightChange(token, notches)
         Debug.chat('heightWidget', heightWidget);
         -- add up update widget
         if (heightWidget == nil) then
-            if notches >= 1 then nHeight = 5 * notches; end
-            if notches <= -1 then nHeight = -5 * notches; end
+            nHeight = 5 * notches;
             Debug.chat('nHeight 1', nHeight);
 
             heightWidget = token.addTextWidget( getFontName(), '5 ft.' );
@@ -33,8 +32,7 @@ function tokenHeightChange(token, notches)
             nHeight = tonumber(sHeight);
             Debug.chat('nHeight 2', sHeight, nHeight);
 
-            if notches >= 1 then nHeight = nHeight + (5 * notches); end
-            if notches <= -1 then nHeight = nHeight - (5 * notches); end     
+            nHeight = nHeight + (5 * notches); 
 
             heightWidget = updateHeightWidget(heightWidget, nHeight);
         end

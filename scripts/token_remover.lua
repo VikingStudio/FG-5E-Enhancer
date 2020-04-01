@@ -13,18 +13,40 @@ end
 -- Post: Token removed from combat map (Alt) or combat map and combat tracker (Atl+Ctrl)
 -- NOTE: button (number), Returns a numerical value indicating the button pressed (1 = left, 2 = middle, 4 = button 4, 5 = button 5). Right button is used for radial menus.
 function onClickDown( token, button, image ) 
-	-- Deletes token from combat map, if Alt held on left mouse click.
-	if (Input.isAltPressed() == true) and (User.isHost() == true) and (button==1) then
-		local nodeCT = CombatManager.getCTFromToken(token);
-		token.delete();		
 
-		-- Deletes token from combat tracker if Ctrl was also held on click.
-		if (Input.isControlPressed() == true) then
-			if nodeCT then -- only attempt delete if there is a CT entry
-				nodeCT.delete();					
-			end				
-		end
-	end	
+	local bFlankingRules = OptionsManager.getOption("CE_TRBC"); 
+
+	-- Deletes token from combat map, if Alt held on left mouse click.
+	if (bFlankingRules == 'option_val_alt') then	
+		if (Input.isAltPressed() == true) and (User.isHost() == true) and (button==1) then
+			local nodeCT = CombatManager.getCTFromToken(token);
+			token.delete();		
+	
+			-- Deletes token from combat tracker if Ctrl was also held on click.
+			if (Input.isControlPressed() == true) then
+				if nodeCT then -- only attempt delete if there is a CT entry
+					nodeCT.delete();					
+				end				
+			end
+		end	
+	end
+
+	-- Deletes token from combat map, if Alt + Shift held on left mouse click.
+	if (bFlankingRules == 'option_val_alt_shift') then	
+		if (Input.isAltPressed() == true) and (Input.isShiftPressed() == true) and (User.isHost() == true) and (button==1) then
+			local nodeCT = CombatManager.getCTFromToken(token);
+			token.delete();		
+	
+			-- Deletes token from combat tracker if Ctrl was also held on click.
+			if (Input.isControlPressed() == true) then
+				if nodeCT then -- only attempt delete if there is a CT entry
+					nodeCT.delete();					
+				end				
+			end
+		end	
+	end
+
+
 end
 
 

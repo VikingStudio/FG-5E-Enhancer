@@ -266,9 +266,19 @@ function modAttack(rSource, rTarget, rRoll)
 				Helper.postChatMessage(sMessage, 'rangedAttack');		
 			end
 		end		
+	
+		
+--[[
+		END
+		THIS IS THE ADDED SECTION FOR ESTIMATING A RANGED ATTACK MODIFIER
+]]--		
 
-		-- Check if flanking if setting is enabled in menu and attack is melee
-		--[[
+
+--[[
+		START
+		THIS IS THE ADDED SECTION FOR ESTIMATING FLANKING MODIFIER
+]]--		
+		-- Check if flanking setting is enabled in menu and attack is melee
 		local bFlankingRules = OptionsManager.getOption("CE_FR"); 
 		if (bFlankingRules == 'option_val_on') and (sAttackType == 'M') then			
 			local bFlanking = Flanking.isFlanking(rSource, rTarget);
@@ -298,11 +308,9 @@ function modAttack(rSource, rTarget, rRoll)
 				nAddMod = 5;
 			end								
 		end	
-		--]]		
-		
 --[[
 		END
-		THIS IS THE ADDED SECTION FOR ESTIMATING A RANGED ATTACK MODIFIER
+		THIS IS THE ADDED SECTION FOR ESTIMATING FLANKING MODIFIER
 ]]--		
 
 		

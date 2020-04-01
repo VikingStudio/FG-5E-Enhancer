@@ -157,10 +157,10 @@ v0.5.0 (December 29th, 2019)
 - Some changes to output text for ranged attacks. (scripts/ranged_attack_modifier.lua: getRangeModifier5e)
 - Token health widget scaling for different grid and actor sizes fixed. Uses CT actor size descriptor text (tiny/small/medium/large/huge/gargantuan) to determine horizontal health bar width. (scripts/health_graphics.lua)
 
-v0.6.0 (January, 4th, 2020)
+v0.6.0 (January 4th, 2020)
 - When an effect is dropped on a target in the CT or on a CT linked token on the map. If that target already has that effect, then it is removed from the target instead. (scripts/token_effects_handler.lua, scripts/helper_functions.lua)
 
-v0.7.0 (January , 23rd, 2020)
+v0.7.0 (January 23rd, 2020)
 - Blood splatters on token when taking damage. Controllable by menu item. 
 - Add X or skull or no graphics widget on token death. Controllable by menu item.
 - Blood pools on tokens on death. Controllable by menu item.
@@ -169,5 +169,10 @@ v0.7.0 (January , 23rd, 2020)
 - Size of active actor underlay either full or half reach. Controllable by menu option.
 - Fixed a number of bugs that popped up during use of previous version.
 
-v0.7.1 (February, 22nd, 2020)
+v0.7.1 (February 22nd, 2020)
 - Fixed bug for when spell entries were added under actions (rather than spell section) for NPCs' in the DB. This would cause the automatic range finding logic not to work.
+
+v0.8.0 (April 1st, 2020)
+- Added flanking and menu options to configure (Adv/+1/+2/+5). Only works for medium or smaller targets and attackers.
+- Added menu options to switch between key combination of "Alt + L-Click" or "Shift + Alt + L-Click", for deleting tokens from map.
+- Added exit clause for automatic ranged weapon attacks from PC sheets, for non-standardized range entries.
