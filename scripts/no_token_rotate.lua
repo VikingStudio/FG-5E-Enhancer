@@ -3,7 +3,7 @@
 ]]--
 
 function onInit()
-    Token.onWheel = noTokenRotation;
+    -- Token.onWheel = noTokenRotation;
 end
 
 function noTokenRotation(target, notches)    

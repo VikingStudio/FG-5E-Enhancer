@@ -3,18 +3,19 @@
 <root>
 	<!-- Height -->
 	<font name="height_large">
-		<ttf file="graphics/fonts/Freshman.ttf" name="Freshman" size="48" />
+		<fgffile name="graphics/fonts/diemod.fgf" />
+		<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans Bold" size="48" />
 		<color value="#000000" />
-		<shadow offset="1,1" color="#808080" />
-	</font>
+	</font>	
 	<font name="height_medium">
-		<ttf file="graphics/fonts/Freshman.ttf" name="Freshman" size="24" />
+		<fgffile name="graphics/fonts/diemod.fgf" />
+		<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans Bold" size="24" />
 		<color value="#000000" />
-		<shadow offset="1,1" color="#808080" />
-	</font>
+	</font>	
 	<font name="height_small">
-		<ttf file="graphics/fonts/Freshman.ttf" name="Freshman" size="12" />
+		<fgffile name="graphics/fonts/diemod.fgf" />
+		<ttf file="graphics/fonts/Noto_Sans/NotoSans-Bold.ttf" name="Noto Sans Bold" size="12" />
 		<color value="#000000" />
-		<shadow offset="1,1" color="#808080" />
 	</font>		
+
 </root>

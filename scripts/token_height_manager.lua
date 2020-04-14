@@ -3,22 +3,19 @@
 ]]--
 
 function onInit()    
-    -- Token.onWheel = tokenHeightChange;
+    Token.onWheel = onWheel;
 end
 
-function tokenHeightChange(token, notches)
-    -- textWidgetTest(token);
-
-    Debug.chat('tokenWheel', notches)
+function onWheel(token, notches)
+    local rotateLock = OptionsManager.getOption('CE_TRA');    
 
     if Input.isShiftPressed() then        
         local nHeight = 0;
         local heightWidget = token.findWidget("tokenheight");
-        Debug.chat('heightWidget', heightWidget);
+
         -- add up update widget
         if (heightWidget == nil) then
             nHeight = 5 * notches;
-            Debug.chat('nHeight 1', nHeight);
 
             heightWidget = token.addTextWidget( getFontName(), '5 ft.' );
             heightWidget = updateHeightWidget(heightWidget, nHeight);
@@ -27,19 +24,41 @@ function tokenHeightChange(token, notches)
             -- from the start of the string, zero or one of '-', then one or more of 0-9
             local sPattern = '^[-]?[0-9]+';
             local sHeight = heightWidget.getText();
-            Debug.chat('sHeight 2', sHeight);
+
             sHeight = sHeight:match(sPattern);
             nHeight = tonumber(sHeight);
-            Debug.chat('nHeight 2', sHeight, nHeight);
 
             nHeight = nHeight + (5 * notches); 
 
             heightWidget = updateHeightWidget(heightWidget, nHeight);
         end
+    elseif rotateLock == 'off' then        
+        token.setOrientation((token.getOrientation()+notches)%8);    
+    elseif Input.isAltPressed() and rotateLock == 'on' then        
+        token.setOrientation((token.getOrientation()+notches)%8);
+    end
 
-        Debug.chat('Height:', nHeight);
-    end    
+    return true;
+end
 
+-- return the integer of the tokens height
+function getTokenHeight(token)
+    local nHeight = 0;
+    local heightWidget = token.findWidget("tokenheight"); 
+    
+    if (heightWidget == nil) then
+        return 0;        
+    elseif (heightWidget ~= nil) then
+        -- regex pattern: ^[-]?[0-9]+   (returns - modifier and numbers at start of string, ex.: '-120 ft.' or '-120 ft', returns '-120')
+        -- from the start of the string, zero or one of '-', then one or more of 0-9
+        local sPattern = '^[-]?[0-9]+';
+        local sHeight = heightWidget.getText();
+
+        sHeight = sHeight:match(sPattern);
+        nHeight = tonumber(sHeight);
+
+        return nHeight;
+    end
 end
 
 function getFontName()
@@ -51,7 +70,7 @@ function getFontName()
         fontName = "height_small";
     elseif ( fontSize == 'option_medium' ) then
         fontName = "height_medium";
-    else 
+    else         
         fontName = "height_large"; 
     end
 
@@ -59,8 +78,6 @@ function getFontName()
 end
 
 function updateHeightWidget(widget, nHeight)     
-    -- Debug.chat('widget update', widget, nHeight);
-
     widget.setName("tokenheight"); 
     widget.setFrame('tempmodmini', 10, 10, 10, 4);
     widget.setPosition("bottom right", 0, 0);     
@@ -75,19 +92,4 @@ function updateHeightWidget(widget, nHeight)
         widget.bringToFront();       
         widget.setVisible(true);
     end        
-
-    Debug.chat('widget text', widget );
-end
-
-function textWidgetTest(token)
-    wdg = token.addTextWidget("height_large", 'HEIGHT'); 
-    wdg.setVisible(true);
-    wdg.setName("test_widget"); 
-    wdg.setPosition("right",0,0); 
-    wdg.setFrame('tempmodmini',10,10,10,4);
-    wdg.setColor('#FFA242');
-    wdg.setMaxWidth(200);
-    wdg.bringToFront(); 
-
-    Debug.chat('Test widget created', wdg)
 end

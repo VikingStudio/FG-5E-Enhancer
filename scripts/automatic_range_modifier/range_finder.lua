@@ -43,15 +43,41 @@ function getRange(rAttacker, rDefender)
 					nSquares = nSquares - (nAttackerSpace / 2);
 					nSquares = nSquares - (nDefenderSpace / 2);
                     
-                    -- START OF NEW CODE REPLACEMENT
-					local distance = math.ceil( (nSquares + 1) * nDU );			
-					local modulo = distance % 5;
+					-- START OF NEW CODE REPLACEMENT
+					local rangeRules = OptionsManager.getOption('CE_RRU'); -- (option_standard|option_variant|option_raw)
+					local distance2D = 0;
+					local distance3D = 0;
+					
+					if (rangeRules == 'option_standard') then
+						distance2D = math.ceil( (nSquares + 1) * nDU );
+					end
+					if (rangeRules == 'option_variant') then
+						distance2D = Interface.getDistanceDiagMult();
+						Debug.chat('option_variant range', distance2D);
+					end
+					if (rangeRules == 'option_raw') then
+						distance2D = math.ceil(((xDiff^2+yDiff^2)^0.5)/(nGrid/nDU));
+					end						
+										
+					-- get height from tokens
+					local actorHeight = HeightManager.getTokenHeight(tokenAttacker);
+					local targetHeight = HeightManager.getTokenHeight(tokenDefender);	
+
+					-- calculate range with height included
+					local heightDifference = actorHeight - targetHeight;
+					distance3D = math.sqrt((heightDifference^2)+(distance2D^2)); 			
+
+					-- find final range to return
+					distance3D = math.floor(distance3D);
+					Debug.console('Precise range of attack: ', distance3D);			
+
+					local modulo = distance3D % 5;
 
 					if (modulo > 0) then 
-						distance = distance - modulo + nDU;
+						distance3D = distance3D - modulo + nDU;
 					end
 
-					return distance;
+					return distance3D;
                     -- END OF NEW CODE REPLACEMENT 
                 end		
                 	

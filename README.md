@@ -176,3 +176,17 @@ v0.8.0 (April 1st, 2020)
 - Added flanking and menu options to configure (Adv/+1/+2/+5). Only works for medium or smaller targets and attackers.
 - Added menu options to switch between key combination of "Alt + L-Click" or "Shift + Alt + L-Click", for deleting tokens from map.
 - Added exit clause for automatic ranged weapon attacks from PC sheets, for non-standardized range entries.
+
+v0.9.0 (April 14th, 2020)
+- Added menu switch to select ruleset to use for automatic range calculations. Standard | Variant (placeholder only) | RAW (Rules as Written)
+- Added menu option to skip actors in CT that haven't rolled initiative.
+- Disadvantage added for ranged attacks in melee. Menu option toggle added.
+- Altitude widget added on token when Shift + Scroll wheel over token.
+- Altitude added to calculations of range for automatic range modifiers functionality.
+- Altitude differences considered for automatic flanking. Only for medium or smaller sized combatants.
+- Menu option added to lock token rotation to only rotate when holding down Alt + Scroll mouse wheel. Removed general token lock option as this takes its place.
+- Prepared spell buttons for NPC's were off frame in CT. Fixed.
+- Max range for weapons not read for automatic range attack modifiers. Fixed.
+
+Plans for next version.
+- Add map pinging, Ctrl + L-Click on map.

@@ -640,7 +640,7 @@
 		<margins control="30,0,0,0" />
 		<frame>charsheethelper</frame>
 		<placement>
-			<size width="430" height="290" />
+			<size width="430" height="340" />
 		</placement>
 		<nodelete />
 		<playercontrol />

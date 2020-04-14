@@ -3,8 +3,8 @@
 <root version="3.0" release="1">
 
 	<properties>
-		<name>5E Enhancer v0.8.0</name>
-		<version>0.8.0</version>
+		<name>5E Enhancer v0.9.0</name>
+		<version>0.9.0</version>
 		
 		<author>Styrmir T.</author>
 		<description>5E Enhancer</description>
@@ -58,6 +58,9 @@
 		<!-- helper_functions.lua: Generic helper functions for the extension -->		
 		<script name="Helper" file="scripts/helper_functions.lua" />   
 
+		<!-- combat_manager.lua: From CoreRPG combat_manager.lua, modified for option to skip non-initiatived actors in CT -->		
+		<script name="CombatManager" file="scripts/manager_combat.lua" />   						
+
 		<!-- manager_token.lua: token manger copied from CoreRPG ruleset -->		
 		<script name="TokenManager" file="scripts/manager_token.lua" />   		
 
@@ -79,13 +82,18 @@
 		<string name="option_show_reach_underlay">Show reach underlay</string>		
 		<string name="option_show_faction_underlay">Show faction/space underlay</string>	
 		<string name="option_skull_or_cross">Skull or cross on actor death</string>				
-		<string name="option_stop_token_rotate">Stop token rotation</string>	
+		<!-- <string name="option_stop_token_rotate">Stop token rotation</string> -->
 		<string name="option_token_remove_button_combo">Token deletion button combination</string>
 		<string name="option_height_font_size">Token height font size</string>		
 		<string name="option_gm_underlay_show_ct_active_actor_underlay">Token underlay for CT active actor (DM only)</string>	
 		<string name="option_gm_underlay_opacity">Token underlay opacity (DM only)</string>				
 		<string name="option_gm_underlay_size">Token underlay size (DM only)</string>	
 		<string name="option_flanking_rules">Use flanking rules (for medium sizes and smaller only)</string>
+		<string name="option_ranged_melee_modifier">Ranged in melee modifier (for medium sizes and smaller only)</string>
+		<string name="option_range_rules_used">Range rules to use</string>	
+		<string name="option_token_rotation_with_alt">Lock token rotation to Alt + Mouse Wheel</string>	
+		<string name="option_skip_non_initiatived_actor">Skip CT actors that haven't rolled intitiative</string>
+		
 	
 
 		<!-- Adds menu items for the extension -->											
@@ -131,5 +139,5 @@
 		<icon name="ce_icon" file="graphics/icons/combat_enhancer_icon.png" />				
 	</base>			
 
-	<announcement text="5E Enhancer v0.8.0" font="emotefont" icon="ce_icon" />			
+	<announcement text="5E Enhancer v0.9.0" font="emotefont" icon="ce_icon" />			
 </root>
