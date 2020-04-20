@@ -60,8 +60,8 @@ function getRange(rAttacker, rDefender)
 					end						
 										
 					-- get height from tokens
-					local actorHeight = HeightManager.getTokenHeight(tokenAttacker);
-					local targetHeight = HeightManager.getTokenHeight(tokenDefender);	
+					local actorHeight = TokenWheelManager.getTokenHeight(tokenAttacker);
+					local targetHeight = TokenWheelManager.getTokenHeight(tokenDefender);	
 
 					-- calculate range with height included
 					local heightDifference = actorHeight - targetHeight;

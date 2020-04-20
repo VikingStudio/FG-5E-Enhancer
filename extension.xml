@@ -3,8 +3,8 @@
 <root version="3.0" release="1">
 
 	<properties>
-		<name>5E Enhancer v0.9.0</name>
-		<version>0.9.0</version>
+		<name>5E Enhancer v0.9.1</name>
+		<version>0.9.1</version>
 		
 		<author>Styrmir T.</author>
 		<description>5E Enhancer</description>
@@ -105,8 +105,8 @@
 		<!-- token_effects_handler.lua: Remove effect if already on CT entry, label version of effects -->			
 		<script name="EffectsManager" file="scripts/token_effects_handler.lua" />
 
-		<!-- token_height_manager.lua: Height manager for tokens -->
-		<script name="HeightManager" file="scripts/token_height_manager.lua" />   
+		<!-- token_wheel_manager.lua: Height manager for tokens -->
+		<script name="TokenWheelManager" file="scripts/token_wheel_manager.lua" />   
 		<includefile source="graphics/graphics_fonts.xml" />	
 
 		<!-- token_hightlighter.lua: Adds a underlay to token for the active CT actor. Different color depending on faction.  -->
@@ -139,5 +139,5 @@
 		<icon name="ce_icon" file="graphics/icons/combat_enhancer_icon.png" />				
 	</base>			
 
-	<announcement text="5E Enhancer v0.9.0" font="emotefont" icon="ce_icon" />			
+	<announcement text="5E Enhancer v0.9.1" font="emotefont" icon="ce_icon" />			
 </root>

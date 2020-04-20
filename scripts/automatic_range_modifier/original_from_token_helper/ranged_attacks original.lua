@@ -241,8 +241,8 @@ function getRangeBetweenTokens5e(rActor, rTarget, hexWidth, heightDifference)
 	local rangeFlatPlane = (nDistance / gridSize) * hexWidth;	
 
 	-- get height from tokens
-	local actorHeight = HeightManager.getCTHeight(actorToken);
-	local targetHeight = HeightManager.getCTHeight(targetToken);	
+	local actorHeight = TokenWheelManager.getCTHeight(actorToken);
+	local targetHeight = TokenWheelManager.getCTHeight(targetToken);	
 
 	-- calculate range with height included
 	heightDifference = actorHeight - targetHeight;

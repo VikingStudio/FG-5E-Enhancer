@@ -23,11 +23,7 @@ function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
     if widgetActorCondition then
         widgetActorCondition.destroy();
     end
-    local widgetBloodPool = tokenCT.findWidget("blood_pool");
-    if widgetBloodPool then
-        widgetBloodPool.destroy();
-    end
-    
+    local widgetBloodPool = tokenCT.findWidget("blood_pool");    
 
     if (sStatus == 'Moderate') then
         if ( OptionsManager.getOption('CE_BOT') == "on" ) then
@@ -41,7 +37,7 @@ function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
         if ( OptionsManager.getOption('CE_BOT') == "on" ) then
             widgetActorCondition = tokenCT.addBitmapWidget("health_critical");
         end
-    elseif (sStatus == 'Dying') then
+    elseif (sStatus == 'Dying' or sStatus == 'Dying (1)' or sStatus == 'Dying (2)' or sStatus == 'Dead') then
         -- widgetActorCondition = tokenCT.addBitmapWidget("dying");
 
          -- add skull or cross on actor death if enabled
@@ -52,11 +48,14 @@ function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
         end
 
         -- draw blood pool if active
-        if ( OptionsManager.getOption('CE_BP') == "on" ) then
+        if ( OptionsManager.getOption('CE_BP') == "on" and widgetBloodPool == nil) then
             BloodPool.addBloodPool(tokenCT);
         end
     else
-        widgetActorCondition = nil
+        widgetActorCondition = nil;
+        if widgetBloodPool then
+            widgetBloodPool.destroy();
+        end
     end
 
     if (widgetActorCondition ~= nil) then

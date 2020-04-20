@@ -668,7 +668,8 @@ function nextActor(bSkipBell, bNoRoundAdvance)
 		if bSkipHidden or bSkipNonInitiativedActors then
 			local nIndexNext = 0;
 			for i = nIndexActive + 1, #aEntries do
-				if DB.getValue(aEntries[i], "friendfoe", "") == "friend" then
+				--if DB.getValue(aEntries[i], "friendfoe", "") == "friend" then       <-- Original Code: Won't skip if actor is friendly
+				if DB.getValue(aEntries[i], "friendfoe", "") == "SKIP THIS SECTION JUMP RIGHT TO THE ELSE BELOW" then
 					nIndexNext = i;
 					-- check if initiative is 0 value (default in db if no entry). if so set index to 1 (first actor) and exit function, as all non-iniatived actors will be piled at the bottom of the CT				
 					local initiative = DB.getValue(aEntries[i], 'initresult');					
@@ -728,7 +729,7 @@ function nextActor(bSkipBell, bNoRoundAdvance)
 		requestActivation(nodeNext, bSkipBell);
 		onTurnStartEvent(nodeNext);
 	elseif not bNoRoundAdvance then
-		if bSkipHidden or bSkipNonInitiativedActors == true then
+		if bSkipHidden or bSkipNonInitiativedActors then
 			for i = nIndexActive + 1, #aEntries do
 				showTurnMessage(aEntries[i], false);
 			end

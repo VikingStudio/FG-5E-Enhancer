@@ -188,5 +188,20 @@ v0.9.0 (April 14th, 2020)
 - Prepared spell buttons for NPC's were off frame in CT. Fixed.
 - Max range for weapons not read for automatic range attack modifiers. Fixed. 
 
-Plans for next version.
+V0.9.1 (April 20th, 2020)
+- Added rescaling of token when Ctrl + Scroll wheel over token. Note: After rescaling drop token on map again to redraw all widgets to scale.
+- Skipping actors in CT that haven't rolled initiative option, did not skip Friendly actors. Fixed.
+- If damage was enough to instantly kill a target no death graphic (skull / cross) would appear. Fixed.
+- If target already dead took damage again, the death graphic (skull / cross) would dissapear. Fixed.
+
+
+Ideas for future versions.
 - Add map pinging, Ctrl + L-Click on map.
+- Change mouse cursor to regular arrow. Menu toggle.
+- Add death save functionality for NPCs.
+- Update range number by drawn range arrow with extension calculated ranges (including for height).
+- Add saving throw result graphics on tokens.
+
+Bugs
+- Height widgets don't transfer between clients when added, only visible and used for range calculations on the client that added it.
+- Automatic modifier for ranged attacks in melee only trigger when the target is in melee, not when attacking other target while foe in melee range.

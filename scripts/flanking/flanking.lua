@@ -100,9 +100,9 @@ function isFlanking(rActor, rTarget)
     local allyToken = CombatManager.getTokenFromCT(allyNode);        
 
 	-- get height
-	local actorHeight = HeightManager.getTokenHeight(actorToken);
-	local targetHeight = HeightManager.getTokenHeight(targetToken);	
-	local allyHeight = HeightManager.getTokenHeight(allyToken);
+	local actorHeight = TokenWheelManager.getTokenHeight(actorToken);
+	local targetHeight = TokenWheelManager.getTokenHeight(targetToken);	
+	local allyHeight = TokenWheelManager.getTokenHeight(allyToken);
 
 	-- if either actor or ally are out of range of melee attack, height wise, then no flanking benefit
 	local bOutOfRange = false;
