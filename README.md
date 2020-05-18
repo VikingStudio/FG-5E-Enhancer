@@ -201,7 +201,7 @@ Removed manager_token.lua, created new overriding lua file for functions overrid
 - Height widget didn't delete on 0 height. Fixed.
 - Added load order.
 - Under certain map circumstances the Token.onWheel function would not be passed a token. Added exit clause to handle that null reference.
-- Resizing images if not of equal horizontan and vertical sizes would behave strangely. Fixed.
+- Resizing images if not of equal horizontal and vertical sizes would behave strangely. Fixed.
 - A number of small errors cleaned up.
 
 Ideas for future versions.
