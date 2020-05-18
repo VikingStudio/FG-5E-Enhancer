@@ -17,10 +17,6 @@
 	<icon name="healthdot_larger" file="graphics/token/healthdot/token_healthdot_larger.png" />	
 	<icon name="healthdot_original" file="graphics/token/healthdot/token_healthdot_original.png" />	
 
-	<!-- Tokens - Save tokens --> 
-	<icon name="save_success" file="graphics/token/save/success 1.png" />
-	<icon name="save_fail" file="graphics/token/save/fail 3.png" />
-
 	<!-- Icons that are posted next to ranged attack output text when using automatic range modifiers -->
 	<icon name="ranged_attack_1" file="graphics/icons/ranged_attack_1.png" />
 	<icon name="ranged_attack_2" file="graphics/icons/ranged_attack_2.png" />
@@ -47,6 +43,17 @@
 	<icon name="blood_pool_8" file="graphics/token/blood_pool/blood_pool_8.png" />
 	<icon name="blood_pool_9" file="graphics/token/blood_pool/blood_pool_9.png" />
 	<icon name="blood_pool_10" file="graphics/token/blood_pool/blood_pool_10.png" />
+
+	<!-- Tokens - Saving Throw success and failure graphics -->
+	<icon name="save_success_d20" file="graphics/token/save/d20_success.png" />
+	<icon name="save_success_1" file="graphics/token/save/success_1.png" />
+	<icon name="save_success_2" file="graphics/token/save/success_2.png" />
+	<icon name="save_success_3" file="graphics/token/save/success_3.png" />
+	<icon name="save_success_4" file="graphics/token/save/success_4.png" />
+	<icon name="save_fail_d20" file="graphics/token/save/d20_fail.png" />
+	<icon name="save_fail_1" file="graphics/token/save/fail_1.png" />
+	<icon name="save_fail_2" file="graphics/token/save/fail_2.png" />
+	<icon name="save_fail_3" file="graphics/token/save/fail_3.png" />
 
 	<!-- Extension additions END -->
 </root>

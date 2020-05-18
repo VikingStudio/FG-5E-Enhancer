@@ -31,7 +31,11 @@ function getRangeModifier5e(rActor, rTarget, sAttackType, sWeaponName)
 		medRange = tonumber(medRange);
 		maxRange = tonumber(maxRange);			
 		local sRangeString = '';
-		if medRange == maxRange then
+
+		if maxRange == nil then
+			Debug.console('No readable range found for weapon or spell. The weapon or spell entry most likely has a non-standard text description for the attack and therefore could not be parsed.');
+			return true, true, false, "No readable range found for weapon or spell.";
+		elseif medRange == maxRange then
 			sRangeString = '(' .. maxRange .. ')';
 		else
 			sRangeString = '(' .. medRange .. '/' .. maxRange .. ')';		
@@ -56,12 +60,30 @@ function getRangeModifier5e(rActor, rTarget, sAttackType, sWeaponName)
 			if featName == 'Sharpshooter' then bSharpShooter = true; end
 			if featName == '' then i=9; end
 		end		
+
+		-- Check if within melee range while Ranged Melee Modifier Setting in menu is on, if so apply
+		local bRangedMeeleModifier = OptionsManager.getOption("CE_RMM"); 
+
+		if bRangedMeeleModifier == 'on' then
+			local ctrlImage = TokenHelper.getControlImageByActor(rActor);
+			local aTokenMap = TokenHelper.getTokenMap(ctrlImage);	
+			bEnemyInMeleeRange = TokenHelper.isEnemyInMeleeRange5e(aTokenMap, rActor);
+			if bEnemyInMeleeRange == true then
+				-- Feat: Crossbow Expert exception
+				if bCrossbowExpert then							
+					Helper.postChatMessage('Ranged attack with active enemy in melee range, by Crossbow Expert.');		
+				else
+					bDis = true;
+					Helper.postChatMessage('Ranged attack with active enemy in melee range.');
+				end
+			end
+		end		
 								
 		-- Compare attack range to weapon ranges and apply modifiers as applicable. 
 		-- ranged attack within melee range, disadvantage is handled above with bEnemyInMeleeRange
 		if (attackRange < medRange) and (attackRange <= 5) then	
 			bInRange = true;	
-			local bRangedMeeleModifier = OptionsManager.getOption('CE_RMM');	
+			
 			if bRangedMeeleModifier == 'on' then
 				if bCrossbowExpert then							
 					sMessage = 'Ranged attack in melee range, by Crossbow Expert.';		

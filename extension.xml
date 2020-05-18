@@ -3,8 +3,8 @@
 <root version="3.0" release="1">
 
 	<properties>
-		<name>5E Enhancer v0.9.1</name>
-		<version>0.9.1</version>
+		<name>5E Enhancer v0.10.0</name>
+		<version>0.10.0</version>
 		
 		<author>Styrmir T.</author>
 		<description>5E Enhancer</description>
@@ -12,6 +12,8 @@
 		<ruleset>
 			<name>5E</name>
 		</ruleset>			
+
+		<loadorder>50</loadorder>
 	</properties>    	
 
 	<base>		
@@ -51,6 +53,9 @@
 		<!-- ct_actor_highlighter.lua: When token clicked on map, actor owner of that token on the CT is highlighted -->		
 		<script name="CTActorHighlighter" file="scripts/ct_actor_highlighter.lua" />   
 
+		<!-- ct_actor_skipping.lua: Allows for skipping of actors without rolled initiative in CT -->		
+		<script name="CTActorHighlighter" file="scripts/ct_actor_skipping.lua" />   
+
 		<!-- health_bar.lua: Horizontal Health Bar and larger health dot -->		
 		<script name="HealthGraphicUpdater" file="scripts/health_graphics.lua" />   
 		<includefile source="graphics/graphics_icons.xml" />
@@ -59,10 +64,11 @@
 		<script name="Helper" file="scripts/helper_functions.lua" />   
 
 		<!-- combat_manager.lua: From CoreRPG combat_manager.lua, modified for option to skip non-initiatived actors in CT -->		
-		<script name="CombatManager" file="scripts/manager_combat.lua" />   						
+		<!-- <script name="CombatManager" file="scripts/manager_combat.lua" /> -->
 
-		<!-- manager_token.lua: token manger copied from CoreRPG ruleset -->		
-		<script name="TokenManager" file="scripts/manager_token.lua" />   		
+		<!-- manager_token_override.lua: code that overrides token manger CoreRPG ruleset code from manager_token.lua, 
+		handles horizontal health bar calling and token faction underlays -->		
+		<script name="TokenManagerOverride" file="scripts/manager_token_override.lua" />   		
 
 		<!-- map_ping.lua: DM map ping -->		
 		<script name="MapPing" file="scripts/map_ping.lua" />   			
@@ -93,6 +99,7 @@
 		<string name="option_range_rules_used">Range rules to use</string>	
 		<string name="option_token_rotation_with_alt">Lock token rotation to Alt + Mouse Wheel</string>	
 		<string name="option_skip_non_initiatived_actor">Skip CT actors that haven't rolled intitiative</string>
+	    <string name="option_saving_throw_graphics">Saving Throw graphics</string>
 		
 	
 
@@ -105,9 +112,8 @@
 		<!-- token_effects_handler.lua: Remove effect if already on CT entry, label version of effects -->			
 		<script name="EffectsManager" file="scripts/token_effects_handler.lua" />
 
-		<!-- token_wheel_manager.lua: Height manager for tokens -->
-		<script name="TokenWheelManager" file="scripts/token_wheel_manager.lua" />   
-		<includefile source="graphics/graphics_fonts.xml" />	
+		<!-- token_height.lua: Manages height widgets and corresponding db entries for tokens. -->
+		<script name="TokenHeight" file="scripts/token_height.lua" />   		
 
 		<!-- token_hightlighter.lua: Adds a underlay to token for the active CT actor. Different color depending on faction.  -->
 		<script name="TokenHighlighter" file="scripts/token_highlighter.lua" />   				
@@ -115,7 +121,14 @@
 		<!-- token_remover.lua: Mouse and button click to remove tokens from map, or map and CT. -->
 		<script name="TokenRemover" file="scripts/token_remover.lua" />   
 
-		<!-- window-resize.lua: Resizing windows on the fly according to menu settings. -->
+		<!-- token_save_graphics: overriding 5E Ruleset manager_action_save.lua functions to draw save result graphics on tokens, after saving throw has been thrown-->
+		<script name="TokenSaveGraphics" file="scripts/token_save_graphics.lua" />    
+
+		<!-- token_wheel_manager.lua: Height manager for tokens -->
+		<script name="TokenWheelManager" file="scripts/token_wheel_manager.lua" />   
+		<includefile source="graphics/graphics_fonts.xml" />					
+
+		<!-- window_resize.lua: Resizing windows on the fly according to menu settings. -->
 		<script name="WindowResize" file="scripts/window_resize.lua" />
 
 		<!-- menu_item_register: Menu items for Interface Modifier 5E -->
@@ -135,9 +148,9 @@
 		<string name="option_quests">Quests</string>					        
 		
 
-		<!-- Combat Enhancer Icon -->
-		<icon name="ce_icon" file="graphics/icons/combat_enhancer_icon.png" />				
+		<!-- 5E Enhancer Icon -->
+		<icon name="ce_icon" file="graphics/icons/5E_enhancer_icon.png" />				
 	</base>			
 
-	<announcement text="5E Enhancer v0.9.1" font="emotefont" icon="ce_icon" />			
+	<announcement text="5E Enhancer v0.10.0" font="emotefont" icon="ce_icon" />			
 </root>

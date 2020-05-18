@@ -1,5 +1,3 @@
-# UNDER DEVELOPMENT ALPHA STATE
-
 # FG-5E-Enhancer
 
 A community extension I'm writing to improve D&D 5E in Fantasy Grounds Unity.
@@ -7,6 +5,12 @@ A community extension I'm writing to improve D&D 5E in Fantasy Grounds Unity.
 ## Design Goal
 
 A rewritten minimalist streamlined version of the original 5E Combat Enhancer Classic including a number of broader ranged improvements for playing 5E, written for Fantasy Grounds Unity.
+
+This extension is not intended for backwards compatibility with FGC. While some features may work, others may not or not as intended. There is no testing done or support for its use in FGC.
+
+While one of the design goals is to have a small as possible footprint. This extension is very large and complex, and therefore touches on numerous functionalities.
+I am not able to put extra work into making sure it is compatible with other extensions, doing so would become an endless task and the extension already does and has taken countless of hours to develop.
+
 
 ### Prerequisites
 
@@ -44,6 +48,7 @@ I use [SemVer](http://semver.org/) for versioning, with version number MAJOR.MIN
 ## License
 
 This project is licensed under private License - see the [LICENSE.md](LICENSE.md) file for details.
+The license is held by Styrmir Thorarinsson and some proprietary code supplied by SmiteWorks.
 
 ## Acknowledgments
 
@@ -86,22 +91,11 @@ This project is licensed under private License - see the [LICENSE.md](LICENSE.md
     You can return to the default window sizes at any time.
     If a window has been resized manually and is therefore in the 'windowstate.xml' file of your campaign, that takes precedence over the extension. This enables you to manually configure any windows you'd like.
 
+## Chat Commands
+/dsave : Clears save graphics from all tokens. Short for delete save/s.
 
-## Roadmap
-Primary
-- Effects as tooltip option on hover over token option.
-- On token click, highlight same actor in CT.
-Secondary
-- Altitude for tokens.
-- Save success or fail graphics on target on combat map. Button to clear.
 
-## In the Works
-- Remove all blood tokens with button press. 
-    If token placed underneath original token, then should be removed with remove all tokens menu.
-- Added highlighting of selected token in CT and added frame graphics to accomplish this. (ct_actor_higlighter.lua)
 
-## Things to patch
-- Create new larger graphics large health dot and health bar. Are a bit blurred in FGU.
 
 ## Releases
 v0.1.0 (September, 17th, 2019)  
@@ -194,14 +188,32 @@ V0.9.1 (April 20th, 2020)
 - If damage was enough to instantly kill a target no death graphic (skull / cross) would appear. Fixed.
 - If target already dead took damage again, the death graphic (skull / cross) would dissapear. Fixed.
 
+v0.10.0 (May 18, 2020)
+- Decreased code footprint:
+Removed manager_combat.lua, created new overriding lua file for functions overridden.
+Removed manager_token.lua, created new overriding lua file for functions overridden.
+- Add saving throw result graphics on tokens.
+- Added new text chat command to delete save graphics from all tokens. '/dsave' short for delete save/s. Menu item switch added.
+- Automatic modifier for ranged attacks in melee only triggered when the target was is in melee. Added trigger for other active enemy (medium sized or smaller) when in melee range during attack. Crossbow expert exception included.
+- Added exception for automatic range modifiers when spells have no readable maximum range (due to on-standard entry), then the function is exited instead of throwing an error. Text message output to chat and console.
+- Height widgets didn't transfer between clients when added, only visible and used for range calculations on the client that added it. Fixed.
+- Height only changeable by DM.
+- Height widget didn't delete on 0 height. Fixed.
+- Added load order.
+- Under certain map circumstances the Token.onWheel function would not be passed a token. Added exit clause to handle that null reference.
+- Resizing images if not of equal horizontan and vertical sizes would behave strangely. Fixed.
+- A number of small errors cleaned up.
 
 Ideas for future versions.
 - Add map pinging, Ctrl + L-Click on map.
-- Change mouse cursor to regular arrow. Menu toggle.
 - Add death save functionality for NPCs.
 - Update range number by drawn range arrow with extension calculated ranges (including for height).
-- Add saving throw result graphics on tokens.
+>> campaign/scripts/image.lua:
+function onMeasurePointer(pixellength,pointertype,startx,starty,endx,endy)
+ImageControl.onMeasurePointer
 
-Bugs
-- Height widgets don't transfer between clients when added, only visible and used for range calculations on the client that added it.
-- Automatic modifier for ranged attacks in melee only trigger when the target is in melee, not when attacking other target while foe in melee range.
+
+
+
+
+

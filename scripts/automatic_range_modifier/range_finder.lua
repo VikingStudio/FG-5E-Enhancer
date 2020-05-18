@@ -1,5 +1,10 @@
 -- Returns the range between two tokens on the battlemap, minor modifications to core code snippet from 5E Ruleset -> manager_actor2.lua.
 
+function onInit()
+	ImageManager.onMeasurePointer = onMeasurePointer;
+end
+
+
 function getRange(rAttacker, rDefender)    
 	local nodeAttacker = ActorManager.getCTNode(rAttacker);
     local nodeDefender = ActorManager.getCTNode(rDefender);
@@ -60,8 +65,8 @@ function getRange(rAttacker, rDefender)
 					end						
 										
 					-- get height from tokens
-					local actorHeight = TokenWheelManager.getTokenHeight(tokenAttacker);
-					local targetHeight = TokenWheelManager.getTokenHeight(tokenDefender);	
+					local actorHeight = TokenHeight.getTokenHeight(tokenAttacker);
+					local targetHeight = TokenHeight.getTokenHeight(tokenDefender);	
 
 					-- calculate range with height included
 					local heightDifference = actorHeight - targetHeight;
@@ -83,4 +88,52 @@ function getRange(rAttacker, rDefender)
                 	
 	        end
     end        
+end
+
+
+-- sub in the measurement text for our custom varient for height
+function onMeasurePointer(pixellength,pointertype,startx,starty,endx,endy)
+	local lock = acquireMeasureSemaphore(); 
+	if lock then
+		--Debug.console("node of CT " .. tostring(type(DB.findNode('combattracker.list')))); 
+		local gridSize = self.getGridSize(); 
+		local snapSX,snapSY = snapToGrid(startx,starty); 
+		local snapEX,snapEY = snapToGrid(endx,endy); 
+		--Debug.console('coords are x:' .. snapSX/gridSize .. ' y: ' .. snapSY/gridSize .. ' to x: ' .. snapEX/gridSize .. ' y: ' .. snapEY/gridSize); 
+
+		--local ctNodeStart,ctNodeEnd = getCTNodesAt(startx,starty,endx,endy,gridSize); 
+		local ctNodeStart,ctNodeEnd = getCTNodesAt(startx,starty,endx,endy); 
+
+
+		local heightDistance = 0; 
+		if HeightManager ~= nil then
+			local sh = getCTEntryHeight(ctNodeStart);
+			local eh = getCTEntryHeight(ctNodeEnd); 
+			-- height is stored in 5ft units, we're working in raw units
+			heightDistance = math.abs(eh-sh)/5; 
+		end
+
+		local lenX = math.floor(math.abs(snapSX - snapEX)/gridSize); 
+		local lenY = math.floor(math.abs(snapSY - snapEY)/gridSize); 
+		local baseDistance = math.max(lenX,lenY) + math.floor(math.min(lenX,lenY)/2); 
+		local distance = baseDistance;
+
+		--local offX,offY = getGridOffset(); 
+		--Debug.console('offX: ' .. offX .. ' offY: ' .. offY); 
+
+
+		--Debug.console('baseDistance: ' .. baseDistance .. ' heightDistance: ' .. heightDistance); 
+		if heightDistance > 0 then
+			distance = math.sqrt((baseDistance^2)+(heightDistance^2)); 
+			distance = math.floor((distance*10)+0.5)/10; 
+		end
+		releaseMeasureSemaphore(); 		
+
+		--Debug.chat('' .. (distance*5) .. ' ft');
+		return ('' .. (distance*5) .. ' ft'); 
+		--return ('' .. (distance*5) .. ' ft' .. ' SH: ' .. sh .. ' EH: ' .. eh); 
+		--return ('' .. distance .. ' units'); 
+		--return ('X: ' .. lenX .. ' Y: ' .. lenY); 
+	end
+	return ''; 
 end

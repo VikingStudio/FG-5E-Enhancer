@@ -6,38 +6,27 @@ function onInit()
     Token.onWheel = onWheel;
 end
 
+
 function onWheel(token, notches)
-    local rotateLock = OptionsManager.getOption('CE_TRA');    
+    if token == nil then
+        return;
+    end
 
-    if Input.isShiftPressed() then    
-        -- height text widget    
-        local nHeight = 0;
-        local heightWidget = token.findWidget("tokenheight");
+    local rotateLock = OptionsManager.getOption('CE_TRA');
 
-        -- add up update widget
-        if (heightWidget == nil) then
-            nHeight = 5 * notches;
-
-            heightWidget = token.addTextWidget( getFontName(), '5 ft.' );
-            heightWidget = updateHeightWidget(heightWidget, nHeight);
-        else
-            -- regex pattern: ^[-]?[0-9]+   (returns - modifier and numbers at start of string, ex.: '-120 ft.' or '-120 ft', returns '-120')
-            -- from the start of the string, zero or one of '-', then one or more of 0-9
-            local sPattern = '^[-]?[0-9]+';
-            local sHeight = heightWidget.getText();
-
-            sHeight = sHeight:match(sPattern);
-            nHeight = tonumber(sHeight);
-
-            nHeight = nHeight + (5 * notches); 
-
-            heightWidget = updateHeightWidget(heightWidget, nHeight);
-        end
+    if Input.isShiftPressed() and User.isHost() then    
+        TokenHeight.updateHeight(token, notches);
     elseif Input.isControlPressed() then
         -- token scaling
-        local scale = token.getScale();
-        scale = scale + notches * 0.1;
-        token.setScale(scale);
+        Debug.console('5E Enhancer: Token.onWheel handler warning produced on purpose to force fallback to original token scaling code.');
+        Token.onWheel(token, notches);
+
+        --local scale = token.getContainerScale();
+        --scale = scale + notches * 0.1;
+        --token.setContainerScale(scale);
+
+        -- update health bar or dot graphics
+        --TokenManagerOverride.updateHealthHelper(token, CombatManager.getCTFromToken(token));
     elseif rotateLock == 'off' then     
         -- token rotation for all
         token.setOrientation((token.getOrientation()+notches)%8);    
@@ -47,57 +36,4 @@ function onWheel(token, notches)
     end
 
     return true;
-end
-
--- return the integer of the tokens height
-function getTokenHeight(token)
-    local nHeight = 0;
-    local heightWidget = token.findWidget("tokenheight"); 
-    
-    if (heightWidget == nil) then
-        return 0;        
-    elseif (heightWidget ~= nil) then
-        -- regex pattern: ^[-]?[0-9]+   (returns - modifier and numbers at start of string, ex.: '-120 ft.' or '-120 ft', returns '-120')
-        -- from the start of the string, zero or one of '-', then one or more of 0-9
-        local sPattern = '^[-]?[0-9]+';
-        local sHeight = heightWidget.getText();
-
-        sHeight = sHeight:match(sPattern);
-        nHeight = tonumber(sHeight);
-
-        return nHeight;
-    end
-end
-
-function getFontName()
-    local fontName;
-
-    --height_large, height_medium, height_small
-    local fontSize = OptionsManager.getOption("CE_HFS");
-    if ( fontSize == 'option_small' ) then
-        fontName = "height_small";
-    elseif ( fontSize == 'option_medium' ) then
-        fontName = "height_medium";
-    else         
-        fontName = "height_large"; 
-    end
-
-    return fontName;
-end
-
-function updateHeightWidget(widget, nHeight)     
-    widget.setName("tokenheight"); 
-    widget.setFrame('tempmodmini', 10, 10, 10, 4);
-    widget.setPosition("bottom right", 0, 0);     
-    widget.setColor('#000000');
-    widget.setText(nHeight .. ' ft.');
-
-    -- visibility    
-    if nHeight == 0 then
-        widget.setVisible(false);
-        widget.destroy();
-    else
-        widget.bringToFront();       
-        widget.setVisible(true);
-    end        
 end

@@ -15,7 +15,7 @@ function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
     ]]--
 
     -- remove old widget graphics if any before drawing new one, also clears 
-    --local aWidgets = TokenManager.getWidgetList(tokenCT, "");
+    --local aWidgets = TokenManagerOverride.getWidgetList(tokenCT, "");
     -- local widgetActorCondition = aWidgets["actor_condition"];
 
     -- remove/clear current condition or blood pool widgets if any

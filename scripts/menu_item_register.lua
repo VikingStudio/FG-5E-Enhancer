@@ -48,9 +48,8 @@ function registerMenuItems()
 		{ labels = "Standard|Variant (Placeholder)|RAW", values = "option_standard|option_variant|option_raw", default = "option_standard" })
 	OptionsManager.registerOption2("CE_SNIA", false, "option_header_5eenhancer", "option_skip_non_initiatived_actor", "option_entry_cycler",
 		{ labels = "option_val_on", values = "on", baselabel = "option_val_off", baseval = "off", default = "off" })	
-
-				
-
+	OptionsManager.registerOption2("CE_STG", false, "option_header_5eenhancer", "option_saving_throw_graphics", "option_entry_cycler",
+		{ labels = "option_val_on", values = "on", baselabel = "option_val_off", baseval = "off", default = "on" })	
 
 	-- Window Resize menu options
 	OptionsManager.registerOption2("IM_BG", false, "option_header_5eenhancher_window_resizing", "option_backgrounds", "option_entry_cycler",
