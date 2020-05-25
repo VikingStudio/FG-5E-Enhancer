@@ -283,29 +283,29 @@ function modAttack(rSource, rTarget, rRoll)
 		if (bFlankingRules == 'option_val_on') and (sAttackType == 'M') then			
 			local bFlanking = Flanking.isFlanking(rSource, rTarget);
 			if bFlanking == true then 
-				TokenHelper.postChatMessage("Flanking melee attack."); 
+				TokenHelper.postChatMessage("Flanking melee attack, advantage given."); 
 				bADV = true;
 			end		
 		end		
 		if (bFlankingRules == 'option_val_1') and (sAttackType == 'M') then
 			local bFlanking = Flanking.isFlanking(rSource, rTarget);
 			if bFlanking == true then 
-				TokenHelper.postChatMessage("Flanking melee attack."); 
-				nAddMod = 1;
+				TokenHelper.postChatMessage("Flanking melee attack, +1 modifier added."); 
+				nAddMod = nAddMod + 1;
 			end								
 		end		
 		if (bFlankingRules == 'option_val_2') and (sAttackType == 'M') then
 			local bFlanking = Flanking.isFlanking(rSource, rTarget);
 			if bFlanking == true then 
-				TokenHelper.postChatMessage("Flanking melee attack."); 
-				nAddMod = 2;
+				TokenHelper.postChatMessage("Flanking melee attack, +2 modifier added."); 
+				nAddMod = nAddMod + 2;
 			end								
 		end
 		if (bFlankingRules == 'option_val_on_5') and (sAttackType == 'M') then
 			local bFlanking = Flanking.isFlanking(rSource, rTarget);
 			if bFlanking == true then 
-				TokenHelper.postChatMessage("Flanking melee attack."); 
-				nAddMod = 5;
+				TokenHelper.postChatMessage("Flanking melee attack, +5 modifier added."); 
+				nAddMod = nAddMod + 5;
 			end								
 		end	
 --[[

@@ -26,23 +26,17 @@ function updateHeight(token, notches)
         end    
     end
 
-    Debug.console("5E Enhancer: Aware of recursive warning caused by dbNode.setValue() while updating height in db.")
-    -- add or update widget
-    if nHeight == 0 then
-        nHeight = 5 * notches;
+    Debug.console("5E Enhancer: Recursive warning while updating height in DB known, has no effect on it working.")
 
-        -- Create DB entry for height
-        dbNode = ctNode.createChild("height","number");
-        dbNode.setValue(nHeight);
+    -- update height
+    nHeight = nHeight + (5 * notches);
+
+    -- manage CT DB entry
+    if nHeight ~= 0 then
+        DB.setValue(ctNode, "height", "number", nHeight);
     else
-        nHeight = nHeight + (5 * notches); 
-        -- update DB height or delete db entry if height == 0
-        if (dbNode ~= nil) and (nHeight == 0) then
-            DB.deleteChild(ct, "height");
-        else
-            dbNode.setValue(nHeight);
-        end
-    end 
+        DB.deleteChild(ctNode, "height");
+    end
 
     -- update text widget        
     updateHeightWidget(token, nHeight);
@@ -87,7 +81,6 @@ end
 
 function getTokenHeight(token)
     local nHeight = 0;
-    local heightWidget = token.findWidget("tokenheight"); 
     
     local ctNode = CombatManager.getCTFromToken(token);
     local dbNode = DB.getChild(ctNode, "height");

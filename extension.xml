@@ -3,8 +3,8 @@
 <root version="3.0" release="1">
 
 	<properties>
-		<name>5E Enhancer v0.10.0</name>
-		<version>0.10.0</version>
+		<name>5E Enhancer v0.10.1</name>
+		<version>0.10.1</version>
 		
 		<author>Styrmir T.</author>
 		<description>5E Enhancer</description>
@@ -99,7 +99,7 @@
 		<string name="option_range_rules_used">Range rules to use</string>	
 		<string name="option_token_rotation_with_alt">Lock token rotation to Alt + Mouse Wheel</string>	
 		<string name="option_skip_non_initiatived_actor">Skip CT actors that haven't rolled intitiative</string>
-	    <string name="option_saving_throw_graphics">Saving Throw graphics</string>
+	    <string name="option_saving_throw_graphics">Saving throw graphics</string>
 		
 	
 
@@ -146,11 +146,11 @@
 		<string name="option_story">Story</string>	
 		<string name="option_spells">Spells</string>	
 		<string name="option_quests">Quests</string>					        
-		
+	
 
 		<!-- 5E Enhancer Icon -->
 		<icon name="ce_icon" file="graphics/icons/5E_enhancer_icon.png" />				
 	</base>			
 
-	<announcement text="5E Enhancer v0.10.0" font="emotefont" icon="ce_icon" />			
+	<announcement text="5E Enhancer v0.10.1" font="emotefont" icon="ce_icon" />			
 </root>

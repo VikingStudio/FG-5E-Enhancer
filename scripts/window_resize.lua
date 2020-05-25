@@ -30,7 +30,7 @@ function windowResize(window)
         end
 
         if (menuSelection == 'option_larger') then
-            window.setSize(500, 750);
+            window.setSize(500, 650);
         end                    
     end     
 
@@ -82,7 +82,7 @@ function windowResize(window)
         end
 
         if (menuSelection == 'option_larger') then
-            window.setSize(500, 750);
+            window.setSize(500, 650);
         end                    
     end   
 
@@ -121,7 +121,7 @@ function windowResize(window)
         end
 
         if (menuSelection == 'option_larger') then
-            window.setSize(500, 750);
+            window.setSize(500, 650);
         end                    
     end   
 
@@ -147,7 +147,7 @@ function windowResize(window)
         end
 
         if (menuSelection == 'option_larger') then
-            window.setSize(500, 750);
+            window.setSize(500, 650);
         end                    
     end        
 
@@ -173,7 +173,7 @@ function windowResize(window)
         end
 
         if (menuSelection == 'option_larger') then
-            window.setSize(500, 750);
+            window.setSize(500, 650);
         end                    
     end       
 end

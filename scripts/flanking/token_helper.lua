@@ -40,8 +40,9 @@ function getTokenMap (imgCtrl)
                 local x, y = token.getPosition();            
                 local nReach = DB.getValue(node, "reach", "");   
                 local sSize = DB.getValue(node, "size", ""); 
-                local nHeight = DB.getValue(node, "height", "");
-                if nHeight == nil then nHeight = 0; end
+                local nHeight = TokenHeight.getTokenHeight(token);
+                --local nHeight = DB.getValue(node, "height", "");
+                --if nHeight == nil then nHeight = 0; end
                 if sSize == '' then sSize = 'Medium'; end -- PC entries don't have a 'size' entry in the <combattracker> DB section, so set them as medium by default
                 
                 local nGridx = (tonumber(x) + tonumber(gridOffsetX)) / gridSize;

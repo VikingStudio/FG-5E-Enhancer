@@ -55,22 +55,39 @@ The license is held by Styrmir Thorarinsson and some proprietary code supplied b
 * SmiteWorks rulesystem and API code.
 
 # Menu Options '5E Enhancer, Battle Map Settings'
+- Actor health widget conditions: Enable widgets on tokens that indicate their health, such as blood skulls.
 - Automatic range modifiers: Enable range messages and automatic disadvantage on long ranges.
+- Blood on tokens: Draw blood marks on tokens as their health deteriorates.
+- Blood pools on death: Draw blood pools underneath tokens on death.
 - Horizontal health bars: Enable horizontal health bars over tokens. 5 options available: Off | Left aligned, default height | Left aligned, taller | Centered, default height | Centered, taller.
 - Larger health dots: Enable larger health dots for tokens. 3 options available: FGU Default size | Larger | Largest.
-- Show CT active actor underlay (DM only): Toggle to add underlay under CT active actor.
-- Show faction/space underlay: Shows or hides the underlay added for tokens faction (friend/foe/neutral). Re-add tokens to update.
-- Show reach underlay: Shows or hides the reach underlay added on hover for tokens. Re-add tokens to update.
-- Stop token rotation: Stops token rotation as much as possible when mouse wheel is scrolled over token. Tries to reset it as turning straight up on mouse scroll.
-- Token underlay opacity (GM only): Select the opacity of the graphical highlight underneath tokens when hovering over items in the combat tracker.
+- Lock token rotation to Alt + Mouse Wheel: With this enabled the tokens only rotate if you're holding down the alt button while scrolling the mouse wheel over them. 
+- Range rules to use: Select how to calculate ranges for automatic range modifiers. Standard, the default recommended. Actual pixel distance between the edges of the boxes surrounding the tokens divided by 5 for the width of the hexes you've set. RAW, rules as written, not tested fully.
+Ranged in melee modifier (for medium sizes and smaller only): When enabled it adds a disadvantage for ranged attacks while there is an active enemy in melee range, if the attacker does not have the crossbow feat.
+- Saving throw graphics: Adds saving grapical indicators for if a target succeeds of fails a saving throw. (use '/dsave' in the chat to delete these markers afterwards)
+- Show faction/space underlay: Shows or hides the underlay added for tokens faction (friend/foe/neutral)
+- Skipt CT actors that haven't rolled initiative: When enabled the CT will skip entries in the CT, without rolled initiatives or initiatives of 0, when the Next Actor / End Turn button is pressed.
+- Skull or cross on actor death: Select the graphic to display on a token on your map when the actor drops to 0 hp's. Actor health widgets need to be enabled.
+- Token deletion button combination: Select the button and mouse button combination to use for deleting tokens from the map and the CT. Added for mac users as it was easy to accidentally delete tokens with the default PC configuration.
+- Token height font size: Determines the size of the fonts to use when drawing height widgets on tokens.
+- Token underlay for CT active actor (DM only): Draws only the underlay of the active token on the map, clears all others. Re-add tokens to refresh.
+- Token underlay opacity (DM only): Select the opacity of the graphical highlight underneath tokens when hovering over items in the combat tracker.
+- Token underlay size (DM only): Select the size of the token underlay to draw.
+- Use flanking rules (for medium sizes and smaller only): If enabled automatically adds the modifier you select to flanking attacks to mediums sized and smaller targets. Also considers height differences of the tokens.
 
 # Menu Options '5E Enhancer, Window Resizing'
 - New menu options that enable you to change your default window sizes for a lot of different types.
+
+## Chat Macro Commands
+
+- /dsave : delete save graphics from all tokens
 
 ## Features, Combat
 - Delete tokens from map and CT with single mouse click. 
     Alt + left mouse-click on token on map, deletes the token from the map.
     Alt + Ctrl + left mouse-click on token on map, deletes the token from the map and from the CT.
+- Add height widget to a token (DM only).
+    Shift + mouse scroll on top of token.    
 - Horizontal health bars, lightly transparent. Toggable in menu. Select health for tokens to be displayed as bars, select 'Combat Enhancer 5E > Horizontal health bars > On'. Add token from CT for new health bar.
 - Larger health dot graphics for tokens. Toggable in menu. Add token from CT for new health dot.
 - Automatic range finding from ranged attack. Toggable in menu. Disadvantage for medium to max range added automatically, sharpshooter feat negates this. Message output to chat.
@@ -204,16 +221,18 @@ Removed manager_token.lua, created new overriding lua file for functions overrid
 - Resizing images if not of equal horizontal and vertical sizes would behave strangely. Fixed.
 - A number of small errors cleaned up.
 
+v0.10.1 (25th May, 2020)
+- Slightly decreased height of certain window sizes when set to larger with the window resizer.
+- Automatic flanking modifier if +1, +2, +5 would overwrite any other modfiers in place. Fixed.
+- Added further descriptives to chat output for automatic flanking, to add clarity to modifers seen in output.
+- If a token had height, when flanking modifiers were enabled, sometimes this would cause an error, stopping the attack. Fixed.
+- Modifying and adding height with shift + mouse wheel scroll, behaved a bit eratically at times. Fixed.
+- Updated the readme file to included information about all the new menu items, macro- and keyboard mouse combination commands.
+
 Ideas for future versions.
 - Add map pinging, Ctrl + L-Click on map.
 - Add death save functionality for NPCs.
 - Update range number by drawn range arrow with extension calculated ranges (including for height).
->> campaign/scripts/image.lua:
-function onMeasurePointer(pixellength,pointertype,startx,starty,endx,endy)
-ImageControl.onMeasurePointer
 
 
-
-
-
-
+Bug reports:
