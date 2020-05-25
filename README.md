@@ -223,10 +223,10 @@ Removed manager_token.lua, created new overriding lua file for functions overrid
 
 v0.10.1 (25th May, 2020)
 - Slightly decreased height of certain window sizes when set to larger with the window resizer.
-- Automatic flanking modifier if +1, +2, +5 would overwrite any other modfiers in place. Fixed.
-- Added further descriptives to chat output for automatic flanking, to add clarity to modifers seen in output.
+- Automatic flanking modifier if +1, +2, +5 would overwrite any other modifiers in place. Fixed.
+- Added further descriptive to chat output for automatic flanking, to add clarity to modifiers seen in output.
 - If a token had height, when flanking modifiers were enabled, sometimes this would cause an error, stopping the attack. Fixed.
-- Modifying and adding height with shift + mouse wheel scroll, behaved a bit eratically at times. Fixed.
+- Modifying and adding height with shift + mouse wheel scroll, behaved a bit erratically at times. Fixed.
 - Updated the readme file to included information about all the new menu items, macro- and keyboard mouse combination commands.
 
 Ideas for future versions.
