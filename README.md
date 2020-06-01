@@ -35,7 +35,7 @@ This is the actual extension, it includes the compressed codebase and a number o
 Parts of the whole extensions functionality has been cropped out into smaller sub-extensions. 
 So if you don't want to use the whole extension but want some of its functionality, then you can download any or all of these for use with FG, and use them individually instead.
 
-Special thanks to ScriedRaven on the FG forums who contributed this to the project from the original code, and fall under the original private license.
+Special thanks to ScriedRaven on the FG forums who contributed these to the project from the original code, and fall under the original private license.
 
 ps. These extensions are not officially supported, only the main extension is.
 
@@ -260,6 +260,10 @@ v0.10.2 (1st Jun, 2020)
 - Special NPC attacks including a recharge were differently named in DB entry name compared to CT parsed attack name. Added additional lua string pattern matching to DB entry name comparison to overcome this. Now works. ps. Rolling the same attack from the NPC window would work as name correlated to the DB entry then.
 - Underlay switching to active actor (for DM) when turned on was not working. Fixed.
 - The 'Token underlay opacity' menu setting will now also affect the opacity of underlays drawn using the 'Show faction/underlay' menu option instead of 'Underlay switching for active actor...' menu option.
+
+v0.10.3 (- Jun, 2020)
+-
+
 
 Ideas for future versions.
 - Add map pinging, Ctrl + L-Click on map.
