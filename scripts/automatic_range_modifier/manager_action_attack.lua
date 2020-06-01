@@ -241,23 +241,21 @@ function modAttack(rSource, rTarget, rRoll)
 
 		-- Check for range disadvantages if enabled in menu options
 		local bAutomaticRangeModifers = OptionsManager.getOption("CE_ARM"); 
-		if (bAutomaticRangeModifers == 'on') and (sAttackType == 'R') then
-			--Debug.chat('manager_action_attack: modAttack rRoll.sDesc', rRoll.sDesc)
+		if (bAutomaticRangeModifers == 'on') and (sAttackType == 'R') then			
 			local bRanged = false;
 			local bInRange = false;
 			local sMessage = '';
 			local sWeaponNameStartIndex = string.find(rRoll.sDesc,']') + 2; -- index start at + 2, because we want the text after the closing bracket, and there is one whitespace			
 			local sWeaponNameEndIndex = string.find(rRoll.sDesc,'[', 2, sWeaponNameStartIndex);	-- start searching after character 2, as we want to find the second '['		
 			local sWeaponName = '';
-			--Debug.chat(sWeaponNameStartIndex, sWeaponNameEndIndex)
+			
 			if sWeaponNameEndIndex ~= nil then
 				sWeaponName = string.sub(rRoll.sDesc, sWeaponNameStartIndex, sWeaponNameEndIndex - 2); -- -2 to get rid trailing of whitespace				
 			else
 				sWeaponName = string.sub(rRoll.sDesc, sWeaponNameStartIndex);
-			end
+			end			
 			--local sAttackType = rRoll.sDesc:match("%[ATTACK.*%((%w+)%)%]");			
-			--sWeaponName = rRoll.sDesc:match("%[ATTACK.*%w+%)].(%.*%)%.[");
-			--Debug.chat('modAttackweapon', rSource, rTarget, sAttackType, sWeaponName)
+			--sWeaponName = rRoll.sDesc:match("%[ATTACK.*%w+%)].(%.*%)%.[");			
 			
 			-- only get range modifiers if we have a source and target (no target if rolling from CT NPC without target or dropping on target for example, same for PC sheets)
 			local bConditions = RangedAttack.checkConditions(rSource, rTarget);				

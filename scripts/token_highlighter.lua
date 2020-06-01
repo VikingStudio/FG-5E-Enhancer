@@ -2,7 +2,13 @@
     Script that adds a underlay to token for the active CT actor. Different color depending on faction.
 ]]--
 
-function updateActiveHelper(tokenCT, nodeCT)
+
+function onInit()
+    TokenManager.updateActiveHelper = updateActiveHelper;    
+end
+
+function updateActiveHelper(tokenCT, nodeCT)    
+    
     -- Faction/space underlay
     if OptionsManager.getOption("CE_SAAU") == "on" then
         local nDU = GameSystem.getDistanceUnitsPerGrid();
@@ -20,7 +26,7 @@ function updateActiveHelper(tokenCT, nodeCT)
         if (opacityPercentage == nil) or (opacityPercentage == '') then
             opacityPercentage = '20'; 
         end
-
+        
         local sFaction = DB.getValue(nodeCT, "friendfoe", "");
         if sFaction == "friend" then
             tokenCT.addUnderlay(nSpace, changeHexColorOpacity("2f00ff00", opacityPercentage) );
@@ -28,12 +34,12 @@ function updateActiveHelper(tokenCT, nodeCT)
             tokenCT.addUnderlay(nSpace, changeHexColorOpacity("2fff0000", opacityPercentage) );
         elseif sFaction == "neutral" then
             tokenCT.addUnderlay(nSpace, changeHexColorOpacity("2fffff00", opacityPercentage) );
-        end
+        end    
     end
 end
 
 -- remove all underlays for all tokens on the map
-function removeAllTokenUnderlays()        
+function removeAllTokenUnderlays()       
     for _,v in pairs(CombatManager.getCombatantNodes()) do        
         local token = CombatManager.getTokenFromCT(v);
         

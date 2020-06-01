@@ -190,12 +190,16 @@ function updateSizeHelper(tokenCT, nodeCT)
 	-- Faction/space underlay	
 	if OptionsManager.getOption('CE_SFU') == "on" then
 		local sFaction = DB.getValue(nodeCT, "friendfoe", "");
+	
+		local opacityPercentage = OptionsManager.getOption('CE_UOP');	
+		TokenHighlighter.changeHexColorOpacity("2f00ff00", opacityPercentage) 
+
 		if sFaction == "friend" then
-			tokenCT.addUnderlay(nHalfSpace, "2f00ff00");
+			tokenCT.addUnderlay(nHalfSpace, TokenHighlighter.changeHexColorOpacity("2f00ff00", opacityPercentage));
 		elseif sFaction == "foe" then
-			tokenCT.addUnderlay(nHalfSpace, "2fff0000");
+			tokenCT.addUnderlay(nHalfSpace, TokenHighlighter.changeHexColorOpacity("2fff0000", opacityPercentage));
 		elseif sFaction == "neutral" then
-			tokenCT.addUnderlay(nHalfSpace, "2fffff00");
+			tokenCT.addUnderlay(nHalfSpace, TokenHighlighter.changeHexColorOpacity("2fffff00", opacityPercentage));
 		end
 	end
 	

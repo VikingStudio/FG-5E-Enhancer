@@ -49,20 +49,23 @@ function getRange(rAttacker, rDefender)
 					nSquares = nSquares - (nDefenderSpace / 2);
                     
 					-- START OF NEW CODE REPLACEMENT
-					local rangeRules = OptionsManager.getOption('CE_RRU'); -- (option_standard|option_variant|option_raw)
 					local distance2D = 0;
 					local distance3D = 0;
-					
-					if (rangeRules == 'option_standard') then
-						distance2D = math.ceil( (nSquares + 1) * nDU );
-					end
+					distance2D = math.ceil( (nSquares + 1) * nDU );
+
+					-- local rangeRules = OptionsManager.getOption('CE_RRU');
+					-- if (rangeRules == 'option_on') then
+					-- distance2D = math.ceil( (nSquares + 1) * nDU );	
+					-- end
+					--[[ disabled rules for the time being as not working properly 
 					if (rangeRules == 'option_variant') then
 						distance2D = Interface.getDistanceDiagMult();
 						Debug.chat('option_variant range', distance2D);
 					end
 					if (rangeRules == 'option_raw') then
 						distance2D = math.ceil(((xDiff^2+yDiff^2)^0.5)/(nGrid/nDU));
-					end						
+					end			
+					]]--
 										
 					-- get height from tokens
 					local actorHeight = TokenHeight.getTokenHeight(tokenAttacker);

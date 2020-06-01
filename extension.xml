@@ -3,8 +3,8 @@
 <root version="3.0" release="1">
 
 	<properties>
-		<name>5E Enhancer v0.10.1</name>
-		<version>0.10.1</version>
+		<name>5E Enhancer v0.10.2</name>
+		<version>0.10.2</version>
 		
 		<author>Styrmir T.</author>
 		<description>5E Enhancer</description>
@@ -96,7 +96,7 @@
 		<string name="option_gm_underlay_size">Token underlay size (DM only)</string>	
 		<string name="option_flanking_rules">Use flanking rules (for medium sizes and smaller only)</string>
 		<string name="option_ranged_melee_modifier">Ranged in melee modifier (for medium sizes and smaller only)</string>
-		<string name="option_range_rules_used">Range rules to use</string>	
+		<!-- <string name="option_range_rules_used">Range rules to use</string>	 -->
 		<string name="option_token_rotation_with_alt">Lock token rotation to Alt + Mouse Wheel</string>	
 		<string name="option_skip_non_initiatived_actor">Skip CT actors that haven't rolled intitiative</string>
 	    <string name="option_saving_throw_graphics">Saving throw graphics</string>
@@ -147,10 +147,20 @@
 		<string name="option_spells">Spells</string>	
 		<string name="option_quests">Quests</string>					        
 	
+		<!-- <script name="ImageRange" file="campaign/scripts/image.lua" /> --> 
+		
+		<!-- overriding the coreRPG: /campaigns/scripts/image.lua, in order to override the range number drawn next to targeting arrows -->>			
+		<template name="image_record_step">
+			<imagecontrol name="image">
+				<indicators locked="image_locked" loading="image_loading" />
+				<default snap="on" drawingsize="500,500" />
+				<script file="campaign/scripts/image.lua" />
+			</imagecontrol>
+		</template>
 
 		<!-- 5E Enhancer Icon -->
 		<icon name="ce_icon" file="graphics/icons/5E_enhancer_icon.png" />				
 	</base>			
 
-	<announcement text="5E Enhancer v0.10.1" font="emotefont" icon="ce_icon" />			
+	<announcement text="5E Enhancer v0.10.2" font="emotefont" icon="ce_icon" />			
 </root>

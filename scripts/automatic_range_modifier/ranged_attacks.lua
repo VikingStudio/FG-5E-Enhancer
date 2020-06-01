@@ -52,12 +52,13 @@ function getRangeModifier5e(rActor, rTarget, sAttackType, sWeaponName)
 		local bEnemyInMeleeRange = false;
 
 		-- go through listed feats to see if the actor has the 'Crossbow Expert' or 'Sharpshooter' feat
-		for i = 1, 9, 1
+		for i = 1, 19, 1
 		do											
 			local featName = DB.getText(DB.findNode(rActor.sCreatureNode),  'featlist.id-0000' .. i .. '.name', '');		
 			--Debug.console('featName', featName);
 			
 			if featName == 'Sharpshooter' then bSharpShooter = true; end
+			if featName == 'Crossbow Expert' then bCrossbowExpert = true; end
 			if featName == '' then i=9; end
 		end		
 
@@ -408,7 +409,8 @@ function getWeaponRanges5e(rActor, sRanged, sWeaponName)
 			
 				-- There are 2 standard entry types for weapons and one for spells under actions
 				-- each is dealt with separately below
-				if ( nodeName:lower() == sWeaponName:lower() ) then					
+				-- if ( nodeName:lower() == sWeaponName:lower() ) then					
+				if string.match(nodeName, sWeaponName) then
 					local description = DB.getText(nodeChild .. '.desc');										
 					local rangeText = '';
 					local rangeFound = false;
@@ -447,6 +449,7 @@ function getWeaponRanges5e(rActor, sRanged, sWeaponName)
 						medRange = string.sub(rangeText, 7, string.len(rangeText));
 						maxRange = medRange;							
 					end	
+										
 				end								
 			end			
 

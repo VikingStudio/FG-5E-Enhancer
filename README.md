@@ -20,7 +20,7 @@ https://www.fantasygrounds.com/home/home.php
 
 ### Installing
     
-1) Open the folder "- Extension Files"
+1) Open the folder "- Extension files (main extension)"
 Download the latest version of the extension file: "5E-Enhancer v?_?_?.ext"
 
 Contains:
@@ -30,6 +30,26 @@ This is the actual extension, it includes the compressed codebase and a number o
 
 3) Enable the '5E Enhancer v?_?_?' extension for your campaign in Fantasy Grounds.
 
+### Installing (optional individual sub-extensions)
+
+Parts of the whole extensions functionality has been cropped out into smaller sub-extensions. 
+So if you don't want to use the whole extension but want some of its functionality, then you can download any or all of these for use with FG, and use them individually instead.
+
+Special thanks to ScriedRaven on the FG forums who contributed this to the project from the original code.
+
+ps. These extensions are not officially supported, only the main extension is.
+
+
+To install sub-extensions:
+
+1) Open the folder "- Extension files (sub-extensions)"
+
+2) Copy any or all of these .ext files to your extension folder (example: Fantasy Grounds\Data\extensions\ [place file here] ).
+
+3) Enable the extensions for your campaign in Fantasy Grounds.
+
+
+Conflicts: Flanking works on it's own, but conflicts with the wounds extension.
 
 ## Built With
 
@@ -49,6 +69,10 @@ I use [SemVer](http://semver.org/) for versioning, with version number MAJOR.MIN
 
 This project is licensed under private License - see the [LICENSE.md](LICENSE.md) file for details.
 The license is held by Styrmir Thorarinsson and some proprietary code supplied by SmiteWorks.
+
+This license extends to all use or inspiration of the whole or part of its work and code.
+
+This license overrides any licences written or supplied with any sub-extensions or code derived from this project.
 
 ## Acknowledgments
 
@@ -70,8 +94,8 @@ Ranged in melee modifier (for medium sizes and smaller only): When enabled it ad
 - Skull or cross on actor death: Select the graphic to display on a token on your map when the actor drops to 0 hp's. Actor health widgets need to be enabled.
 - Token deletion button combination: Select the button and mouse button combination to use for deleting tokens from the map and the CT. Added for mac users as it was easy to accidentally delete tokens with the default PC configuration.
 - Token height font size: Determines the size of the fonts to use when drawing height widgets on tokens.
-- Token underlay for CT active actor (DM only): Draws only the underlay of the active token on the map, clears all others. Re-add tokens to refresh.
-- Token underlay opacity (DM only): Select the opacity of the graphical highlight underneath tokens when hovering over items in the combat tracker.
+- Token underlay for CT active actor (DM only): Draws only the underlay of the active token on the map, clears all others. Re-add tokens to refresh. While this option is on it will remove all underlays and reach drawings for all tokens. Only the active token will get an underlay to highlight them for the DM.
+- Token underlay opacity (DM only): Select the opacity of token underlays.
 - Token underlay size (DM only): Select the size of the token underlay to draw.
 - Use flanking rules (for medium sizes and smaller only): If enabled automatically adds the modifier you select to flanking attacks to mediums sized and smaller targets. Also considers height differences of the tokens.
 
@@ -229,6 +253,14 @@ v0.10.1 (25th May, 2020)
 - Modifying and adding height with shift + mouse wheel scroll, behaved a bit erratically at times. Fixed.
 - Updated the readme file to included information about all the new menu items, macro- and keyboard mouse combination commands.
 
+v0.10.2 (1st Jun, 2020)
+- Removed RAW option for automatic range finding as it wasn't working properly.
+- Increased amount of abilities limit when checking for feats on PC's.
+- Ranged attacks in melee for PC's with the Crossbow feat were rolling at a disadvantage. Fixed.
+- Special NPC attacks including a recharge were differently named in DB entry name compared to CT parsed attack name. Added additional lua string pattern matching to DB entry name comparison to overcome this. Now works. ps. Rolling the same attack from the NPC window would work as name correlated to the DB entry then.
+- Underlay switching to active actor (for DM) when turned on was not working. Fixed.
+- The 'Token underlay opacity' menu setting will now also affect the opacity of underlays drawn using the 'Show faction/underlay' menu option instead of 'Underlay switching for active actor...' menu option.
+
 Ideas for future versions.
 - Add map pinging, Ctrl + L-Click on map.
 - Add death save functionality for NPCs.
@@ -236,3 +268,4 @@ Ideas for future versions.
 
 
 Bug reports:
+Effects in brackets don't get removed when it's dropped on the same target again, unlike regular text string ones.

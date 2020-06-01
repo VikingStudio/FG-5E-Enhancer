@@ -44,10 +44,10 @@ function registerMenuItems()
 		{ labels = "Advantage|+1|+2|+5", values = "option_val_on|option_val_1|option_val_2|option_val_on_5", baselabel = "option_val_off", baseval = "option_val_off", default = "option_val_off" })								
 	OptionsManager.registerOption2("CE_RMM", false, "option_header_5eenhancer", "option_ranged_melee_modifier", "option_entry_cycler",
 		{ labels = "option_val_on", values = "on", baselabel = "option_val_off", baseval = "off", default = "on" })	
-	OptionsManager.registerOption2("CE_RRU", false, "option_header_5eenhancer", "option_range_rules_used", "option_entry_cycler",
-		{ labels = "Standard|RAW", values = "option_standard|option_raw", default = "option_standard" })
+--	OptionsManager.registerOption2("CE_RRU", false, "option_header_5eenhancer", "option_range_rules_used", "option_entry_cycler",
+--		{ labels = "option_val_on", values = "on", baselabel = "option_val_off", baseval = "off", default = "off" })			
 	OptionsManager.registerOption2("CE_SNIA", false, "option_header_5eenhancer", "option_skip_non_initiatived_actor", "option_entry_cycler",
-		{ labels = "option_val_on", values = "on", baselabel = "option_val_off", baseval = "off", default = "off" })	
+		{ labels = "option_val_on", valueSs = "on", baselabel = "option_val_off", baseval = "off", default = "off" })	
 	OptionsManager.registerOption2("CE_STG", false, "option_header_5eenhancer", "option_saving_throw_graphics", "option_entry_cycler",
 		{ labels = "option_val_on", values = "on", baselabel = "option_val_off", baseval = "off", default = "on" })	
 
