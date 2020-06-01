@@ -35,7 +35,7 @@ This is the actual extension, it includes the compressed codebase and a number o
 Parts of the whole extensions functionality has been cropped out into smaller sub-extensions. 
 So if you don't want to use the whole extension but want some of its functionality, then you can download any or all of these for use with FG, and use them individually instead.
 
-Special thanks to ScriedRaven on the FG forums who contributed this to the project from the original code.
+Special thanks to ScriedRaven on the FG forums who contributed this to the project from the original code, and fall under the original private license.
 
 ps. These extensions are not officially supported, only the main extension is.
 
