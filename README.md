@@ -30,12 +30,12 @@ This is the actual extension, it includes the compressed codebase and a number o
 
 3) Enable the '5E Enhancer v?_?_?' extension for your campaign in Fantasy Grounds.
 
-### Installing (optional individual sub-extensions)
+### Sub-Extensions, Installing (optional individual sub-extensions)
 
 Parts of the whole extensions functionality has been cropped out into smaller sub-extensions. 
 So if you don't want to use the whole extension but want some of its functionality, then you can download any or all of these for use with FG, and use them individually instead.
 
-Special thanks to ScriedRaven on the FG forums who contributed these to the project from the original code, and fall under the original private license.
+Special thanks to ScriedRaven on the FG forums who split my extension into these sub modules from the original code. nb. They all remain under the original private license.
 
 ps. These extensions are not officially supported, only the main extension is.
 
@@ -49,7 +49,20 @@ To install sub-extensions:
 3) Enable the extensions for your campaign in Fantasy Grounds.
 
 
-Conflicts: Flanking works on it's own, but conflicts with the wounds extension.
+Sub-Extensions:
+
+• Content Share: allows you and your players to right click on spells, character feats, features and traits and post the descriptive text directly to the chat text by selecting the new 'Post Text in Chat' menu option at the bottom.
+• Faction Underlays: 'Reach underlay' and 'Faction/space underlay' made as toggle switches in the menu items. Re-add tokens to update. Active actor on CT token underlay made as toggle switches in the menu items. Clears all other underlays than the current actor.
+• Flanking and Range: Automatic range finding from ranged attack. Toggable in menu. Disadvantage for medium to max range added automatically, sharpshooter feat negates this. Message output to chat. Options to detect flanking tokens
+• Height: Add height widget to a token (DM only).
+• Remove Actor: Delete tokens from map and CT with single mouse click. Alt + left mouse-click on token on map, deletes the token from the map. Alt + Ctrl + left mouse-click on token on map, deletes the token from the map and from the CT.
+• Remove Effect: When an effect is dropped on a target in the CT or on a CT linked token on the map. If that target already has that effect, then it is removed from the target instead.
+• Saves: Adds overlay to token after making a saving throw. /dsave to clear
+• Skip Actor: Skip actors that haven’t rolled initiative
+• Window Resizer: New menu options in your settings, under '5E Enhancer, Window Resizing'. Set as default window sizes on activation. But you can enable larger windows for any or all windows from the window menu.
+• Wounds: Blood splatters on token when taking damage. Blood pools on tokens on death. Add X or skull or no graphics onto token on death. Horizontal health bars, Select health for tokens to be displayed as bars, or to be displayed as larger dots
+
+All sub-extensions can be used together, or you can pick and choose which ones you want to use.
 
 ## Built With
 
@@ -262,13 +275,15 @@ v0.10.2 (1st Jun, 2020)
 - The 'Token underlay opacity' menu setting will now also affect the opacity of underlays drawn using the 'Show faction/underlay' menu option instead of 'Underlay switching for active actor...' menu option.
 
 v0.10.3 (- Jun, 2020)
--
+- Added graphical widget for PC's dying. Shows up if either skull or cross widgets have been selected in the menu items on actor death.
+- Update range number by drawn range arrow with extension calculated ranges (including for height).
+
 
 
 Ideas for future versions.
 - Add map pinging, Ctrl + L-Click on map.
 - Add death save functionality for NPCs.
-- Update range number by drawn range arrow with extension calculated ranges (including for height).
+
 
 
 Bug reports:

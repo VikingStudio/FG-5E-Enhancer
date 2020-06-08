@@ -27,7 +27,7 @@
 	<icon name="health_heavy" file="graphics/token/health/health_heavy.png" />
 	<icon name="health_critical" file="graphics/token/health/health_critical.png" />
 
-	<icon name="health_dying" file="graphics/token/health/health_dying.png" />
+	<icon name="health_dying" file="graphics/token/health/health_pc_dying_1.png" />
 	<icon name="health_dying_stable" file="graphics/token/health/health_dying_stable.png" />
 	<icon name="health_dead" file="graphics/token/health/health_dead.png" />
 	<icon name="health_dead_cross" file="graphics/token/health/health_dead_cross.png" />

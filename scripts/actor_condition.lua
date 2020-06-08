@@ -8,7 +8,7 @@ function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
 	<icon name="health_heavy" file="graphics/token/health/health_heavy.png" />
     <icon name="health_critical" file="graphics/token/health/health_critical.png" />
             
-    <icon name="health_dying" file="graphics/token/health/health_dying.png" />
+    <icon name="health_dying" file="graphics/token/health/health_pc_dying_1.png" />
 	<icon name="health_dying_stable" file="graphics/token/health/health_dying_stable.png" />
 	<icon name="health_dead" file="graphics/token/health/health_dead.png" />
     <icon name="health_dead_cross" 
@@ -37,9 +37,25 @@ function updateHealthCondition(tokenCT, nPercentWounded, sStatus)
         if ( OptionsManager.getOption('CE_BOT') == "on" ) then
             widgetActorCondition = tokenCT.addBitmapWidget("health_critical");
         end
-    elseif (sStatus == 'Dying' or sStatus == 'Dying (1)' or sStatus == 'Dying (2)' or sStatus == 'Dead') then
-        -- widgetActorCondition = tokenCT.addBitmapWidget("dying");
+    elseif (sStatus == 'Dying' or sStatus == 'Dying (1)' or sStatus == 'Dying (2)') then
+        if ( OptionsManager.getOption('CE_SC') == "option_skull" ) or ( OptionsManager.getOption('CE_SC') == "option_cross" ) then
+            
+            local ctNode = CombatManager.getCTFromToken(tokenCT);
+            local ctEntryLink = DB.getChild(ctNode, "link");
+            local ctEntryClass = DB.getChild(ctEntryLink, "class");
+            local linkChildren = DB.getChildren(ctEntryLink, ctEntryLink.getPath())
 
+            Debug.chat('db entries', ctNode, ctEntryLink, ctEntryClass, linkChildren);
+            -- ctEntryClass = DB.findNode(ctNode .. '.link.class');
+            -- Debug.chat('ctEntryClass', ctEntryClass);
+            local ctEntryClassValue = DB.getValue(ctEntryClass);
+            Debug.chat('value', ctEntryClassValue)
+
+            if (ctEntryClassValue == 'charsheet') then
+                widgetActorCondition = tokenCT.addBitmapWidget("health_dying");
+            end 
+        end
+    elseif (sStatus == 'Dead') then
          -- add skull or cross on actor death if enabled
         if ( OptionsManager.getOption('CE_SC') == "option_skull" ) then
             widgetActorCondition = tokenCT.addBitmapWidget("health_dead");
