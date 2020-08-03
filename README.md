@@ -20,15 +20,15 @@ https://www.fantasygrounds.com/home/home.php
 
 ### Installing
     
-1) Open the folder "- Extension files (main extension)"
-Download the latest version of the extension file: "5E-Enhancer v?_?_?.ext"
+GitHub link: https://github.com/StyrmirThorarins/FG-5E-Enhancer
 
-Contains:
-This is the actual extension, it includes the compressed codebase and a number of graphics.
+1) Open the folder "Extension files (complete extension)" to download the latest version of the complete extension.
 
-2) Copy this file to your extension folder (example: Fantasy Grounds\Data\extensions\ [place file here] ).
+Or one of the its sub-extensions from here "Extension files (sub-extensions)" folder.
 
-3) Enable the '5E Enhancer v?_?_?' extension for your campaign in Fantasy Grounds.
+2) Copy the extension file/s to your extension folder (example: Fantasy Grounds Unity\Data\extensions\ [place file here] ).
+
+3) Enable the '5E Enhancer v?_?_?' extension/s for your campaign in Fantasy Grounds.
 
 
 ## Built With
