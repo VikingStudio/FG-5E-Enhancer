@@ -1,5 +1,8 @@
 *.code-workspace
 campaign/scripts/image-cec.lua
 solu.txt
-/Extension files (sub-extensions)/*
-/Extension files/*
+/GitHub Screenshots/*
+.. /Extension files (sub-extensions)/*
+.. /Extension files/*
+Monetize Extension.odt
+/GitHub Images/*
