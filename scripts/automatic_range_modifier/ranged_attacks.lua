@@ -418,7 +418,7 @@ function getWeaponRanges5e(rActor, sRanged, sWeaponName)
 					-- Weapon version 1		
 					-- search for 'range * ft', return range as substring, split substring in two (medium/max range)					
 					-- string input ex. 'Thrown (range 30/120)''  and 'range 30/120 ft.''	
-					rangeText = string.match(description, "range%s%d*/%d*");		
+					rangeText = string.match(description, "range[d]?%s%d*/%d*");		
 					if rangeText ~= nil then						
 						-- find '/' index
 						-- medRange = start of numbers to before index
@@ -432,7 +432,7 @@ function getWeaponRanges5e(rActor, sRanged, sWeaponName)
 					-- Weapon version 2
 					-- this exception is needed as some modules have a slightly different range entries
 					-- string input ex. 'Thrown (range 30 ft./120)''  and 'range 30 ft./120 ft.''	
-					rangeText = string.match(description, "range%s%d*%sft./%d*");
+					rangeText = string.match(description, "range[d]?%s%d*%sft./%d*");
 					if rangeText ~= nil and rangeFound == false then						
 						local index = string.find(rangeText, '/');								
 						medRange = string.sub(rangeText, 7, index - 4);
@@ -444,7 +444,7 @@ function getWeaponRanges5e(rActor, sRanged, sWeaponName)
 					-- this exception is needed as some modules have a slightly different range entries
 					-- where spell entries on NPCs are put under actions, and only one range is available
 					-- string input ex. 'Ranged Spell Attack: +5 to hit, range 150 ft., one target. Hit: 10 (3d6) fire damage. ...'		
-					rangeText = string.match(description, "range%s%d*");
+					rangeText = string.match(description, "range[d]?%s%d*");
 					if rangeText ~= nil and rangeFound == false then					
 						medRange = string.sub(rangeText, 7, string.len(rangeText));
 						maxRange = medRange;							
@@ -494,7 +494,7 @@ function getWeaponRanges5e(rActor, sRanged, sWeaponName)
 					
 					-- search for 'range * ft', return range as substring, split substring in two (medium/max range)
 					-- string input ex. 'Thrown (range 30/120)''  and 'range 30/120 ft.''				
-					local rangeText = string.match(description, "range%s%d*/%d*");		
+					local rangeText = string.match(description, "range[d]?%s%d*/%d*");		
 					
 					if rangeText ~= nil then
 						-- find '/' index
