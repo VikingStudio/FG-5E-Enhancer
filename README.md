@@ -1,3 +1,5 @@
+Copyright © 2020 Styrmir Thorarinsson
+
 # FG-5E-Enhancer
 
 A community extension I'm writing to improve D&D 5E in Fantasy Grounds Unity.
