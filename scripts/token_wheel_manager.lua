@@ -16,21 +16,15 @@ function onWheel(token, notches)
 
     if Input.isShiftPressed() and User.isHost() then    
         TokenHeight.updateHeight(token, notches);
+		return true;
     elseif Input.isControlPressed() then
-        -- token scaling
-        Debug.console('5E Enhancer: Token.onWheel handler warning produced on purpose to force fallback to original token scaling code.');
-        Token.onWheel(token, notches);
-
-        --local scale = token.getContainerScale();
-        --scale = scale + notches * 0.1;
-        --token.setContainerScale(scale);
-
-        -- update health bar or dot graphics
-        --TokenManagerOverride.updateHealthHelper(token, CombatManager.getCTFromToken(token));
+		return nil;
     elseif rotateLock == 'off' then     
+        Debug.console('rotatelock is off');
         -- token rotation for all
         token.setOrientation((token.getOrientation()+notches)%8);    
     elseif Input.isAltPressed() and rotateLock == 'on' then        
+        Debug.console('Alt pressed and rotatelock is on');
         -- token rotation only when Alt pressed
         token.setOrientation((token.getOrientation()+notches)%8);
     end

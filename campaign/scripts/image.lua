@@ -80,7 +80,7 @@ function onMeasurePointer(pixellength,pointertype,startx,starty,endx,endy)
 		if HeightManager ~= nil then
 			local sh = getCTEntryHeight(ctNodeStart);
 			local eh = getCTEntryHeight(ctNodeEnd); 
-			-- height is stored in 5ft units, we're working in raw units
+			-- height is stored in 5ft units, we are working in raw units
 			heightDistance = math.abs(eh-sh)/5; 
 		end
 
