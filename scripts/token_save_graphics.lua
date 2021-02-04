@@ -207,5 +207,5 @@ function deleteSaveWidgets(sCommand, sParams)
         end
 	end
 
-	Helper.postChatMessage('/dsave: Save cleared.');
+	Helper.postChatMessage('Save Overlays cleared.');
 end

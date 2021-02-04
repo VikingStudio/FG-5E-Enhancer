@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
 <root>
-	<windowclass name="imagewindow_toolbar" merge="join">
+	<windowclass name="imagewindow_toolbar" merge="merge">
 		<script>
+			function onInit()
+				update();
+			end
+			
+			function getImage()
+				return parentcontrol.window.image;
+			end
+			
+			function update()
+				local image = getImage();
+				local bHasTokens = image.hasTokens();
+
+				toolbar_draw.onValueChanged();
+
+				h2.setVisible(bHasTokens);
+				if User.isHost() then
+					toolbar_clear_saves.setVisible(true);
+				end
+				toggle_select.setVisibility(bHasTokens);
+				h3.setVisible(bHasTokens);
+				toggle_targetselect.setVisibility(bHasTokens);
+				toolbar_targeting.setVisibility(bHasTokens);
+			end
 		</script>
 		<sheetdata>
 			<buttoncontrol name="toolbar_clear_saves" insertafter="toolbar_targeting">
@@ -13,13 +36,9 @@
 				<state icon="tool_clear_saves_30" />
 				<frame name="toolbar_30" />
 				<tooltip textres="tooltip_saves_clear_toolbar" />	
+				<invisible />
 				<script>
-					function onInit()
-						Debug.console('imagewindow_toolbar subclass toolbar_clear_save loaded');
-					end
-
 					function onButtonPress()	
-						Debug.console('imagewindow_toolbar subclass button pushed');
 						TokenSaveGraphics.deleteSaveWidgets("Delete Save Widgets", "")
 					end	
 				</script>
