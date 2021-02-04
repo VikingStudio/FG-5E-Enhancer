@@ -4,19 +4,33 @@
 	<windowclass name="imagewindow_toolbar" merge="join">
 		<script>
 			function onInit()
-				super.onInit();
 				update();
+				super.onInit();
 			end
 
 			function update()
-				super.update();
+				local image = super.getImage();
+				local bHasTokens = image.hasTokens();
+
+				h4.setVisible(bHasTokens);
+
 				if User.isHost() then
-					toolbar_clear_saves.setVisible(true);
+					toolbar_clear_saves.setVisible(bHasTokens);
 				end
+
+				super.update();
 			end
 		</script>
 		<sheetdata>
-			<buttoncontrol name="toolbar_clear_saves" insertafter="toolbar_targeting">
+			<genericcontrol name="h4" insertafter="toolbar_targeting">
+				<anchored to="toolbar_anchor" width="10" height="34">
+					<top />
+					<left anchor="right" relation="relative" />
+				</anchored>
+				<invisible />
+			</genericcontrol>
+
+			<buttoncontrol name="toolbar_clear_saves" insertafter="h4">
 				<anchored to="toolbar_anchor" width="34" height="34">
 					<top />
 					<left anchor="right" relation="relative" />
