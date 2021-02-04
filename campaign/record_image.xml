@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<root>
+	<windowclass name="imagewindow_toolbar" merge="join">
+		<script>
+		</script>
+		<sheetdata>
+			<buttoncontrol name="toolbar_clear_saves" insertafter="toolbar_targeting">
+				<anchored to="toolbar_anchor" width="34" height="34">
+					<top />
+					<left anchor="right" relation="relative" />
+				</anchored>
+				<state icon="tool_clear_saves_30" />
+				<frame name="toolbar_30" />
+				<tooltip textres="tooltip_saves_clear_toolbar" />	
+				<script>
+					function onInit()
+						Debug.console('imagewindow_toolbar subclass toolbar_clear_save loaded');
+					end
+
+					function onButtonPress()	
+						Debug.console('imagewindow_toolbar subclass button pushed');
+						TokenSaveGraphics.deleteSaveWidgets("Delete Save Widgets", "")
+					end	
+				</script>
+			</buttoncontrol>
+		</sheetdata>
+	</windowclass>
+</root>

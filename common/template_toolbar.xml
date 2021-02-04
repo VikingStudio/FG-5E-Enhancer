@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<root>
+    <icon name="tool_clear_saves_30" file="graphics/toolbar/tool_clear_saves_30.png" />
+    <icon name="tool_clear_wounds_30" file="graphics/toolbar/tool_clear_wounds_30.png" />
+</root>
