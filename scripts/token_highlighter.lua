@@ -22,7 +22,7 @@ function updateActiveHelper(tokenCT, nodeCT)
 
         local opacityPercentage = OptionsManager.getOption('CE_UOP');	
         
-        -- if no setting is found, return the 20% opacity settubg as it's the default
+        -- if no setting is found, return the 20% opacity settubg as it is the default
         if (opacityPercentage == nil) or (opacityPercentage == '') then
             opacityPercentage = '20'; 
         end
