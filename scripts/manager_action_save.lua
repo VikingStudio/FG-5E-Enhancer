@@ -123,7 +123,7 @@ function getRoll(rActor, sSave)
 	local rRoll = {};
 	rRoll.sType = "save";
 	rRoll.aDice = { "d20" };
-	local nMod, bADV, bDIS, sAddText = ActorManager2.getSave(rActor, sSave);
+	local nMod, bADV, bDIS, sAddText = ActorManager5E.getSave(rActor, sSave);
 	rRoll.nMod = nMod;
 	
 	rRoll.sDesc = "[SAVE] " .. StringManager.capitalize(sSave);
@@ -302,7 +302,7 @@ function modSave(rSource, rTarget, rRoll)
 			sSaveAbility = sSave;
 		end
 		if sSaveAbility then
-			local nBonusStat, nBonusEffects = ActorManager2.getAbilityEffectsBonus(rSource, sSaveAbility);
+			local nBonusStat, nBonusEffects = ActorManager5E.getAbilityEffectsBonus(rSource, sSaveAbility);
 			if nBonusEffects > 0 then
 				bEffects = true;
 				nAddMod = nAddMod + nBonusStat;
@@ -479,7 +479,7 @@ function performSystemShockRoll(draginfo, rActor)
 	local rRoll = { };
 	rRoll.sType = "systemshock";
 	rRoll.aDice = { "d20" };
-	local nMod, bADV, bDIS, sAddText = ActorManager2.getSave(rActor, "constitution");
+	local nMod, bADV, bDIS, sAddText = ActorManager5E.getSave(rActor, "constitution");
 	rRoll.nMod = nMod;
 	
 	rRoll.sDesc = "[SYSTEM SHOCK]";
@@ -657,11 +657,11 @@ function onDeathRoll(rSource, rTarget, rRoll)
 
 	local rMessage = ActionsManager.createActionMessage(rSource, rRoll);
 
-	if ActorManager2.getPercentWounded(rSource) >= 1 then
+	if ActorManager5E.getPercentWounded(rSource) >= 1 then
 		local nTotal = ActionsManager.total(rRoll);
 		
 		local bStatusCheck = true;
-		local _,sOriginalStatus = ActorManager2.getPercentWounded(rSource);
+		local _,sOriginalStatus = ActorManager5E.getPercentWounded(rSource);
 		
 		local nFirstDie = 0;
 		if #(rRoll.aDice) > 0 then
@@ -733,7 +733,7 @@ function onDeathRoll(rSource, rTarget, rRoll)
 				bShowStatus = not OptionsManager.isOption("SHNPC", "off");
 			end
 			if bShowStatus then
-				local _,sNewStatus = ActorManager2.getPercentWounded(rSource);
+				local _,sNewStatus = ActorManager5E.getPercentWounded(rSource);
 				if sOriginalStatus ~= sNewStatus then
 					rMessage.text = rMessage.text .. " [" .. Interface.getString("combat_tag_status") .. ": " .. sNewStatus .. "]";
 				end
@@ -816,7 +816,7 @@ function performConcentrationRoll(draginfo, rActor, nTargetDC)
 	local rRoll = { };
 	rRoll.sType = "concentration";
 	rRoll.aDice = { "d20" };
-	local nMod, bADV, bDIS, sAddText = ActorManager2.getSave(rActor, "constitution");
+	local nMod, bADV, bDIS, sAddText = ActorManager5E.getSave(rActor, "constitution");
 	rRoll.nMod = nMod;
 	
 	rRoll.sDesc = "[CONCENTRATION]";

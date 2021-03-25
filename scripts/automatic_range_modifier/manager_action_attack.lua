@@ -369,7 +369,7 @@ function modAttack(rSource, rTarget, rRoll)
 		end	
 
 		-- Get ability modifiers
-		local nBonusStat, nBonusEffects = ActorManager2.getAbilityEffectsBonus(rSource, sActionStat);
+		local nBonusStat, nBonusEffects = ActorManager5E.getAbilityEffectsBonus(rSource, sActionStat);
 		if nBonusEffects > 0 then
 			bEffects = true;
 			nAddMod = nAddMod + nBonusStat;
@@ -427,7 +427,7 @@ function modAttack(rSource, rTarget, rRoll)
 		nAddMod = nAddMod - 2;
 	end
 	
-	local bDefADV, bDefDIS = ActorManager2.getDefenseAdvantage(rSource, rTarget, aAttackFilter);
+	local bDefADV, bDefDIS = ActorManager5E.getDefenseAdvantage(rSource, rTarget, aAttackFilter);
 	if bDefADV then
 		bADV = true;
 	end
@@ -463,7 +463,7 @@ function onAttack(rSource, rTarget, rRoll)
 	rAction.nTotal = ActionsManager.total(rRoll);
 	rAction.aMessages = {};
 	
-	local nDefenseVal, nAtkEffectsBonus, nDefEffectsBonus = ActorManager2.getDefenseValue(rSource, rTarget, rRoll);
+	local nDefenseVal, nAtkEffectsBonus, nDefEffectsBonus = ActorManager5E.getDefenseValue(rSource, rTarget, rRoll);
 	if nAtkEffectsBonus ~= 0 then
 		rAction.nTotal = rAction.nTotal + nAtkEffectsBonus;
 		local sFormat = "[" .. Interface.getString("effects_tag") .. " %+d]"
