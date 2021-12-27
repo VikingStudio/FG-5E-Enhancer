@@ -1,4 +1,4 @@
-Copyright © 2020 Styrmir Thorarinsson
+Copyright © 2021 Styrmir Thorarinsson
 
 # FG-5E-Enhancer
 
