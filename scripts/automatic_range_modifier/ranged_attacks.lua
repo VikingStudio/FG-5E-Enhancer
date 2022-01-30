@@ -395,6 +395,8 @@ function getWeaponRanges5e(rActor, sRanged, sWeaponName)
 
 	if sRanged == 'R' then			
 		bRanged = true;			
+                Debug.console('getWeaponRanges5e sWeaponName', sWeaponName);
+                Debug.console('getWeaponRanges5e actor', rActor.sType);
 
 		-- NPC and PC db structures are different so need different handlers for finding ranges between the two		
 		-- NPC handling
@@ -406,11 +408,13 @@ function getWeaponRanges5e(rActor, sRanged, sWeaponName)
 			for k, v in pairs(actionNodes) do
 				local nodeChild = nodeParent .. '.' .. k;				
 				local nodeName = DB.getText(nodeChild .. '.name');
+                                Debug.console('getWeaponRanges5e nodeName', nodeName);
 			
 				-- There are 2 standard entry types for weapons and one for spells under actions
 				-- each is dealt with separately below
 				-- if ( nodeName:lower() == sWeaponName:lower() ) then					
-				if string.match(nodeName, sWeaponName) then
+				local comparison = stringCompareNoPatternMatch(string.lower(nodeName), string.lower(sWeaponName));
+				if comparison == true then
 					local description = DB.getText(nodeChild .. '.desc');										
 					local rangeText = '';
 					local rangeFound = false;
@@ -418,25 +422,38 @@ function getWeaponRanges5e(rActor, sRanged, sWeaponName)
 					-- Weapon version 1		
 					-- search for 'range * ft', return range as substring, split substring in two (medium/max range)					
 					-- string input ex. 'Thrown (range 30/120)''  and 'range 30/120 ft.''	
-					rangeText = string.match(description, "range%s%d*/%d*");		
+					rangeText = string.match(description, "range[d]?%s%d*/%d*");		
+                                        Debug.console('Range text is:', rangeText);
 					if rangeText ~= nil then						
 						-- find '/' index
 						-- medRange = start of numbers to before index
 						-- maxRange = after index to end
 						local index = string.find(rangeText, '/');								
-						medRange = string.sub(rangeText, 7, index - 1);
+						local medIndex = string.find(rangeText, ' ');								
+                                                Debug.console('index is:', index);
+                                                Debug.console('medIndex is:', medIndex);
+
+						medRange = string.sub(rangeText, medIndex + 1, index - 1);
 						maxRange = string.sub(rangeText, index + 1, string.len(rangeText));		
+                                                Debug.console('medRange is:', medRange);
+                                                Debug.console('maxRange is:', maxRange);
 						rangeFound = true;	
 					end
 
 					-- Weapon version 2
 					-- this exception is needed as some modules have a slightly different range entries
 					-- string input ex. 'Thrown (range 30 ft./120)''  and 'range 30 ft./120 ft.''	
-					rangeText = string.match(description, "range%s%d*%sft./%d*");
+					rangeText = string.match(description, "range[d]?%s%d*%sft./%d*");
+                                        Debug.console('Range text is:', rangeText);
 					if rangeText ~= nil and rangeFound == false then						
 						local index = string.find(rangeText, '/');								
-						medRange = string.sub(rangeText, 7, index - 4);
+						local medIndex = string.find(rangeText, ' ');								
+                                                Debug.console('index is:', index);
+                                                Debug.console('medIndex is:', medIndex);
+						medRange = string.sub(rangeText, medIndex + 1, index - 1);
 						maxRange = string.sub(rangeText, index + 1, string.len(rangeText));	
+                                                Debug.console('medRange is:', medRange);
+                                                Debug.console('maxRange is:', maxRange);
 						rangeFound = true;
 					end
 						
@@ -444,10 +461,15 @@ function getWeaponRanges5e(rActor, sRanged, sWeaponName)
 					-- this exception is needed as some modules have a slightly different range entries
 					-- where spell entries on NPCs are put under actions, and only one range is available
 					-- string input ex. 'Ranged Spell Attack: +5 to hit, range 150 ft., one target. Hit: 10 (3d6) fire damage. ...'		
-					rangeText = string.match(description, "range%s%d*");
+					rangeText = string.match(description, "range[d]?%s%d*");
+                                        Debug.console('Range text is:', rangeText);
 					if rangeText ~= nil and rangeFound == false then					
-						medRange = string.sub(rangeText, 7, string.len(rangeText));
+						local medIndex = string.find(rangeText, ' ');								
+                                                Debug.console('medIndex is:', medIndex);
+						medRange = string.sub(rangeText, medIndex + 1, string.len(rangeText));
 						maxRange = medRange;							
+                                                Debug.console('medRange is:', medRange);
+                                                Debug.console('maxRange is:', maxRange);
 					end	
 										
 				end								
@@ -494,15 +516,21 @@ function getWeaponRanges5e(rActor, sRanged, sWeaponName)
 					
 					-- search for 'range * ft', return range as substring, split substring in two (medium/max range)
 					-- string input ex. 'Thrown (range 30/120)''  and 'range 30/120 ft.''				
-					local rangeText = string.match(description, "range%s%d*/%d*");		
+					local rangeText = string.match(description, "range[d]?%s%d*/%d*");		
+                                        Debug.console('Range text is:', rangeText);
 					
 					if rangeText ~= nil then
 						-- find '/' index
 						-- medRange = start of numbers to before index
 						-- maxRange = after index to end
 						local index = string.find(rangeText, '/');								
-						medRange = string.sub( rangeText, 7, index - 1);
+						local medIndex = string.find(rangeText, ' ');								
+                                                Debug.console('index is:', index);
+                                                Debug.console('medIndex is:', medIndex);
+						medRange = string.sub(rangeText, medIndex + 1, index - 1);
 						maxRange = string.sub(rangeText, index + 1, string.len(rangeText));		
+                                                Debug.console('medRange is:', medRange);
+                                                Debug.console('maxRange is:', maxRange);
 					end			
 				end
 			end	
@@ -573,5 +601,19 @@ function checkConditions(rSource, rTarget)
 	local ctrlImage = TokenHelper.getControlImageByToken(sourceToken);		
 	if ctrlImage == nil then return false; end
 
+	return true;
+end
+
+-- string compare, no pattern matching
+function stringCompareNoPatternMatch(str1, str2)
+	if str1 == nil or str2 == nil then return false; end
+
+	local len = string.len(str1);
+	if not (len == string.len(str2)) then return false; end
+
+	for i = 1, len, 1
+	do
+		if not (string.byte(str1, i) == string.byte(str2, i)) then return false; end
+	end
 	return true;
 end
